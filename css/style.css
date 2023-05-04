@@ -1,0 +1,257 @@
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-display: block;
+    src: url("../fonts/Inter-Medium.woff2?v=3.15") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../fonts/Inter-Regular.woff2?v=3.15") format("woff2");
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../fonts/SuisseIntl-Medium-WebXL.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    font-style: italic;
+    font-weight: 400;
+    font-display: block;
+    src: url("../fonts/SuisseIntl-MediumItalic-WebXL.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    font-style: normal;
+    font-weight: 500;
+    font-display: block;
+    src: url("../fonts/SuisseIntl-Medium-WebXL.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    font-style: italic;
+    font-weight: 500;
+    font-display: block;
+    src: url("../fonts/SuisseIntl-MediumItalic-WebXL.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    font-style: normal;
+    font-weight: 600;
+    font-display: block;
+    src: url("../fonts/SuisseIntl-SemiBold-WebXL.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    font-style: italic;
+    font-weight: 600;
+    font-display: block;
+    src: url("../fonts/SuisseIntl-SemiBoldItalic-WebXL.woff2") format("woff2");
+}
+
+body {
+    background: #15181E;
+}
+
+h2 {
+    font-family: Suisse Intl;
+    font-size: 28px;
+    font-weight: 500;
+    color: #f4f5f6;
+    margin: 0px;
+    margin-bottom: 16px;
+}
+
+.step-container {
+    max-width: 450px;
+    width: 90%;
+    margin: auto;
+}
+
+.section-container {
+    /* padding-left: 20px; */
+    margin-bottom: 30px;
+}
+
+.form-group-container {
+    /* padding-left: 20px; */
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    color: #868f98;
+    display: block;
+    margin-bottom: 5px;
+    font-style: normal;
+}
+
+input,
+.fancy-dropdown-wrapper input.fancy-dropdown {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #f4f5f6;
+    font-style: normal;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #9ca3ab52;
+    background: transparent;
+    transition: all 0.2s ease 0s;
+    outline: none;
+    letter-spacing: -0.02em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus,
+.fancy-dropdown-wrapper input.fancy-dropdown:focus {
+    background: #15181e;
+    border: 1px solid #6487ceF5;
+    caret-color: #6487ceF5;
+}
+
+input:hover,
+.fancy-dropdown-wrapper input.fancy-dropdown:hover {
+    background: #22272f;
+}
+
+.fancy-dropdown-wrapper .fancy-dropdown-sleeve::after {
+    background-image: url("../img/angle-down.svg");
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    transform: rotate(180deg);
+    top: 10px;
+}
+
+.fancy-dropdown-wrapper.open .fancy-dropdown-sleeve::after {
+    transform: rotate(0deg);
+}
+
+.fancy-dropdown-wrapper .fancy-dropdown-sleeve + .fancy-dropdown-options ul.options-list {
+    background: #22272F;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.fancy-dropdown-wrapper .fancy-dropdown-sleeve + .fancy-dropdown-options ul.options-list li.option-item:not(:last-of-type) {
+    border: 0px;
+}
+
+.fancy-dropdown-wrapper .fancy-dropdown-sleeve + .fancy-dropdown-options ul.options-list li.option-item {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    color: #f4f5f6;
+    line-height: 20px;
+    padding: 8px 16px;
+}
+
+.fancy-dropdown-wrapper .fancy-dropdown-sleeve + .fancy-dropdown-options ul.options-list li.option-item:hover {
+    background: #e9ebec0a;
+}
+
+.fancy-dropdown-wrapper .fancy-dropdown-sleeve + .fancy-dropdown-options {
+    top: 40px;
+    box-shadow: none;
+    border: 0px;
+    background: transparent;
+}
+
+.multiselect {
+    display: flex;
+    align-items: center;
+    margin: -5px;
+    flex-wrap: wrap;
+}
+
+.multiselect-option {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #f4f5f6;
+    font-style: normal;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #9ca3ab52;
+    background: transparent;
+    transition: all 0.2s ease 0s;
+    letter-spacing: -0.02em;
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px 5px;
+}
+
+.multiselect-option:hover {
+    background: #22272f;
+    border: 1px solid #6487ceF5;
+}
+
+.multiselect-option.selected {
+    background: #6487ceF5;
+    border: 1px solid #6487ceF5;
+}
+
+.image-select {
+    display: flex;
+    align-items: center;
+    margin: -5px;
+    flex-wrap: wrap;
+}
+
+.image-select-option {
+    background-image: url(../img/body1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 5px 5px;
+    cursor: pointer;
+    border: 1px solid #9ca3ab52;
+    transition: all 0.2s ease 0s;
+}
+
+.image-select-option:hover {
+    border: 1px solid #6487ceF5;
+}
+
+.image-select-option.selected {
+    border: 1px solid #6487ceF5;
+    filter: brightness(.5);
+}

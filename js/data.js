@@ -43,7 +43,8 @@ const questionnareData = [
                     {
                         'question': "What is your sex? (Minimum 1; Maximum 1)",
                         'options': ["Male", "Female", "Intersex"],
-                        'type': 'select'
+                        'type': 'select',
+                        'id': 'q_sex'
                     },
                     {
                         'question': "What is your eye color? (Minimum 1; Maximum 1)",
@@ -69,7 +70,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What is your height? (Minimum 1; Maximum 1)",
-                        'options': ["Less than 5\' ft (Less than 152 cm)", "5\' ft (152-154 cm)", "5\'1\" ft (155-156 cm)", "5\'2\" ft (157-159 cm)", "5\'3\" ft (160-162 cm)", "5\'4\" ft (163-165 cm)", "5\'5\" ft (166-167 cm)", "5\'6\" ft (168-170 cm)", "5\'7\" ft (171-172 cm)", "5\'8\" ft (173-175 cm)", "5\'9\" ft (176-177 cm)", "5\'10\" ft (178-180 cm)", "5\'11\" ft (181-182 cm)", "6\' ft (183-185 cm)", "6\'1\" ft (186-187 cm)", "6\'2\" ft (188-190 cm)", "6\'3\" ft (191-193 cm)", "6\'4\" ft (194-195 cm)", "6\'5\" ft (196-198 cm)", "6\'6\" ft (199-201 cm)", "6\'7\" ft (202-203 cm)", "6\'8\" ft (204-206 cm)", "6\'9\" ft (207-208 cm)", "6\'10\" ft (209-211 cm)", "6\'11\" ft (212-213 cm)", "More than 7\' ft (More than 213 cm)"],
+                        'options': ["Less than 5&#x2032; ft (Less than 152 cm)", "5&#x2032; ft (152-154 cm)", "5&#x2032;1&#x2033; ft (155-156 cm)", "5&#x2032;2&#x2033; ft (157-159 cm)", "5&#x2032;3&#x2033; ft (160-162 cm)", "5&#x2032;4&#x2033; ft (163-165 cm)", "5&#x2032;5&#x2033; ft (166-167 cm)", "5&#x2032;6&#x2033; ft (168-170 cm)", "5&#x2032;7&#x2033; ft (171-172 cm)", "5&#x2032;8&#x2033; ft (173-175 cm)", "5&#x2032;9&#x2033; ft (176-177 cm)", "5&#x2032;10&#x2033; ft (178-180 cm)", "5&#x2032;11&#x2033; ft (181-182 cm)", "6&#x2032; ft (183-185 cm)", "6&#x2032;1&#x2033; ft (186-187 cm)", "6&#x2032;2&#x2033; ft (188-190 cm)", "6&#x2032;3&#x2033; ft (191-193 cm)", "6&#x2032;4&#x2033; ft (194-195 cm)", "6&#x2032;5&#x2033; ft (196-198 cm)", "6&#x2032;6&#x2033; ft (199-201 cm)", "6&#x2032;7&#x2033; ft (202-203 cm)", "6&#x2032;8&#x2033; ft (204-206 cm)", "6&#x2032;9&#x2033; ft (207-208 cm)", "6&#x2032;10&#x2033; ft (209-211 cm)", "6&#x2032;11&#x2033; ft (212-213 cm)", "More than 7&#x2032; ft (More than 213 cm)"],
                         'type': 'select'
                     },
                     {
@@ -114,7 +115,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "How do you approach personal growth and self-improvement? (Minimum 1; Maximum 1)",
-                        'options': ["Proactively, I am always working on myself", "Reactively, I work on myself when I face challenges", "Passively, I let life guide my growth", "I don\'t prioritize personal growth"],
+                        'options': ["Proactively, I am always working on myself", "Reactively, I work on myself when I face challenges", "Passively, I let life guide my growth", "I don&#x2032;t prioritize personal growth"],
                         'type': 'select'
                     }
                 ]
@@ -305,7 +306,8 @@ const questionnareData = [
                         'question': "I enjoy: (Minimum 1; Maximum 2) (Cannot select both \"None\" and other options)",
                         'options': ["Watching comedy shows or movies", "going to comedy clubs", "Reading humorous books", "Sharing jokes or memes", "Telling jokes or funny stories", "Laughing with friends and family", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 2
+                        'maxOptions': 2,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "In difficult situations, I tend to: (Minimum 1; Maximum 1)",
@@ -314,9 +316,10 @@ const questionnareData = [
                     },
                     {
                         'question': "Who are your top 3 favorite comedians? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Aisling Bea", "Ali Wong", "Amy Schumer", "Aziz Ansari", "Bert Kreischer", "Bill Burr", "Bill Hicks", "Billy Connolly", "Bo Burnham", "Cedric the Entertainer", "Chris Rock", "Daniel Tosh", "Dave Chappelle", "David O\'Doherty", "Demetri Martin", "Don Rickles", "Doug Stanhope", "Eddie Griffin", "Eddie Izzard", "Eddie Murphy", "Ellen DeGeneres", "Eric Andre", "Frank Caliendo", "Frankie Boyle", "Gabriel Iglesias", "Garry Shandling", "George Carlin", "Greg Davies", "Hannah Gadsby", "Hasan Minhaj", "Iliza Shlesinger", "Jack Whitehall", "James Acaster", "Janeane Garofalo", "J.B. Smoove", "Jeff Dunham", "Jeff Foxworthy", "Jerry Seinfeld", "Jim Gaffigan", "Jim Jefferies", "Jo Koy", "Joe Rogan", "John Mulaney", "Jon Stewart", "Josie Long", "Katherine Ryan", "Kathy Griffin", "Kevin Hart", "Larry the Cable Guy", "Lewis Black", "Lisa Lampanelli", "Louis C.K.", "Margaret Cho", "Marc Maron", "Maria Bamford", "Martin Lawrence", "Mike Birbiglia", "Mitch Hedberg", "Natasha Leggero", "Nick Kroll", "Nish Kumar", "Nikki Glaser", "Patton Oswalt", "Paul F. Tompkins", "Ray Romano", "Reggie Watts", "Richard Lewis", "Richard Pryor", "Ricky Gervais", "Rob Delaney", "Robin Williams", "Ronny Chieng", "Roseanne Barr", "Roy Wood Jr.", "Russell Brand", "Russell Peters", "Ryan Hamilton", "Sam Kinison", "Sandra Bernhard", "Sarah Millican", "Sarah Silverman", "Seth Meyers", "Simon Amstell", "Sinbad", "Stephen Colbert", "Steve Martin", "Stewart Lee", "Tim Allen", "Tim Minchin", "Tig Notaro", "Tom Segura", "Tommy Tiernan", "Tracy Morgan", "Trevor Noah", "Victoria Wood", "Wanda Sykes", "Weird Al Yankovic", "Whitney Cummings", "Zach Galifianakis", "Whoopi Goldberg", "Other", "None"],
+                        'options': ["Aisling Bea", "Ali Wong", "Amy Schumer", "Aziz Ansari", "Bert Kreischer", "Bill Burr", "Bill Hicks", "Billy Connolly", "Bo Burnham", "Cedric the Entertainer", "Chris Rock", "Daniel Tosh", "Dave Chappelle", "David O&#x2032;Doherty", "Demetri Martin", "Don Rickles", "Doug Stanhope", "Eddie Griffin", "Eddie Izzard", "Eddie Murphy", "Ellen DeGeneres", "Eric Andre", "Frank Caliendo", "Frankie Boyle", "Gabriel Iglesias", "Garry Shandling", "George Carlin", "Greg Davies", "Hannah Gadsby", "Hasan Minhaj", "Iliza Shlesinger", "Jack Whitehall", "James Acaster", "Janeane Garofalo", "J.B. Smoove", "Jeff Dunham", "Jeff Foxworthy", "Jerry Seinfeld", "Jim Gaffigan", "Jim Jefferies", "Jo Koy", "Joe Rogan", "John Mulaney", "Jon Stewart", "Josie Long", "Katherine Ryan", "Kathy Griffin", "Kevin Hart", "Larry the Cable Guy", "Lewis Black", "Lisa Lampanelli", "Louis C.K.", "Margaret Cho", "Marc Maron", "Maria Bamford", "Martin Lawrence", "Mike Birbiglia", "Mitch Hedberg", "Natasha Leggero", "Nick Kroll", "Nish Kumar", "Nikki Glaser", "Patton Oswalt", "Paul F. Tompkins", "Ray Romano", "Reggie Watts", "Richard Lewis", "Richard Pryor", "Ricky Gervais", "Rob Delaney", "Robin Williams", "Ronny Chieng", "Roseanne Barr", "Roy Wood Jr.", "Russell Brand", "Russell Peters", "Ryan Hamilton", "Sam Kinison", "Sandra Bernhard", "Sarah Millican", "Sarah Silverman", "Seth Meyers", "Simon Amstell", "Sinbad", "Stephen Colbert", "Steve Martin", "Stewart Lee", "Tim Allen", "Tim Minchin", "Tig Notaro", "Tom Segura", "Tommy Tiernan", "Tracy Morgan", "Trevor Noah", "Victoria Wood", "Wanda Sykes", "Weird Al Yankovic", "Whitney Cummings", "Zach Galifianakis", "Whoopi Goldberg", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -379,15 +382,51 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What hormonal birth control do you currently use, if any? (Minimum 1; Maximum 1) (e.g., \"Alesse\") (Question disappears if Sex ≠ Female)",
-                        'options': [""],
-                        'type': 'select'
+                        'question': "What hormonal birth control do you currently use, if any? (Minimum 1; Maximum 1) (e.g., \"Alesse\") (Question disappears if Sex &#x2260; Female)",
+                        'optionGroups': [
+                            {
+                                "title": 'Combined oral contraceptives (COCs)',
+                                'options': ["Alesse", "Apri", "Aviane", "Beyaz", "Brevicon", "Demulen", "Desogen", "Diane-35", "Enpresse", "Estrostep Fe", "Femcon Fe", "Gianvi", "Gildess", "Jolessa", "Kariva", "Kelnor", "Lessina", "Levora", "Loestrin Fe", "Lo Loestrin Fe", "Loryna", "Low-Ogestrel", "Mircette", "Mononessa", "Natazia", "Necon", "Nordette", "Norgestimate/Ethinyl Estradiol", "Nortrel", "Ortho-Cept", "Ortho Cyclen", "Ortho Tri-Cyclen", "Ortho Tri-Cyclen Lo", "Ovcon", "Safyral", "Seasonale", "Seasonique", "Sronyx", "Tri-Lo Sprintec", "TriNessa", "Trivora", "Yasmin", "Yaz", "Zenchent", "Zovia"]
+                            },
+                            {
+                                "title": 'Progestin-only pills (POPs, also known as &#x2033;mini-pills&#x2033;)',
+                                'options': ["Camila", "Errin", "Heather", "Jolivette", "Micronor", "Nora-Be", "Norlyda", "Nor-QD", "Ortho Micronor", "Sharobel", "Slynd"]
+                            },
+                            {
+                                "title": 'Transdermal patch:',
+                                'options': ["Ortho Evra", "Xulane"]
+                            },
+                            {
+                                "title": 'Vaginal ring:',
+                                'options': ["Annovera", "NuvaRing"]
+                            },
+                            {
+                                "title": 'Injectable:',
+                                'options': ["Depo-Provera", "Sayana Press"]
+                            },
+                            {
+                                "title": 'Intrauterine devices (IUDs) with hormones:',
+                                'options': ["Kyleena", "Liletta", "Mirena", "Skyla"]
+                            },
+                            {
+                                "title": 'Implant:',
+                                'options': ["Nexplanon"]
+                            },
+                            {
+                                "title": '',
+                                'options': ["Other", "None"]
+                            }
+                        ],
+                        'type': 'multi-select',
+                        'maxOptions': 1,
+                        'id': 'q_hormonal_birth'
                     },
                     {
-                        'question': "What types of medications, if any, are you currently taking? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What types of medications, if any, are you currently taking? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Allergy medications (e.g., antihistamines, decongestants)", "Antidepressants", "Antidiabetic medications", "Anti-anxiety medications", "Antibiotics", "Antihypertensive medications (blood pressure control)", "Antipsychotic medications", "Asthma medications (e.g., inhalers, corticosteroids)", "Birth control or hormonal contraceptives", "Blood thinners (anticoagulants)", "Cholesterol-lowering medications (e.g., statins)", "Epilepsy medications (anticonvulsants)", "Gastrointestinal medications (e.g., antacids, proton pump inhibitors)", "Heartburn or acid reflux medications", "Hormone replacement therapy", "Insulin or other diabetes medications", "Mood stabilizers (for bipolar disorder)", "Opioid or non-opioid pain relievers", "Prescription acne medications", "Prescription sleep aids", "Stimulant medications (for ADHD)", "Thyroid medications", "Vitamins or dietary supplements", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
                         'question': "iv.	How COVID-19 vaccine doses have you received? (Minimum 1; Maximum 1)",
@@ -415,34 +454,49 @@ const questionnareData = [
                 'title': 'Chronic Illnesses or Disabilities',
                 'parts': [
                     {
-                        'question': "Do you have any physical health issues or conditions? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
-                        'options': ["Allergies", "Anemia", "Asthma", "Arthritis", "Cancer", "Celiac disease", "Chronic fatigue syndrome", "Chronic pain", "Crohn\'s disease", "Diabetes (Type 1)", "Diabetes (Type 2)", "Endometriosis", "Epilepsy", "Fibromyalgia", "Gastroesophageal reflux disease (GERD)", "Heart disease", "High blood pressure", "High cholesterol", "Hypothyroidism", "Irritable bowel syndrome (IBS)", "Kidney disease", "Liver disease", "Lupus", "Migraines", "Multiple sclerosis", "Osteoporosis", "Parkinson\'s disease", "Polycystic ovary syndrome (PCOS)", "Psoriasis", "Rheumatoid arthritis", "Sleep apnea", "Ulcerative colitis", "Other", "None"],
+                        'question': "Do you have any physical health issues or conditions? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'options': ["Allergies", "Anemia", "Asthma", "Arthritis", "Cancer", "Celiac disease", "Chronic fatigue syndrome", "Chronic pain", "Crohn&#x2032;s disease", "Diabetes (Type 1)", "Diabetes (Type 2)", "Endometriosis", "Epilepsy", "Fibromyalgia", "Gastroesophageal reflux disease (GERD)", "Heart disease", "High blood pressure", "High cholesterol", "Hypothyroidism", "Irritable bowel syndrome (IBS)", "Kidney disease", "Liver disease", "Lupus", "Migraines", "Multiple sclerosis", "Osteoporosis", "Parkinson&#x2032;s disease", "Polycystic ovary syndrome (PCOS)", "Psoriasis", "Rheumatoid arthritis", "Sleep apnea", "Ulcerative colitis", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
-                        'question': "Do you have any disorders or disabilities? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
-                        'options': ["Autism spectrum disorder", "Blindness or visual impairment", "Cerebral palsy", "Chronic pain or fibromyalgia", "Cognitive or intellectual disability", "Deafness or hearing impairment", "Developmental coordination disorder (e.g., dyspraxia)", "Diabetes (Type 1 or Type 2)", "Down syndrome", "Dyslexia or other learning disabilities", "Ehlers-Danlos syndrome", "Epilepsy or seizure disorder", "Multiple sclerosis", "Muscular dystrophy", "Parkinson\'s disease", "Physical disability (e.g., amputation, limited mobility)", "Rheumatoid arthritis or other autoimmune disorders", "Spina bifida", "Spinal cord injury or paralysis", "Traumatic brain injury", "Other", "None"],
+                        'question': "Do you have any disorders or disabilities? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'options': ["Autism spectrum disorder", "Blindness or visual impairment", "Cerebral palsy", "Chronic pain or fibromyalgia", "Cognitive or intellectual disability", "Deafness or hearing impairment", "Developmental coordination disorder (e.g., dyspraxia)", "Diabetes (Type 1 or Type 2)", "Down syndrome", "Dyslexia or other learning disabilities", "Ehlers-Danlos syndrome", "Epilepsy or seizure disorder", "Multiple sclerosis", "Muscular dystrophy", "Parkinson&#x2032;s disease", "Physical disability (e.g., amputation, limited mobility)", "Rheumatoid arthritis or other autoimmune disorders", "Spina bifida", "Spinal cord injury or paralysis", "Traumatic brain injury", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
-                        'question': "Are you neurodiverse? (Minimum 1; Maximum ∞) (Cannot select both \"No\" and other options)",
+                        'question': "Are you neurodiverse? (Minimum 1; Maximum &#8734) (Cannot select both \"No\" and other options)",
                         'options': ["Attention deficit hyperactivity disorder (ADHD)", "Autism spectrum disorder (ASD)", "Dyscalculia", "Dysgraphia", "Dyslexia", "Nonverbal learning disorder (NVLD)", "Sensory processing disorder (SPD)", "Social communication disorder", "Tourette syndrome", "Other neurodiverse condition", "No", "Unsure"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'No'
                     },
                     {
-                        'question': "Are you missing any limbs or extremities, if so, which ones? (Minimum 1; Maximum ∞) (Cannot select both \"Finger\" and \"Multiple fingers,\" etc.) (Cannot select both \"No\" and other options)",
+                        'question': "Are you missing any limbs or extremities, if so, which ones? (Minimum 1; Maximum &#8734) (Cannot select both \"Finger\" and \"Multiple fingers,\" etc.) (Cannot select both \"No\" and other options)",
                         'options': ["Finger", "Multiple fingers", "Hand", "Both hands", "Arm", "Both arms", "Toe", "Multiple toes", "Foot", "Both feet", "Leg", "Both legs", "No"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'No',
+                        'optionExclusives': [
+                            {
+                                'main': 'Finger',
+                                'others': ["Multiple fingers"]
+                            },
+                            {
+                                'main': 'Multiple fingers',
+                                'others': ["Finger"]
+                            }
+                        ]
                     },
                     {
-                        'question': "Do you have any STDs? (Minimum 1; Maximum ∞) (Cannot select both \"No, I don\'t have any STDs\" and other options)",
-                        'options': ["Chlamydia", "Genital herpes (HSV-2)", "Genital warts (HPV)", "Gonorrhea", "Hepatitis B", "Hepatitis C", "HIV/AIDS", "Syphilis", "Trichomoniasis", "Multiple STDs", "No, I don\'t have any STDs"],
+                        'question': "Do you have any STDs? (Minimum 1; Maximum &#8734) (Cannot select both \"No, I don&#x2032;t have any STDs\" and other options)",
+                        'options': ["Chlamydia", "Genital herpes (HSV-2)", "Genital warts (HPV)", "Gonorrhea", "Hepatitis B", "Hepatitis C", "HIV/AIDS", "Syphilis", "Trichomoniasis", "Multiple STDs", "No, I don&#x2032;t have any STDs"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'No, I don&#x2032;t have any STDs'
                     }
                 ]
             },
@@ -450,20 +504,22 @@ const questionnareData = [
                 'title': 'Surgical Procedures & Experiences',
                 'parts': [
                     {
-                        'question': "Have you ever undergone surgery? If so, what type? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options) ",
+                        'question': "Have you ever undergone surgery? If so, what type? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options) ",
                         'options': ["Appendectomy (removal of appendix)", "Bariatric surgery (e.g., gastric bypass, gastric sleeve)", "Cataract surgery", "Cesarean section", "Dental surgery (e.g., wisdom tooth extraction)", "Gallbladder removal (cholecystectomy)", "Heart surgery (e.g., coronary artery bypass, valve replacement)", "Hysterectomy (removal of uterus)", "Joint replacement (e.g., knee, hip)", "Mastectomy (removal of breast tissue)", "Organ transplant (e.g., kidney, liver, heart)", "Plastic or reconstructive surgery (e.g., rhinoplasty, breast augmentation)", "Prostatectomy (removal of prostate)", "Spinal surgery (e.g., discectomy, fusion)", "Tonsillectomy (removal of tonsils)", "Tubal ligation or vasectomy (sterilization)", "Other surgery", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
-                        'question': "Have you ever had an abortion, and if so, how many? (Minimum 1; Maximum 1) (Question disappears if Sex ≠ Female)",
+                        'question': "Have you ever had an abortion, and if so, how many? (Minimum 1; Maximum 1) (Question disappears if Sex &#x2260; Female)",
                         'options': ["None", "1", "2", "3", "4", "5 or more"],
-                        'type': 'select'
+                        'type': 'select',
+                        'id': 'q_have_abortion'
                     },
                     {
-                        'question': "Have you ever used Plan B, and if so, how many times? (Minimum 1; Maximum 1) (Question disappears if Sex ≠ Female)",
+                        'question': "Have you ever used Plan B, and if so, how many times? (Minimum 1; Maximum 1) (Question disappears if Sex &#x2260; Female)",
                         'options': ["Never", "1 time", "2 times", "3 times", "4 times", "5 or more times"],
-                        'type': 'select'
+                        'type': 'select',
+                        'id': 'q_have_plan_b'
                     }
                 ]
             },
@@ -476,7 +532,7 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Do you have any mental health issues or conditions? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Do you have any mental health issues or conditions? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["ADHD (Attention deficit hyperactivity disorder)", "Anxiety disorder", "Bipolar disorder", "Borderline personality disorder", "Depression", "Eating disorders (Anorexia, Bulimia, Binge eating disorder)", "Generalized anxiety disorder (GAD)", "Obsessive-compulsive disorder (OCD)", "Panic disorder", "Post-traumatic stress disorder (PTSD)", "Schizophrenia", "Seasonal affective disorder (SAD)", "Social anxiety disorder", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
@@ -503,7 +559,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Have you ever sought therapy or counseling for mental health reasons? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes, and it was helpful", "Yes, but it wasn\'t helpful", "No, but I\'m open to it", "No, and I\'m not interested"],
+                        'options': ["1.	Yes, and it was helpful", "Yes, but it wasn&#x2032;t helpful", "No, but I&#x2032;m open to it", "No, and I&#x2032;m not interested"],
                         'type': 'select'
                     },
                     {
@@ -527,7 +583,7 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Which of these phobias, if any, do you experience? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Which of these phobias, if any, do you experience? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["1.	Acrophobia (fear of heights)", "Agoraphobia (fear of open spaces or crowds)", "Arachnophobia (fear of spiders)", "Astraphobia (fear of thunder and lightning)", "Claustrophobia (fear of enclosed spaces)", "Cynophobia (fear of dogs)", "Glossophobia (fear of public speaking)", "Mysophobia (fear of germs or dirt)", "Nyctophobia (fear of darkness)", "Ophidiophobia (fear of snakes)", "Pteromerhanophobia (fear of flying)", "Social phobia (fear of social situations)", "Trypanophobia (fear of needles or injections)", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
@@ -544,13 +600,13 @@ const questionnareData = [
                         'maxOptions': 2
                     },
                     {
-                        'question': "Which of these substances, if any, have you used previously? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Which of these substances, if any, have you used previously? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Alcohol (including beer, wine, liquor)", "Tobacco (including cigarettes, cigars, pipe, hookah)", "E-cigarettes", "Cannabis", "Heroin", "Cocaine", "Anabolic steroids", "Performance enhancing substances", "Prescription drugs", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
-                        'question': "Which of these substances, if any, do you use regularly? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Which of these substances, if any, do you use regularly? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Alcohol (including beer, wine, liquor)", "Tobacco (including cigarettes, cigars, pipe, hookah)", "E-cigarettes", "Cannabis", "Heroin", "Cocaine", "Anabolic steroids", "Performance enhancing substances", "Prescription drugs", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
@@ -670,7 +726,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "What is your religious affiliation? (Minimum 1; Maximum 1) (Cannot select both \"None\" and other options)",
-                        'options': ["Agnosticism", "Atheism", "Baha\'i", "Buddhism", "Christianity - Anglican", "Christianity - Baptist", "Christianity - Catholic", "Christianity - Christian Science", "Christianity - Coptic", "Christianity - Evangelical", "Christianity - Lutheran", "Christianity - Methodist", "Christianity - Mormon", "Christianity - Orthodox", "Christianity - Pentecostal", "Christianity - Presbyterian", "Christianity - Protestant", "Christianity - Seventh-Day Adventist", "Christianity - other denomination", "Christianity - no denomination", "Hinduism", "Islam - Sunni", "Islam - Shia", "Islam - Sufism, Islam - Ahmadiyya, Islam - other denomination", "Islam - no denomination", "Jainism", "Judaism - Haredi or Ultra Orthodox", "Judaism - Hasidic", "Judaism - Modern Orthodox", "Judaism - Conservative", "Judaism - Reform", "Judaism - Reconstructionist", "Judaism - Renewal", "Judaism - Humanistic", "Judaism - other denomination", "Judaism - no denomination", "Paganism", "Rastafarianism", "Satanism", "Scientology", "Shintoism", "Sikhism", "Taoism", "Wiccan", "Zoroastrianism", "Native/Indigenous beliefs", "Other", "None"],
+                        'options': ["Agnosticism", "Atheism", "Baha&#x2032;i", "Buddhism", "Christianity - Anglican", "Christianity - Baptist", "Christianity - Catholic", "Christianity - Christian Science", "Christianity - Coptic", "Christianity - Evangelical", "Christianity - Lutheran", "Christianity - Methodist", "Christianity - Mormon", "Christianity - Orthodox", "Christianity - Pentecostal", "Christianity - Presbyterian", "Christianity - Protestant", "Christianity - Seventh-Day Adventist", "Christianity - other denomination", "Christianity - no denomination", "Hinduism", "Islam - Sunni", "Islam - Shia", "Islam - Sufism, Islam - Ahmadiyya, Islam - other denomination", "Islam - no denomination", "Jainism", "Judaism - Haredi or Ultra Orthodox", "Judaism - Hasidic", "Judaism - Modern Orthodox", "Judaism - Conservative", "Judaism - Reform", "Judaism - Reconstructionist", "Judaism - Renewal", "Judaism - Humanistic", "Judaism - other denomination", "Judaism - no denomination", "Paganism", "Rastafarianism", "Satanism", "Scientology", "Shintoism", "Sikhism", "Taoism", "Wiccan", "Zoroastrianism", "Native/Indigenous beliefs", "Other", "None"],
                         'type': 'select'
                     },
                     {
@@ -785,35 +841,94 @@ const questionnareData = [
                     },
                     {
                         'question': "Would you prefer a partner with a similar cultural background as yours? (Minimum 1; Maximum 1)",
-                        'options': ["Definitely", "It would be nice, but not necessary", "It doesn\'t matter to me", "I prefer someone from a different cultural background"],
+                        'options': ["Definitely", "It would be nice, but not necessary", "It doesn&#x2032;t matter to me", "I prefer someone from a different cultural background"],
                         'type': 'select'
                     },
                     {
-                        'question': "What citizenships do you have? (Minimum 1; Maximum ∞)",
+                        'question': "What citizenships do you have? (Minimum 1; Maximum &#8734)",
                         'options': ["Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguan and Barbudan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Basotho", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian and Herzegovinian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cabo Verdean", "Cambodian", "Cameroonian", "Canadian", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comorian", "Congolese (Congo-Brazzaville)", "Congolese (Democratic Republic of the Congo)", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican (Dominica)", "Dominican (Dominican Republic)", "Dutch", "Ecuadorian", "Egyptian", "Emirati", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Holy See (Vatican City State)", "Honduran", "Hungarian", "I-Kiribati", "Icelandic", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakh", "Kenyan", "Kittitian and Nevisian", "Kosovar", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monegasque", "Mongolian", "Montenegrin", "Moroccan", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepali", "New Zealander", "Ni-Vanuatu", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "North Macedonian", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Sammarinese", "Samoan", "Sao Tomean", "Saudi", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "South Sudanese", "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swazi", "Swazi", "Swedish", "Swiss", "Syrian", "Tajik", "Tanzanian", "Thai", "Timorese", "Togolese", "Tongan", "Trinidadian and Tobagonian", "Tunisian", "Turkish", "Turkmen", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbek", "Venezuelan", "Vietnamese", "Vincentian", "Yemeni", "Zambian", "Zimbabwean", "Other/unknown"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
-                        'question': "What is the country of origin for your dad\'s ancestry? (Minimum 1; Maximum 3)",
+                        'question': "What is the country of origin for your dad&#x2032;s ancestry? (Minimum 1; Maximum 3)",
                         'options': ["Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguan and Barbudan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Basotho", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian and Herzegovinian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cabo Verdean", "Cambodian", "Cameroonian", "Canadian", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comorian", "Congolese (Congo-Brazzaville)", "Congolese (Democratic Republic of the Congo)", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican (Dominica)", "Dominican (Dominican Republic)", "Dutch", "Ecuadorian", "Egyptian", "Emirati", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Holy See (Vatican City State)", "Honduran", "Hungarian", "I-Kiribati", "Icelandic", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakh", "Kenyan", "Kittitian and Nevisian", "Kosovar", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monegasque", "Mongolian", "Montenegrin", "Moroccan", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepali", "New Zealander", "Ni-Vanuatu", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "North Macedonian", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Sammarinese", "Samoan", "Sao Tomean", "Saudi", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "South Sudanese", "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swazi", "Swazi", "Swedish", "Swiss", "Syrian", "Tajik", "Tanzanian", "Thai", "Timorese", "Togolese", "Tongan", "Trinidadian and Tobagonian", "Tunisian", "Turkish", "Turkmen", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbek", "Venezuelan", "Vietnamese", "Vincentian", "Yemeni", "Zambian", "Zimbabwean", "Other/unknown"],
                         'type': 'multi-select',
                         'maxOptions': 3
                     },
                     {
-                        'question': "What is the country of origin for your mom\'s ancestry? (Minimum 1; Maximum 3)",
+                        'question': "What is the country of origin for your mom&#x2032;s ancestry? (Minimum 1; Maximum 3)",
                         'options': ["Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguan and Barbudan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Basotho", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian and Herzegovinian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cabo Verdean", "Cambodian", "Cameroonian", "Canadian", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comorian", "Congolese (Congo-Brazzaville)", "Congolese (Democratic Republic of the Congo)", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican (Dominica)", "Dominican (Dominican Republic)", "Dutch", "Ecuadorian", "Egyptian", "Emirati", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Holy See (Vatican City State)", "Honduran", "Hungarian", "I-Kiribati", "Icelandic", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakh", "Kenyan", "Kittitian and Nevisian", "Kosovar", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monegasque", "Mongolian", "Montenegrin", "Moroccan", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepali", "New Zealander", "Ni-Vanuatu", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "North Macedonian", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Sammarinese", "Samoan", "Sao Tomean", "Saudi", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "South Sudanese", "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swazi", "Swazi", "Swedish", "Swiss", "Syrian", "Tajik", "Tanzanian", "Thai", "Timorese", "Togolese", "Tongan", "Trinidadian and Tobagonian", "Tunisian", "Turkish", "Turkmen", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbek", "Venezuelan", "Vietnamese", "Vincentian", "Yemeni", "Zambian", "Zimbabwean", "Other/unknown"],
                         'type': 'multi-select',
                         'maxOptions': 3
                     },
                     {
                         'question': "What percent of each ethnicity are you approximately?",
-                        'options': ["White or Caucasian"],
-                        'type': 'select'
+                        'inputGroups': [
+                            {
+                                "title": 'White or Caucasian'
+                            },
+                            {
+                                "title": 'Black or African American'
+                            },
+                            {
+                                "title": 'Hispanic or Latino'
+                            },
+                            {
+                                "title": 'Asian'
+                            },
+                            {
+                                "title": 'Arab or Middle Eastern'
+                            },
+                            {
+                                "title": 'Native Hawaiian or Pacific Islander'
+                            },
+                            {
+                                "title": 'American Indian or Alaska Native'
+                            }
+                        ],
+                        'type': 'multi-text'
                     },
                     {
-                        'question': "Do you belong to any of the following ethnicities or subgroups? (Minimum 1; Maximum ∞) (e.g., \"Abkhaz\")",
-                        'options': ["Europe: Abkhaz (e.g., Georgian); Albanian; Armenian; Aromanian (e.g., Balkans); Ashkenazi Jewish; Azerbaijani; Baltic (e.g., Latvian, Lithuanian, Estonian); Bashkir (e.g., Russian); Belarusian; Bosniak; British or Irish; Chukchi (e.g., Russian); Chuvash (e.g., Russian); Circassian (e.g., Russian, Turkish); Croatian; Cypriot (Greek Cypriot, Turkish Cypriot); Czech; Danish; Dutch; Estonian; Evenki (e.g., Russian); Finnish; Gagauz (e.g., Moldovan); Galician; Gaelic (e.g., Scottish, Irish); Georgian; German; Greek; Hungarian; Icelandic; Iberian (e.g., Spanish, Portuguese, Catalan, Basque); Italian; Kalderash (e.g., Romani); Kale (e.g., Spanish, Portuguese Roma); Karelian (e.g., Russian, Finnish); Khanty (e.g., Russian); Komi (e.g., Russian); Laz (e.g., Georgian, Turkish); Lithuanian; Latvian; Lovari (e.g., Romani); Macedonian; Maltese; Manouche (e.g., French Roma); Mansi (e.g., Russian); Mari (e.g., Russian); Montenegrin; Mordvin (e.g., Russian); Nenets (e.g., Russian); Norwegian; Occitan; Ossetian (e.g., Georgian, Russian); Polish; Portuguese; Romani or Gypsy; Romaniote Jewish; Romanichal (e.g., British Roma); Russian; Saami (e.g., Finland, Sweden, Norway, Russia); Sephardic Jewish; Serbian; Sinti (e.g., European Roma); Slovak; Slovenian; Sorbian (e.g., Germany); Spanish; Swedish; Tatar (e.g., Russian, Turkish); Turkish; Udmurt (e.g., Russian); Ukrainian; Walloons; Yakut (e.g., Russian)"],
+                        'question': "Do you belong to any of the following ethnicities or subgroups? (Minimum 1; Maximum &#8734) (e.g., \"Abkhaz\")",
+                        'optionGroups': [
+                            {
+                                "title": 'Europe',
+                                'options': ["Abkhaz (e.g., Georgian)", "Albanian", "Armenian", "Aromanian (e.g., Balkans)", "Ashkenazi Jewish", "Azerbaijani", "Baltic (e.g., Latvian, Lithuanian, Estonian)", "Bashkir (e.g., Russian)", "Belarusian", "Bosniak", "British or Irish", "Chukchi (e.g., Russian)", "Chuvash (e.g., Russian)", "Circassian (e.g., Russian, Turkish)", "Croatian", "Cypriot (Greek Cypriot, Turkish Cypriot)", "Czech", "Danish", "Dutch", "Estonian", "Evenki (e.g., Russian)", "Finnish", "Gagauz (e.g., Moldovan)", "Galician", "Gaelic (e.g., Scottish, Irish)", "Georgian", "German", "Greek", "Hungarian", "Icelandic", "Iberian (e.g., Spanish, Portuguese, Catalan, Basque)", "Italian", "Kalderash (e.g., Romani)", "Kale (e.g., Spanish, Portuguese Roma)", "Karelian (e.g., Russian, Finnish)", "Khanty (e.g., Russian)", "Komi (e.g., Russian)", "Laz (e.g., Georgian, Turkish)", "Lithuanian", "Latvian", "Lovari (e.g., Romani)", "Macedonian", "Maltese", "Manouche (e.g., French Roma)", "Mansi (e.g., Russian)", "Mari (e.g., Russian)", "Montenegrin", "Mordvin (e.g., Russian)", "Nenets (e.g., Russian)", "Norwegian", "Occitan", "Ossetian (e.g., Georgian, Russian)", "Polish", "Portuguese", "Romani or Gypsy", "Romaniote Jewish", "Romanichal (e.g., British Roma)", "Russian", "Saami (e.g., Finland, Sweden, Norway, Russia)", "Sephardic Jewish", "Serbian", "Sinti (e.g., European Roma)", "Slovak", "Slovenian", "Sorbian (e.g., Germany)", "Spanish", "Swedish", "Tatar (e.g., Russian, Turkish)", "Turkish", "Udmurt (e.g., Russian)", "Ukrainian", "Walloons", "Yakut (e.g., Russian)"]
+                            },
+                            {
+                                "title": 'Africa',
+                                'options': ["Afar (e.g., Eritrean, Djiboutian, Ethiopian)", "Akan (e.g., Ghanaian, Ivorian)", "Amhara (e.g., Ethiopian)", "Bambara (e.g., Malian)", "Bamileke (e.g., Cameroon)", "Bantu (e.g., Congolese, Angolan, Zambian, Mozambican, Zimbabwean)", "Bemba (e.g., Zambian)", "Berber (e.g., North African)", "Bubi (e.g., Equatorial Guinea)", "Chewa (e.g., Malawian, Zambian)", "Dogon (e.g., Malian)", "Dinka (e.g., South Sudanese)", "Ethiopian or Eritrean", "Ewe (e.g., Ghanaian, Togolese)", "Fang (e.g., Equatorial Guinea, Gabon)", "Fon (e.g., Beninese)", "Fulani (e.g., West African, Central African)", "Ga (e.g., Ghanaian)", "Ga-Adangbe (e.g., Ghanaian)", "Gikuyu (e.g., Kenyan)", "Himba (e.g., Namibia)", "Hutu (e.g., Rwandan, Burundian)", "Igbo (e.g., Nigerian)", "Kabyle (e.g., Algerian)", "Kamba (e.g., Kenyan)", "Kalenjin (e.g., Kenyan)", "Karamojong (e.g., Ugandan)", "Kikuyu (e.g., Kenyan)", "Khoisan (e.g., Southern Africa)", "Kimbundu (e.g., Angolan)", "Luhya (e.g., Kenyan)", "Lunda (e.g., Congolese, Angolan, Zambian)", "Luo (e.g., Kenyan, Tanzanian)", "Maasai (e.g., Kenyan, Tanzanian)", "Malagasy (e.g., Madagascar)", "Mandinka (e.g., West African)", "Mende (e.g., Sierra Leone, Liberia)", "Mossi (e.g., Burkinabe)", "Ndebele (e.g., Zimbabwean, South African)", "Nubian (e.g., Sudanese, Egyptian)", "Nuer (e.g., South Sudanese)", "Oromo (e.g., Ethiopian)", "Ovambo (e.g., Namibia, Angola)", "Ovimbundu (e.g., Angolan)", "Rundi (e.g., Burundian)", "San (e.g., Southern Africa)", "Samburu (e.g., Kenyan)", "Senufo (e.g., Ivorian, Malian, Burkinabe)", "Serer (e.g., Senegalese)", "Shona (e.g., Zimbabwean)", "Sidama (e.g., Ethiopian)", "Somali", "Soninke (e.g., West African)", "Swahili (e.g., Tanzanian, Kenyan)", "Teda (e.g., Chad, Libya, Niger)", "Tigrayan (e.g., Ethiopian)", "Tonga (e.g., Zambian)", "Tswana (e.g., South African, Botswanan)", "Tuareg (e.g., North African, Saharan)", "Tumbuka (e.g., Malawian)", "Tutsi (e.g., Rwandan, Burundian)", "Wolof (e.g., Senegalese, Gambian)", "Xhosa (e.g., South African)", "Yao (e.g., Malawian, Mozambican)", "Yoruba (e.g., Nigerian, Beninese)", "Zulu (e.g., South African)"]
+                            },
+                            {
+                                "title": 'Afro-Caribbean',
+                                'options': ["Afro-Caribbean"]
+                            },
+                            {
+                                "title": 'Middle East',
+                                'options': ["Alawite (e.g., Syrian)", "Arab (e.g., Saudi Arabian, Omani, Qatari, Kuwaiti, Emirati, Bahraini, Jordanian, Lebanese)", "Armenian", "Assyrian (e.g., Iraqi, Iranian, Syrian, Turkish)", "Azeri (e.g., Iranian, Azerbaijani)", "Baloch (e.g., Pakistani, Iranian)", "Chaldean (e.g., Iraqi)", "Coptic (e.g., Egyptian)", "Domari (e.g., Middle Eastern Roma)", "Druze (e.g., Lebanese, Syrian, Israeli)", "Gilaki (e.g., Iranian)", "Hazara (e.g., Afghan)", "Kurdish", "Lur (e.g., Iranian)", "Maronite (e.g., Lebanese)", "Mizrahi Jewish", "Pashtun (e.g., Afghan, Pakistani)", "Persian (e.g., Iranian)", "Sephardic Jewish", "Tajik (e.g., Afghan)", "Turkmen (e.g., Iranian)", "Turkish", "Zaza (e.g., Turkish, Iranian)"]
+                            },
+                            {
+                                "title": 'South Asia',
+                                'options': ["Assamese (e.g., Indian)", "Bengali (e.g., Indian, Bangladeshi)", "Bhutanese (e.g., Bhutan)", "Bihari (e.g., Indian)", "Goan (e.g., Indian)", "Gujarati (e.g., Indian)", "Khasi (e.g., Indian)", "Kashmiri (e.g., Indian, Pakistani)", "Konkani (e.g., Indian)", "Maldivian", "Mizo (e.g., Indian)", "Nepali", "Oriya (e.g., Indian)", "Punjabi (e.g., Indian, Pakistani)", "Rohingya (e.g., Myanmar, Bangladesh)", "Sindhi (e.g., Pakistani)", "Sinhalese (e.g., Sri Lankan)", "Sikkimese (e.g., Indian)", "Tamil (e.g., Indian, Sri Lankan)", "Tuluva (e.g., Indian)"]
+                            },
+                            {
+                                "title": 'Southeast Asia',
+                                'options': ["Acehnese (e.g., Indonesian)", "Ambonese (e.g., Indonesian)", "Balinese (e.g., Indonesian)", "Batak (e.g., Indonesian)", "Banjar (e.g., Indonesian)", "Bruneian Malay (e.g., Brunei)", "Bugis (e.g., Indonesian)", "Cebuano (e.g., Filipino)", "Chinese Indonesian (e.g., Indonesian)", "Dayak (e.g., Indonesian, Malaysian)", "Hmong", "Iban (e.g., Malaysian)", "Ilocano (e.g., Filipino)", "Javanese (e.g., Indonesian)", "Kadazan-Dusun (e.g., Malaysian, Bruneian)", "Kachin (e.g., Myanmar)", "Karen (e.g., Myanmar)", "Khmer (e.g., Cambodian)", "Lao (e.g., Laotian)", "Madurese (e.g., Indonesian)", "Malay (e.g., Malaysian, Indonesian, Singaporean)", "Maranao (e.g., Philippines)", "Minangkabau (e.g., Indonesian)", "Moluccan (e.g., Indonesian)", "Mon (e.g., Myanmar)", "Moro (e.g., Filipino)", "Riau Malay (e.g., Indonesian)", "Rohingya (e.g., Myanmar, Bangladesh)", "Shan (e.g., Myanmar)", "Sundanese (e.g., Indonesian)", "T’boli (e.g., Philippines)", "Tagalog (e.g., Filipino)", "Thai", "Timorese (e.g., Indonesian, East Timorese)", "Vietnamese"]
+                            },
+                            {
+                                "title": 'East Asia',
+                                'options': ["Ainu (e.g., Indigenous people of Japan)", "Bai (e.g., Chinese)", "Buryat (e.g., Russian)", "Dai (e.g., Chinese)", "Dong (e.g., Chinese)", "Evenki (e.g., Russian, Chinese)", "Han Chinese", "Hani (e.g., Chinese)", "Hmong (e.g., Chinese)", "Kazakh (e.g., Chinese)", "Korean", "Manchu (e.g., Chinese)", "Miao (e.g., Chinese)", "Mongolian", "Okinawan (e.g., Japanese)", "Ryukyuan (e.g., Japanese)", "She (e.g., Chinese)", "Tibetan (e.g., Chinese, Indian, Nepali)", "Tujia (e.g., Chinese)", "Tungusic peoples (e.g., Chinese, Russian)", "Uyghur (e.g., Chinese)", "Xibe (e.g., Chinese)", "Yao (e.g., Chinese)", "Yi (e.g., Chinese)", "Zhuang (e.g., Chinese)"]
+                            },
+                            {
+                                "title": 'Oceania',
+                                'options': ["Aboriginal Australian", "Carolinian (e.g., Northern Mariana Islands)", "Chamorro (e.g., Guam, Northern Mariana Islands)", "Chuukese (e.g., Chuuk)", "Cook Islander (e.g., Cook Islands)", "Fijian", "Hawaiian", "I-Kiribati (e.g., Kiribati)", "Kanaka Maoli (Native Hawaiian)", "Maori (e.g., New Zealand)", "Marshallese (e.g., Marshall Islands)", "Micronesian", "Ni-Vanuatu (e.g., Vanuatu)", "Niuean (e.g., Niue)", "Palauan (e.g., Palau)", "Papua New Guinean", "Polynesian (e.g., Samoan, Tongan, Tokelauan)", "Pohnpeian (e.g., Pohnpei)", "Rotuman (e.g., Rotuma)", "Solomon Islander (e.g., Solomon Islands)", "Tahitian", "Tokelauan (e.g., Tokelau)", "Tongan", "Tuvaluan (e.g., Tuvalu)", "Yapese (e.g., Micronesian)"]
+                            },
+                            {
+                                "title": 'Other',
+                                'options': ["None"]
+                            }
+                        ],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     }
@@ -871,24 +986,24 @@ const questionnareData = [
                     },
                     {
                         'question': "What are you major(s)? (Minimum 1; Maximum 2)",
-                        'options': ["Accounting", "Actuarial Science", "Aerospace Engineering", "African-American Studies", "Agricultural Engineering", "Agriculture", "American Studies", "Animal Science", "Anthropology", "Applied Mathematics", "Architectural Engineering", "Architecture", "Art History", "Asian Studies", "Astrophysics", "Biochemistry", "Biology", "Biomedical Engineering", "Biophysics", "Business Administration", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Cognitive Science", "Communication", "Comparative Literature", "Computer Engineering", "Computer Science", "Creative Writing", "Criminal Justice", "Dance", "Data Science", "Earth Science", "Ecology", "Economics", "Education", "Electrical Engineering", "Engineering Management", "English", "Environmental Engineering", "Environmental Science", "Ethnic Studies", "Film Studies", "Finance", "Fine Arts", "Food Science", "Forensic Science", "French", "Gender Studies", "Genetics", "Geography", "Geological Engineering", "Geology", "German", "Graphic Design", "Health Sciences", "History", "Hospitality Management", "Human Resources", "Industrial Engineering", "Information Systems", "International Business", "International Relations", "Italian", "Japanese", "Journalism", "Kinesiology", "Landscape Architecture", "Latin American Studies", "Linguistics", "Management Information Systems", "Marine Biology", "Marketing", "Materials Science", "Mathematics", "Mechanical Engineering", "Media Studies", "Meteorology", "Microbiology", "Middle Eastern Studies", "Molecular Biology", "Music", "Neuroscience", "Nursing", "Nutrition", "Oceanography", "Operations Management", "Petroleum Engineering", "Pharmaceutical Sciences", "Philosophy", "Photography", "Physical Education", "Physics", "Political Science", "Psychology", "Public Health", "Public Relations", "Religious Studies", "Russian", "Social Work", "Sociology", "Software Engineering", "Spanish", "Special Education", "Sports Management", "Statistics", "Studio Art", "Supply Chain Management", "Theatre", "Urban Planning", "Women\'s Studies", "Zoology", "Undecided"],
+                        'options': ["Accounting", "Actuarial Science", "Aerospace Engineering", "African-American Studies", "Agricultural Engineering", "Agriculture", "American Studies", "Animal Science", "Anthropology", "Applied Mathematics", "Architectural Engineering", "Architecture", "Art History", "Asian Studies", "Astrophysics", "Biochemistry", "Biology", "Biomedical Engineering", "Biophysics", "Business Administration", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Cognitive Science", "Communication", "Comparative Literature", "Computer Engineering", "Computer Science", "Creative Writing", "Criminal Justice", "Dance", "Data Science", "Earth Science", "Ecology", "Economics", "Education", "Electrical Engineering", "Engineering Management", "English", "Environmental Engineering", "Environmental Science", "Ethnic Studies", "Film Studies", "Finance", "Fine Arts", "Food Science", "Forensic Science", "French", "Gender Studies", "Genetics", "Geography", "Geological Engineering", "Geology", "German", "Graphic Design", "Health Sciences", "History", "Hospitality Management", "Human Resources", "Industrial Engineering", "Information Systems", "International Business", "International Relations", "Italian", "Japanese", "Journalism", "Kinesiology", "Landscape Architecture", "Latin American Studies", "Linguistics", "Management Information Systems", "Marine Biology", "Marketing", "Materials Science", "Mathematics", "Mechanical Engineering", "Media Studies", "Meteorology", "Microbiology", "Middle Eastern Studies", "Molecular Biology", "Music", "Neuroscience", "Nursing", "Nutrition", "Oceanography", "Operations Management", "Petroleum Engineering", "Pharmaceutical Sciences", "Philosophy", "Photography", "Physical Education", "Physics", "Political Science", "Psychology", "Public Health", "Public Relations", "Religious Studies", "Russian", "Social Work", "Sociology", "Software Engineering", "Spanish", "Special Education", "Sports Management", "Statistics", "Studio Art", "Supply Chain Management", "Theatre", "Urban Planning", "Women&#x2032;s Studies", "Zoology", "Undecided"],
                         'type': 'multi-select',
                         'maxOptions': 2
                     },
                     {
                         'question': "What are your minor(s)? (Minimum 1; Maximum 2) (Cannot select both \"None\" and other options)",
-                        'options': ["Accounting", "Actuarial Science", "Aerospace Engineering", "African-American Studies", "Agricultural Engineering", "Agriculture", "American Studies", "Animal Science", "Anthropology", "Applied Mathematics", "Architectural Engineering", "Architecture", "Art History", "Asian Studies", "Astrophysics", "Biochemistry", "Biology", "Biomedical Engineering", "Biophysics", "Business Administration", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Cognitive Science", "Communication", "Comparative Literature", "Computer Engineering", "Computer Science", "Creative Writing", "Criminal Justice", "Dance", "Data Science", "Earth Science", "Ecology", "Economics", "Education", "Electrical Engineering", "Engineering Management", "English", "Environmental Engineering", "Environmental Science", "Ethnic Studies", "Film Studies", "Finance", "Fine Arts", "Food Science", "Forensic Science", "French", "Gender Studies", "Genetics", "Geography", "Geological Engineering", "Geology", "German", "Graphic Design", "Health Sciences", "History", "Hospitality Management", "Human Resources", "Industrial Engineering", "Information Systems", "International Business", "International Relations", "Italian", "Japanese", "Journalism", "Kinesiology", "Landscape Architecture", "Latin American Studies", "Linguistics", "Management Information Systems", "Marine Biology", "Marketing", "Materials Science", "Mathematics", "Mechanical Engineering", "Media Studies", "Meteorology", "Microbiology", "Middle Eastern Studies", "Molecular Biology", "Music", "Neuroscience", "Nursing", "Nutrition", "Oceanography", "Operations Management", "Petroleum Engineering", "Pharmaceutical Sciences", "Philosophy", "Photography", "Physical Education", "Physics", "Political Science", "Psychology", "Public Health", "Public Relations", "Religious Studies", "Russian", "Social Work", "Sociology", "Software Engineering", "Spanish", "Special Education", "Sports Management", "Statistics", "Studio Art", "Supply Chain Management", "Theatre", "Urban Planning", "Women\'s Studies", "Zoology", "Undecided", "None", "Other"],
+                        'options': ["Accounting", "Actuarial Science", "Aerospace Engineering", "African-American Studies", "Agricultural Engineering", "Agriculture", "American Studies", "Animal Science", "Anthropology", "Applied Mathematics", "Architectural Engineering", "Architecture", "Art History", "Asian Studies", "Astrophysics", "Biochemistry", "Biology", "Biomedical Engineering", "Biophysics", "Business Administration", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Cognitive Science", "Communication", "Comparative Literature", "Computer Engineering", "Computer Science", "Creative Writing", "Criminal Justice", "Dance", "Data Science", "Earth Science", "Ecology", "Economics", "Education", "Electrical Engineering", "Engineering Management", "English", "Environmental Engineering", "Environmental Science", "Ethnic Studies", "Film Studies", "Finance", "Fine Arts", "Food Science", "Forensic Science", "French", "Gender Studies", "Genetics", "Geography", "Geological Engineering", "Geology", "German", "Graphic Design", "Health Sciences", "History", "Hospitality Management", "Human Resources", "Industrial Engineering", "Information Systems", "International Business", "International Relations", "Italian", "Japanese", "Journalism", "Kinesiology", "Landscape Architecture", "Latin American Studies", "Linguistics", "Management Information Systems", "Marine Biology", "Marketing", "Materials Science", "Mathematics", "Mechanical Engineering", "Media Studies", "Meteorology", "Microbiology", "Middle Eastern Studies", "Molecular Biology", "Music", "Neuroscience", "Nursing", "Nutrition", "Oceanography", "Operations Management", "Petroleum Engineering", "Pharmaceutical Sciences", "Philosophy", "Photography", "Physical Education", "Physics", "Political Science", "Psychology", "Public Health", "Public Relations", "Religious Studies", "Russian", "Social Work", "Sociology", "Software Engineering", "Spanish", "Special Education", "Sports Management", "Statistics", "Studio Art", "Supply Chain Management", "Theatre", "Urban Planning", "Women&#x2032;s Studies", "Zoology", "Undecided", "None", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 3
                     },
                     {
-                        'question': "What is the highest level of education you\'ve attained or are enrolled in? (Minimum 1; Maximum 1)",
-                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor\'s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
+                        'question': "What is the highest level of education you&#x2032;ve attained or are enrolled in? (Minimum 1; Maximum 1)",
+                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
                         'type': 'select'
                     },
                     {
                         'question': "What is the highest level of education you plan on attaining? (Minimum 1; Maximum 1)",
-                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor\'s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
+                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
                         'type': 'select'
                     }
                 ]
@@ -908,12 +1023,12 @@ const questionnareData = [
                     },
                     {
                         'question': "How would you rate your critical thinking skills? (Minimum 1; Maximum 1)",
-                        'options': ["Excellent", "Good", "Average", "Poor", "I\'m not sure"],
+                        'options': ["Excellent", "Good", "Average", "Poor", "I&#x2032;m not sure"],
                         'type': 'select'
                     },
                     {
                         'question': "When faced with a problem, what is your preferred approach to solving it? (Minimum 1; Maximum 1)",
-                        'options': ["Jump in and figure it out as I go", "Analyze the situation and come up with a plan", "Seek advice from others", "Combine research and intuition", "I\'m not sure"],
+                        'options': ["Jump in and figure it out as I go", "Analyze the situation and come up with a plan", "Seek advice from others", "Combine research and intuition", "I&#x2032;m not sure"],
                         'type': 'select'
                     },
                     {
@@ -1007,25 +1122,25 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Which languages can you read, speak, and write fluently? (Minimum 1; Maximum ∞)",
+                        'question': "Which languages can you read, speak, and write fluently? (Minimum 1; Maximum &#8734)",
                         'options': ["Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Balochi", "Basque", "Belarusian", "Bengali", "Bhojpuri", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Cantonese", "Catalan", "Cebuano", "Chichewa", "Chinese (Mandarin)", "Chittagonian", "Croatian", "Czech", "Danish", "Dari", "Divehi", "Dutch", "Dzongkha", "English", "Esperanto", "Estonian", "Ewe", "Faroese", "Fijian", "Filipino", "Finnish", "French", "Fula", "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati", "Haitian Creole", "Hausa", "Hebrew", "Hindi", "Hmong", "Hungarian", "Icelandic", "Igbo", "Ilokano", "Indonesian", "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Kikuyu", "Kinyarwanda", "Kirundi", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lingala", "Lithuanian", "Luganda", "Luxembourgish", "Macedonian", "Maithili", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Marshallese", "Mongolian", "Nauruan", "Nepali", "Norwegian", "Oriya", "Oromo", "Papiamento", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Saraiki", "Scottish Gaelic", "Serbian", "Shona", "Sindhi", "Sinhala", "Slovak", "Slovenian", "Somali", "Sotho", "Spanish", "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Tigrinya", "Tok Pisin", "Tongan", "Tsonga", "Tswana", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uyghur", "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zhuang", "Zulu", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
-                        'question': "Which languages can you read with at least basic proficiency? (Minimum 1; Maximum ∞)",
+                        'question': "Which languages can you read with at least basic proficiency? (Minimum 1; Maximum &#8734)",
                         'options': ["Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Balochi", "Basque", "Belarusian", "Bengali", "Bhojpuri", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Cantonese", "Catalan", "Cebuano", "Chichewa", "Chinese (Mandarin)", "Chittagonian", "Croatian", "Czech", "Danish", "Dari", "Divehi", "Dutch", "Dzongkha", "English", "Esperanto", "Estonian", "Ewe", "Faroese", "Fijian", "Filipino", "Finnish", "French", "Fula", "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati", "Haitian Creole", "Hausa", "Hebrew", "Hindi", "Hmong", "Hungarian", "Icelandic", "Igbo", "Ilokano", "Indonesian", "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Kikuyu", "Kinyarwanda", "Kirundi", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lingala", "Lithuanian", "Luganda", "Luxembourgish", "Macedonian", "Maithili", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Marshallese", "Mongolian", "Nauruan", "Nepali", "Norwegian", "Oriya", "Oromo", "Papiamento", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Saraiki", "Scottish Gaelic", "Serbian", "Shona", "Sindhi", "Sinhala", "Slovak", "Slovenian", "Somali", "Sotho", "Spanish", "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Tigrinya", "Tok Pisin", "Tongan", "Tsonga", "Tswana", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uyghur", "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zhuang", "Zulu", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
-                        'question': "Which languages can you speak with at least basic proficiency? (Minimum 1; Maximum ∞)",
+                        'question': "Which languages can you speak with at least basic proficiency? (Minimum 1; Maximum &#8734)",
                         'options': ["Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Balochi", "Basque", "Belarusian", "Bengali", "Bhojpuri", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Cantonese", "Catalan", "Cebuano", "Chichewa", "Chinese (Mandarin)", "Chittagonian", "Croatian", "Czech", "Danish", "Dari", "Divehi", "Dutch", "Dzongkha", "English", "Esperanto", "Estonian", "Ewe", "Faroese", "Fijian", "Filipino", "Finnish", "French", "Fula", "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati", "Haitian Creole", "Hausa", "Hebrew", "Hindi", "Hmong", "Hungarian", "Icelandic", "Igbo", "Ilokano", "Indonesian", "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Kikuyu", "Kinyarwanda", "Kirundi", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lingala", "Lithuanian", "Luganda", "Luxembourgish", "Macedonian", "Maithili", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Marshallese", "Mongolian", "Nauruan", "Nepali", "Norwegian", "Oriya", "Oromo", "Papiamento", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Saraiki", "Scottish Gaelic", "Serbian", "Shona", "Sindhi", "Sinhala", "Slovak", "Slovenian", "Somali", "Sotho", "Spanish", "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Tigrinya", "Tok Pisin", "Tongan", "Tsonga", "Tswana", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uyghur", "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zhuang", "Zulu", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
-                        'question': "Which languages can you write with at least basic proficiency? (Minimum 1; Maximum ∞)",
+                        'question': "Which languages can you write with at least basic proficiency? (Minimum 1; Maximum &#8734)",
                         'options': ["Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Balochi", "Basque", "Belarusian", "Bengali", "Bhojpuri", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Cantonese", "Catalan", "Cebuano", "Chichewa", "Chinese (Mandarin)", "Chittagonian", "Croatian", "Czech", "Danish", "Dari", "Divehi", "Dutch", "Dzongkha", "English", "Esperanto", "Estonian", "Ewe", "Faroese", "Fijian", "Filipino", "Finnish", "French", "Fula", "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati", "Haitian Creole", "Hausa", "Hebrew", "Hindi", "Hmong", "Hungarian", "Icelandic", "Igbo", "Ilokano", "Indonesian", "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Kikuyu", "Kinyarwanda", "Kirundi", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lingala", "Lithuanian", "Luganda", "Luxembourgish", "Macedonian", "Maithili", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Marshallese", "Mongolian", "Nauruan", "Nepali", "Norwegian", "Oriya", "Oromo", "Papiamento", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Saraiki", "Scottish Gaelic", "Serbian", "Shona", "Sindhi", "Sinhala", "Slovak", "Slovenian", "Somali", "Sotho", "Spanish", "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Tigrinya", "Tok Pisin", "Tongan", "Tsonga", "Tswana", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uyghur", "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zhuang", "Zulu", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
@@ -1044,7 +1159,8 @@ const questionnareData = [
                         'question': "Which curse words do you tend to use most frequently, if any? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Ass", "Assclown", "Asshat", "Asshole", "Badass", "Bastard", "Bitch", "Bloody", "Bullshit", "Cock", "Crap", "Cunt", "Damn", "Dick", "Dickhead", "Dipshit", "Douche", "Douchebag", "Fuck", "Hell", "Moron", "Motherfucker", "Prick", "Pussy", "Scum", "Shit", "Shithead", "Slut", "Son of a bitch", "Twat", "Whore", "None", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None',
                     }
                 ]
             }
@@ -1124,22 +1240,22 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your views on climate change or global warming? (Minimum 1; Maximum 1)",
-                        'options': ["Strongly believe it\'s a critical issue", "Somewhat concerned", "Neutral", "Somewhat skeptical", "Strongly skeptical", "Not sure"],
+                        'options': ["Strongly believe it&#x2032;s a critical issue", "Somewhat concerned", "Neutral", "Somewhat skeptical", "Strongly skeptical", "Not sure"],
                         'type': 'select'
                     },
                     {
                         'question': "What are your views on LGBTQIA+ rights and issues? (Minimum 1; Maximum 1)",
-                        'options': ["I strongly support LGBTQIA+ rights and equality", "I generally support LGBTQIA+ rights and issues, but have some reservations", "I am neutral on LGBTQIA+ rights and issues", "I am somewhat opposed to LGBTQIA+ rights and issues, but respect others\' opinions", "I strongly oppose LGBTQIA+ rights and issues", "Not sure", "Other"],
+                        'options': ["I strongly support LGBTQIA+ rights and equality", "I generally support LGBTQIA+ rights and issues, but have some reservations", "I am neutral on LGBTQIA+ rights and issues", "I am somewhat opposed to LGBTQIA+ rights and issues, but respect others&#x2032; opinions", "I strongly oppose LGBTQIA+ rights and issues", "Not sure", "Other"],
                         'type': 'select'
                     },
                     {
                         'question': "What are your views on the use of gender pronouns (e.g., he, she, they)? (Minimum 1; Maximum 1)",
-                        'options': ["I actively respect and use preferred gender pronouns, including non-binary and gender-neutral pronouns (e.g., they/them)", "I respect and use preferred gender pronouns, but might make mistakes and need reminders", "I\'m still learning about gender pronouns and may need guidance", "I\'m not comfortable using non-binary or gender-neutral pronouns, but respect traditional pronouns", "I don\'t understand or agree with the use of non-binary or gender-neutral pronouns", "Not sure", "Other"],
+                        'options': ["I actively respect and use preferred gender pronouns, including non-binary and gender-neutral pronouns (e.g., they/them)", "I respect and use preferred gender pronouns, but might make mistakes and need reminders", "I&#x2032;m still learning about gender pronouns and may need guidance", "I&#x2032;m not comfortable using non-binary or gender-neutral pronouns, but respect traditional pronouns", "I don&#x2032;t understand or agree with the use of non-binary or gender-neutral pronouns", "Not sure", "Other"],
                         'type': 'select'
                     },
                     {
                         'question': "What are your views on white privilege? (Minimum 1; Maximum 1)",
-                        'options': ["I acknowledge and understand white privilege and actively work to combat systemic racism", "I acknowledge white privilege, but I\'m still learning how to address it", "I\'m unsure about the concept of white privilege and would like to learn more", "I don\'t believe white privilege exists", "I haven\'t thought much about it", "Not sure", "Other"],
+                        'options': ["I acknowledge and understand white privilege and actively work to combat systemic racism", "I acknowledge white privilege, but I&#x2032;m still learning how to address it", "I&#x2032;m unsure about the concept of white privilege and would like to learn more", "I don&#x2032;t believe white privilege exists", "I haven&#x2032;t thought much about it", "Not sure", "Other"],
                         'type': 'select'
                     },
                     {
@@ -1159,12 +1275,12 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your views on daylight savings time? (Minimum 1; Maximum 1)",
-                        'options': ["I like it because it provides more daylight in the evenings", "I dislike it because it disrupts my sleep schedule", "I think it\'s outdated and should be abolished", "I don\'t mind it and can adapt easily", "I think we should have permanent daylight savings time (more evening light year-round)", "I think we should have permanent standard time (consistent time year-round, no clock changes)", "I have mixed feelings about it", "I don\'t have a strong opinion", "Other"],
+                        'options': ["I like it because it provides more daylight in the evenings", "I dislike it because it disrupts my sleep schedule", "I think it&#x2032;s outdated and should be abolished", "I don&#x2032;t mind it and can adapt easily", "I think we should have permanent daylight savings time (more evening light year-round)", "I think we should have permanent standard time (consistent time year-round, no clock changes)", "I have mixed feelings about it", "I don&#x2032;t have a strong opinion", "Other"],
                         'type': 'select'
                     },
                     {
                         'question': "How often and why do you change your mind on politics? (Minimum 1; Maximum 1)",
-                        'options': ["Frequently, I\'m open to new information", "Occasionally, when presented with compelling evidence", "Rarely, but it\'s possible", "Almost never, I\'m set in my beliefs", "Never, I\'m unwavering in my convictions", "It depends on the issue"],
+                        'options': ["Frequently, I&#x2032;m open to new information", "Occasionally, when presented with compelling evidence", "Rarely, but it&#x2032;s possible", "Almost never, I&#x2032;m set in my beliefs", "Never, I&#x2032;m unwavering in my convictions", "It depends on the issue"],
                         'type': 'select'
                     },
                     {
@@ -1263,9 +1379,11 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Which of the following acts of kindness or compassion have you performed recently? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
-                        'options': ["Donated to a charity", "Volunteered my time", "Helped someone in need", "Offered emotional support to someone", "Paid for someone else\'s meal or coffee", "Random acts of kindness", "Other", "None"],
-                        'type': 'select'
+                        'question': "Which of the following acts of kindness or compassion have you performed recently? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'options': ["Donated to a charity", "Volunteered my time", "Helped someone in need", "Offered emotional support to someone", "Paid for someone else&#x2032;s meal or coffee", "Random acts of kindness", "Other", "None"],
+                        'type': 'multi-select',
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -1298,8 +1416,8 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "In what ways do you typically express gratitude or appreciation to others? (Minimum 1; Maximum ∞)",
-                        'options': ["Verbally", "Written notes or messages", "Small gifts or gestures", "Acts of service", "Quality time", "I don\'t usually express gratitude or appreciation"],
+                        'question': "In what ways do you typically express gratitude or appreciation to others? (Minimum 1; Maximum &#8734)",
+                        'options': ["Verbally", "Written notes or messages", "Small gifts or gestures", "Acts of service", "Quality time", "I don&#x2032;t usually express gratitude or appreciation"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
@@ -1324,7 +1442,7 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "How sensitive are you to others\' feelings in social situations? (Minimum 1; Maximum 1)",
+                        'question': "How sensitive are you to others&#x2032; feelings in social situations? (Minimum 1; Maximum 1)",
                         'options': ["Extremely sensitive", "Very sensitive", "Somewhat sensitive", "Not very sensitive", "Not sensitive at all"],
                         'type': 'select'
                     }
@@ -1374,10 +1492,11 @@ const questionnareData = [
                 'title': 'Belonging Preferences',
                 'parts': [
                     {
-                        'question': "What types of groups, clubs, or organizations do you belong to or have an interest in? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What types of groups, clubs, or organizations do you belong to or have an interest in? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Sports teams", "Hobby clubs", "Professional organizations", "Social clubs", "Religious or spiritual groups", "Volunteer organizations", "Neighborhood associations", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None',
                     },
                     {
                         'question': "How involved are you in the groups, clubs, or organizations you belong to? (Minimum 1; Maximum 1)",
@@ -1410,10 +1529,11 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What types of organizations do you prefer to support through volunteering? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What types of organizations do you prefer to support through volunteering? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Animal welfare", "Children and youth", "Education", "Environment", "Health and medical", "Human rights", "International development", "Poverty and homelessness", "Seniors and elderly", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None',
                     }
                 ]
             },
@@ -1426,9 +1546,10 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What cause do you prioritize when giving to charity? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What cause do you prioritize when giving to charity? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Animal welfare", "Children and youth", "Education", "Environment", "Health and medical", "Human rights", "International development", "Poverty and homelessness", "Seniors and elderly", "Other", "None"],
-                        'type': 'select'
+                        'type': 'select',
+                        'exclusive': 'None',
                     }
                 ]
             },
@@ -1467,7 +1588,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Are you involved in Greek life? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, I\'m a member of a sorority/fraternity", "I used to be involved, but not anymore", "No, I\'ve never been involved in Greek life"],
+                        'options': ["Yes, I&#x2032;m a member of a sorority/fraternity", "I used to be involved, but not anymore", "No, I&#x2032;ve never been involved in Greek life"],
                         'type': 'select'
                     },
                     {
@@ -1506,16 +1627,18 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "On which occasions do you usually give gifts? (Minimum 1; Maximum ∞) (Cannot select both \"I don\'t usually give gifts\" and other options)",
-                        'options': ["Birthdays", "Anniversaries", "Holidays", "Graduations", "Weddings", "Just because/random acts of kindness", "Other special occasions", "I don\'t usually give gifts"],
+                        'question': "On which occasions do you usually give gifts? (Minimum 1; Maximum &#8734) (Cannot select both \"I don&#x2032;t usually give gifts\" and other options)",
+                        'options': ["Birthdays", "Anniversaries", "Holidays", "Graduations", "Weddings", "Just because/random acts of kindness", "Other special occasions", "I don&#x2032;t usually give gifts"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'I don&#x2032;t usually give gifts',
                     },
                     {
-                        'question': "What kind of gifts do you typically give to friends and loved ones? (Minimum 1; Maximum ∞) (Cannot select both \"I don\'t usually give gifts\" and other options)",
-                        'options': ["Small tokens or gestures", "Personalized and sentimental items", "Handmade or DIY gifts", "Practical and useful items", "Gift cards or cash", "Experiences or event tickets", "Luxurious or high-end items", "I don\'t usually give gifts"],
+                        'question': "What kind of gifts do you typically give to friends and loved ones? (Minimum 1; Maximum &#8734) (Cannot select both \"I don&#x2032;t usually give gifts\" and other options)",
+                        'options': ["Small tokens or gestures", "Personalized and sentimental items", "Handmade or DIY gifts", "Practical and useful items", "Gift cards or cash", "Experiences or event tickets", "Luxurious or high-end items", "I don&#x2032;t usually give gifts"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'I don&#x2032;t usually give gifts',
                     }
                 ]
             }
@@ -1586,7 +1709,8 @@ const questionnareData = [
                         'question': "Which social media platforms do you use most frequently? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Facebook", "Instagram", "Twitter", "Snapchat", "TikTok", "LinkedIn", "Pinterest", "Reddit", "YouTube", "Twitch", "Discord", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None',
                     },
                     {
                         'question': "How comfortable are you with sharing personal information on social media? (Minimum 1; Maximum 1)",
@@ -1602,7 +1726,8 @@ const questionnareData = [
                         'question': "How do you prefer to engage with others through digital platforms? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Text messaging", "Video calls", "Voice calls", "Social media comments and reactions", "Direct messaging on social media", "Email", "Online forums", "Group chats", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None',
                     }
                 ]
             }
@@ -1662,7 +1787,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What is your strategy for maintaining harmony between work and personal life? (Minimum 1; Maximum 1)",
-                        'options': ["Strict boundaries between work and personal life", "Some boundaries with flexibility", "A fluid approach to work and personal life", "I struggle to find balance", "I don\'t have a specific strategy"],
+                        'options': ["Strict boundaries between work and personal life", "Some boundaries with flexibility", "A fluid approach to work and personal life", "I struggle to find balance", "I don&#x2032;t have a specific strategy"],
                         'type': 'select'
                     }
                 ]
@@ -1719,12 +1844,12 @@ const questionnareData = [
                     },
                     {
                         'question': "How do you prioritize tasks and responsibilities? (Minimum 1; Maximum 1)",
-                        'options': ["Strictly by importance and urgency", "A mix of importance, urgency, and personal preference", "Based on personal preference and enjoyment", "I struggle with prioritizing tasks", "I don\'t have a specific approach"],
+                        'options': ["Strictly by importance and urgency", "A mix of importance, urgency, and personal preference", "Based on personal preference and enjoyment", "I struggle with prioritizing tasks", "I don&#x2032;t have a specific approach"],
                         'type': 'select'
                     },
                     {
                         'question': "How would you describe your punctuality in attending appointments and events? (Minimum 1; Maximum 1)",
-                        'options': ["Always on time, no matter what", "Usually on time, but occasionally a few minutes late", "Sometimes late, but I try to be punctual", "Often late, punctuality is not my strong suit", "I\'m almost always late, Time management is a struggle for me"],
+                        'options': ["Always on time, no matter what", "Usually on time, but occasionally a few minutes late", "Sometimes late, but I try to be punctual", "Often late, punctuality is not my strong suit", "I&#x2032;m almost always late, Time management is a struggle for me"],
                         'type': 'select'
                     }
                 ]
@@ -1739,12 +1864,12 @@ const questionnareData = [
                     },
                     {
                         'question': "How do you approach setting and achieving life goals? (Minimum 1; Maximum 1)",
-                        'options': ["I set specific goals and create detailed plans", "I set general goals with some planning", "I have a rough idea of my goals and go with the flow", "I don\'t set specific goals but am open to opportunities", "I don\'t think about goals much"],
+                        'options': ["I set specific goals and create detailed plans", "I set general goals with some planning", "I have a rough idea of my goals and go with the flow", "I don&#x2032;t set specific goals but am open to opportunities", "I don&#x2032;t think about goals much"],
                         'type': 'select'
                     },
                     {
                         'question': "How do you handle major life transitions? (Minimum 1; Maximum 1)",
-                        'options': ["I thrive on change and adapt easily", "I\'m generally adaptable but need some time to adjust", "I have mixed feelings about change", "I struggle with change and need support", "I find change very difficult and resist it"],
+                        'options': ["I thrive on change and adapt easily", "I&#x2032;m generally adaptable but need some time to adjust", "I have mixed feelings about change", "I struggle with change and need support", "I find change very difficult and resist it"],
                         'type': 'select'
                     }
                 ]
@@ -1784,7 +1909,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Do you currently rent, lease, or own your car? (Minimum 1; Maximum 1)",
-                        'options': ["Rent/lease", "Own", "Borrow", "Don\'t have a car"],
+                        'options': ["Rent/lease", "Own", "Borrow", "Don&#x2032;t have a car"],
                         'type': 'select'
                     },
                     {
@@ -1870,7 +1995,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your expectations for shared financial responsibilities in a relationship? (Minimum 1; Maximum 1)",
-                        'options': ["Equal contribution", "I\'ll contribute more", "My partner should contribute more", "Separate finances", "Other", "None"],
+                        'options': ["Equal contribution", "I&#x2032;ll contribute more", "My partner should contribute more", "Separate finances", "Other", "None"],
                         'type': 'select'
                     },
                     {
@@ -1910,7 +2035,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "Have you ever lived with a partner? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, and I enjoyed it", "Yes, but I didn\'t enjoy it", "No, but I\'m open to it", "No, and I prefer not to", "Other"],
+                        'options': ["Yes, and I enjoyed it", "Yes, but I didn&#x2032;t enjoy it", "No, but I&#x2032;m open to it", "No, and I prefer not to", "Other"],
                         'type': 'select'
                     },
                     {
@@ -1919,8 +2044,8 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What are your expectations for a partner\'s involvement in household responsibilities? (Minimum 1; Maximum 1)",
-                        'options': ["Equal division of chores", "I\'ll take on more chores", "They should take on more chores", "No specific expectations", "Other"],
+                        'question': "What are your expectations for a partner&#x2032;s involvement in household responsibilities? (Minimum 1; Maximum 1)",
+                        'options': ["Equal division of chores", "I&#x2032;ll take on more chores", "They should take on more chores", "No specific expectations", "Other"],
                         'type': 'select'
                     }
                 ]
@@ -1935,7 +2060,7 @@ const questionnareData = [
                     },
                     {
                         'question': "How do you feel about clutter in your living space? (Minimum 1; Maximum 1)",
-                        'options': ["I can\'t stand it", "It bothers me, but I can tolerate it", "It doesn\'t bother me much", "I don\'t mind it", "I embrace it"],
+                        'options': ["I can&#x2032;t stand it", "It bothers me, but I can tolerate it", "It doesn&#x2032;t bother me much", "I don&#x2032;t mind it", "I embrace it"],
                         'type': 'select'
                     }
                 ]
@@ -2024,10 +2149,11 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What are some of your personal interests? (Minimum 1; Maximum ∞) (e.g., \"Painting\") (Cannot select both \"None\" and other options)",
+                        'question': "What are some of your personal interests? (Minimum 1; Maximum &#8734) (e.g., \"Painting\") (Cannot select both \"None\" and other options)",
                         'options': [],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None',
                     },
                     {
                         'question': "How do you balance socializing and spending time alone? (Minimum 1; Maximum 1)",
@@ -2093,7 +2219,8 @@ const questionnareData = [
                         'question': "What type of travel do you prefer? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Adventure and outdoor activities", "Relaxing on a beach", "City breaks and cultural experiences", "Road trips", "Cruises", "Eco-tourism", "Food and wine tours", "Group tours", "Solo travel", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None',
                     },
                     {
                         'question': "How often do you travel? (Minimum 1; Maximum 1)",
@@ -2121,28 +2248,32 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Which countries have you visited for more than 5 days? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Which countries have you visited for more than 5 days? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. \"Swaziland\")", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 10 favorite travel destinations? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
                         'options': ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. \"Swaziland\")", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 10
+                        'maxOptions': 10,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "x.	What are the top 10 countries you would you like to visit next? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
                         'options': ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. \"Swaziland\")", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 10
+                        'maxOptions': 10,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your favorite types of destinations to visit? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Beaches", "Tropical islands", "Lakes and rivers", "Mountains", "Forests", "National parks", "Wildlife reserves", "Nature trails and hiking paths", "Deserts", "Cities", "Small towns", "Countrysides", "Historical sites", "Ancient ruins", "Castles and palaces", "Museums", "Art galleries", "Science centers and planetariums", "Theme parks", "Adventure parks", "Zoos and aquariums", "Religious sites and places of worship", "Gardens and parks", "Roadside attractions", "Sports events and stadiums", "Golf courses and country clubs", "Music festivals", "Nightclubs and entertainment districts", "Movie theaters and live performance venues", "Food markets and street food venues", "Wineries and vineyards", "Shopping districts", "Cruise ships", "Ski resorts", "Spa and wellness retreats", "Campgrounds", "Farm stays and agritourism", "Bed and breakfasts and inns", "Libraries and bookstores", "Casinos and gaming venues", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None',
                     },
                     {
                         'question': "What are your top 3 favorite airlines? (Minimum 1; Maximum 3)",
@@ -2188,7 +2319,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "How open are you to relocating for a relationship? (Minimum 1; Maximum 1)",
-                        'options': ["Very open, I love new adventures", "Open if it\'s the right opportunity", "Somewhat open, but with conditions", "Not open at all"],
+                        'options': ["Very open, I love new adventures", "Open if it&#x2032;s the right opportunity", "Somewhat open, but with conditions", "Not open at all"],
                         'type': 'select'
                     },
                     {
@@ -2261,58 +2392,69 @@ const questionnareData = [
                         'question': "What are your top 3 favorite movie genres? (Minimum 1; Maximum 3)(Cannot select both \"None\" and other options)",
                         'options': ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Historical", "Horror", "Mystery", "Romance", "Science fiction", "Thriller", "War", "Western", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None',
                     },
                     {
-                        'question': "What are your top 10 favorite movies? (Minimum 1; Maximum 1) (Cannot select both \"None\" and other options)",
-                        'options': [""],
-                        'type': 'select'
+                        'question': "What are your top 10 favorite movies? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
+                        'type': 'text-option',
+                        'textCount': 10,
+                        'options': ["None"],
+                        'exclusive': 'None',
                     },
                     {
-                        'question': "What are your top 3 favorite Disney movies? (Minimum 1; Maximum 1) (Cannot select both \"None\" and other options)",
-                        'options': ["Alice in Wonderland", "Aladdin", "Atlantis: The Lost Empire", "Avengers: Endgame", "Bambi", "Beauty and the Beast", "Big Hero 6", "Black Is King", "Black Panther", "Brave", "Cars", "Cinderella", "Coco", "Enchanted", "Encanto", "Emperor\'s New Groove", "Fantasia", "Finding Dory", "Finding Nemo", "Frozen", "Hercules", "Honey, I Shrunk the Kids", "Homeward Bound", "Inside Out", "Lilo & Stitch", "Maleficent", "Mary Poppins", "Moana", "Monsters, Inc.", "Mulan", "Old Yeller", "One Hundred and One Dalmatians", "Pocahontas", "Pinocchio", "Pirates of the Caribbean", "Queen of Katwe", "Raya and the Last Dragon", "Ratatouille", "Remember the Titans", "Robin Hood", "Sleeping Beauty", "Snow White and the Seven Dwarfs", "Star Wars", "Strange World", "Tangled", "Tarzan", "The Aristocats", "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", "The Fox and the Hound", "The Hunchback of Notre Dame", "The Incredibles", "The Jungle Book", "The Lion King", "The Little Mermaid", "The Mighty Ducks", "The Muppets", "The Nightmare Before Christmas", "The Parent Trap", "The Princess and the Frog", "The Jungle Book", "Treasure Planet", "Up", "WALL-E", "Wreck-It Ralph", "Who Framed Roger Rabbit", "Zootopia", "Other", "None"],
-                        'type': 'select'
+                        'question': "What are your top 3 favorite Disney movies? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'options': ["Alice in Wonderland", "Aladdin", "Atlantis: The Lost Empire", "Avengers: Endgame", "Bambi", "Beauty and the Beast", "Big Hero 6", "Black Is King", "Black Panther", "Brave", "Cars", "Cinderella", "Coco", "Enchanted", "Encanto", "Emperor&#x2032;s New Groove", "Fantasia", "Finding Dory", "Finding Nemo", "Frozen", "Hercules", "Honey, I Shrunk the Kids", "Homeward Bound", "Inside Out", "Lilo & Stitch", "Maleficent", "Mary Poppins", "Moana", "Monsters, Inc.", "Mulan", "Old Yeller", "One Hundred and One Dalmatians", "Pocahontas", "Pinocchio", "Pirates of the Caribbean", "Queen of Katwe", "Raya and the Last Dragon", "Ratatouille", "Remember the Titans", "Robin Hood", "Sleeping Beauty", "Snow White and the Seven Dwarfs", "Star Wars", "Strange World", "Tangled", "Tarzan", "The Aristocats", "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", "The Fox and the Hound", "The Hunchback of Notre Dame", "The Incredibles", "The Jungle Book", "The Lion King", "The Little Mermaid", "The Mighty Ducks", "The Muppets", "The Nightmare Before Christmas", "The Parent Trap", "The Princess and the Frog", "The Jungle Book", "Treasure Planet", "Up", "WALL-E", "Wreck-It Ralph", "Who Framed Roger Rabbit", "Zootopia", "Other", "None"],
+                        'type': 'multi-select',
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "Which TV show genres do you enjoy most? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Action & adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Historical", "Horror", "Mystery", "Reality", "Romance", "Science fiction", "Sitcom", "Thriller", "Variety", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 3 favorite TV channels? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Andy Cohen", "Arsenio Hall", "Barbara Walters", "Bill Maher", "Carson Daly", "Chelsea Handler", "Conan O\'Brien", "Craig Kilborn", "Craig Ferguson", "David Letterman", "Dr. Drew Pinsky", "Dr. Oz", "Ellen DeGeneres", "Graham Norton", "Howard Stern", "James Corden", "Jay Leno", "Jerry Springer", "Jimmy Fallon", "Jimmy Kimmel", "John Oliver", "Jon Stewart", "Katie Couric", "Kelly Ripa", "Larry King", "Larry Wilmore", "Maury Povich", "Megyn Kelly", "Meredith Vieira", "Michael Strahan", "Montel Williams", "Oprah Winfrey", "Piers Morgan", "Regis Philbin", "Ricki Lake", "Rosie O\'Donnell", "Ryan Seacrest", "Stephen Colbert", "Steve Harvey", "Tom Green", "Tyra Banks", "Wendy Williams", "Whoopi Goldberg", "Wanda Sykes", "Other", "None"],
+                        'options': ["Andy Cohen", "Arsenio Hall", "Barbara Walters", "Bill Maher", "Carson Daly", "Chelsea Handler", "Conan O&#x2032;Brien", "Craig Kilborn", "Craig Ferguson", "David Letterman", "Dr. Drew Pinsky", "Dr. Oz", "Ellen DeGeneres", "Graham Norton", "Howard Stern", "James Corden", "Jay Leno", "Jerry Springer", "Jimmy Fallon", "Jimmy Kimmel", "John Oliver", "Jon Stewart", "Katie Couric", "Kelly Ripa", "Larry King", "Larry Wilmore", "Maury Povich", "Megyn Kelly", "Meredith Vieira", "Michael Strahan", "Montel Williams", "Oprah Winfrey", "Piers Morgan", "Regis Philbin", "Ricki Lake", "Rosie O&#x2032;Donnell", "Ryan Seacrest", "Stephen Colbert", "Steve Harvey", "Tom Green", "Tyra Banks", "Wendy Williams", "Whoopi Goldberg", "Wanda Sykes", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "Do you enjoy playing video games? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, I love playing video games", "Yes, occasionally", "No, not really", "No, I don\'t play video games at all"],
+                        'options': ["Yes, I love playing video games", "Yes, occasionally", "No, not really", "No, I don&#x2032;t play video games at all"],
                         'type': 'select'
                     },
                     {
                         'question': "What are your top 3 favorite video game genres? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Action", "Adventure", "Casual", "Fighting", "Indie", "Massively multiplayer online (MMO)", "Platformer", "Puzzle", "Racing", "Role-playing (RPG)", "Shooter", "Simulation", "Sports", "Strategy", "Virtual reality", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 5 favorite video games? (Minimum 1; Maximum 5) (Cannot select both \"None\" and other options)",
-                        'options': [""],
-                        'type': 'multi-select',
-                        'maxOptions': 3
+                        'type': 'text-option',
+                        'textCount': 5,
+                        'options': ["None"],
+                        'exclusive': 'None',
                     },
                     {
                         'question': "What are your top 3 favorite board games? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["7 Wonders", "Agricola", "Azul", "Balderdash", "Bananagrams", "Battleship", "Betrayal at House on the Hill", "Blokus", "Boggle", "Carcassonne", "Catan", "Chess", "Clue", "Codenames", "Concept", "Connect Four", "Cosmic Encounter", "Dominion", "Dixit", "Eldritch Horror", "Forbidden Island", "Gloomhaven", "Guess Who?", "Jenga", "King of Tokyo", "Life", "Love Letter", "Machi Koro", "Monopoly", "Mysterium", "Operation", "Othello", "Pandemic", "Power Grid", "Pictionary", "Puerto Rico", "Quarto", "Quoridor", "Risk", "Scattergories", "Scrabble", "Sequence", "Small World", "Sorry!", "Splendor", "Stratego", "Sushi Go!", "Taboo", "Ticket to Ride", "Trivial Pursuit", "Twister", "Uno", "Yahtzee", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 3 favorite card games? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Apples to Apples", "Baccarat", "Black Jack", "Bridge", "Canasta", "Cards Against Humanity", "Crazy Eights", "Cribbage", "Dominion", "Egyptian Ratscrew", "Euchre", "Exploding Kittens", "Fluxx", "Gin Rummy", "Go Fish", "Gwent", "Hanabi", "Hearts", "KeyForge", "Magic: The Gathering", "Munchkin", "Old Maid", "Phase 10", "Poker", "Pinochle", "Pit", "President", "Rook", "Rummy", "Saboteur", "Scopa", "Shithead", "Skat", "Skip-Bo", "Slapjack", "Snap", "Solitaire", "Spades", "Speed", "Spite and Malice", "Sushi Go!", "Tarot", "Texas Hold\'em", "The Game of Mao", "The Mind", "Tichu", "Uno", "War", "Whist", "Wizard", "Yu-Gi-Oh!", "Other", "None"],
+                        'options': ["Apples to Apples", "Baccarat", "Black Jack", "Bridge", "Canasta", "Cards Against Humanity", "Crazy Eights", "Cribbage", "Dominion", "Egyptian Ratscrew", "Euchre", "Exploding Kittens", "Fluxx", "Gin Rummy", "Go Fish", "Gwent", "Hanabi", "Hearts", "KeyForge", "Magic: The Gathering", "Munchkin", "Old Maid", "Phase 10", "Poker", "Pinochle", "Pit", "President", "Rook", "Rummy", "Saboteur", "Scopa", "Shithead", "Skat", "Skip-Bo", "Slapjack", "Snap", "Solitaire", "Spades", "Speed", "Spite and Malice", "Sushi Go!", "Tarot", "Texas Hold&#x2032;em", "The Game of Mao", "The Mind", "Tichu", "Uno", "War", "Whist", "Wizard", "Yu-Gi-Oh!", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -2323,7 +2465,8 @@ const questionnareData = [
                         'question': "How do you prefer to consume movies and TV shows? (Minimum 1; Maximum 2) (Cannot select both \"None\" and other options)",
                         'options': ["Streaming services (e.g., Netflix, Hulu)", "Live TV", "Physical media (e.g., DVDs, Blu-rays)", "Movie theaters", "Downloading", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 2
+                        'maxOptions': 2,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "Do you prefer physical books, eBooks, or audiobooks? (Minimum 1; Maximum 1) (Cannot select both \"None\" and other options)",
@@ -2352,21 +2495,24 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your top 3 favorite book genres? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Adventure", "Autobiography", "Biography", "Children\'s", "Classics", "Comics & graphic novels", "Crime", "Drama", "Fantasy", "Historical fiction", "Horror", "Mystery", "Non-fiction", "Poetry", "Romance", "Science fiction", "Self-help", "Thriller", "Young adult", "Other", "None"],
+                        'options': ["Adventure", "Autobiography", "Biography", "Children&#x2032;s", "Classics", "Comics & graphic novels", "Crime", "Drama", "Fantasy", "Historical fiction", "Horror", "Mystery", "Non-fiction", "Poetry", "Romance", "Science fiction", "Self-help", "Thriller", "Young adult", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 10 favorite books? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
-                        'options': [""],
-                        'type': 'multi-select',
-                        'maxOptions': 10
+                        'type': 'text-option',
+                        'textCount': 10,
+                        'options': ['None'],
+                        'exclusive': 'None',
                     },
                     {
                         'question': "Who are your top 3 favorite authors? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': [""],
-                        'type': 'multi-select',
-                        'maxOptions': 3
+                        'type': 'text-option',
+                        'textCount': 3,
+                        'options': ['None'],
+                        'exclusive': 'None',
                     },
                     {
                         'question': "What are your top 3 favorite music genres? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
@@ -2376,9 +2522,10 @@ const questionnareData = [
                     },
                     {
                         'question': "Who are your top 3 favorite musicians? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': [""],
-                        'type': 'multi-select',
-                        'maxOptions': 3
+                        'type': 'text-option',
+                        'textCount': 3,
+                        'options': ['None'],
+                        'exclusive': 'None',
                     },
                     {
                         'question': "What are your top 3 favorite musical instruments? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
@@ -2423,10 +2570,11 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Do you follow any specific dietary preferences or restrictions? (Minimum 1; Maximum ∞) (Cannot select both \"No restrictions\" and other options)",
+                        'question': "Do you follow any specific dietary preferences or restrictions? (Minimum 1; Maximum &#8734) (Cannot select both \"No restrictions\" and other options)",
                         'options': ["Vegetarian", "Vegan", "Gluten-free", "Lactose intolerant", "Paleo", "Keto", "Low carb", "Low fat", "Other", "No restrictions"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'No restrictions',
                     }
                 ]
             },
@@ -2464,13 +2612,15 @@ const questionnareData = [
                         'options': ["American football", "Baseball", "Basketball", "Boxing", "Cricket", "Crossfit", "Cycling", "Golf", "Gymnastics", "Ice hockey", "Martial arts", "Rugby", "Soccer", "Swimming", "Tennis", "Track and field", "Volleyball", "Wrestling", "Yoga", "Other", "None"],
                         'type': 'select',
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "Which sports do you enjoy watching? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["American football", "Baseball", "Basketball", "Boxing", "Cricket", "Crossfit", "Cycling", "Golf", "Gymnastics", "Ice hockey", "Martial arts", "Rugby", "Soccer", "Swimming", "Tennis", "Track and field", "Volleyball", "Wrestling", "Yoga", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What is your favorite professional baseball team (MLB)? (Minimum 1; Maximum 1)",
@@ -2541,36 +2691,40 @@ const questionnareData = [
                         'question': "What are your top 3 favorite foods? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Burgers", "Burritos", "Cakes", "Cheese", "Chicken nuggets", "Chocolate-based desserts", "Curry", "Fries", "Fried chicken", "Ice cream", "Pasta", "Pizza", "Ramen", "Salad", "Sandwiches", "Seafood", "Soups", "Steak", "Sushi", "Tacos", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 3 favorite types of cuisine? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["American", "Argentine", "Brazilian", "British", "Caribbean", "Chinese", "Colombian", "Cuban", "Egyptian", "Ethiopian", "French", "German", "Greek", "Indian", "Indonesian", "Irish", "Israeli", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian", "Mediterranean", "Mexican", "Moroccan", "Nigerian", "Peruvian", "Polish", "Portuguese", "Russian", "Southern/Soul Food", "Spanish", "Sushi", "Swedish", "Syrian", "Thai", "Turkish", "Ukrainian", "Vegan/Vegetarian", "Vietnamese", "other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "Where do you usually shop for groceries? (Minimum 1; Maximum 1)",
-                        'options': ["Acme", "Aldi", "Costco", "Food Lion", "Fred Meyer", "Giant", "Giant Eagle", "H-E-B", "Harris Teeter", "Jewel-Osco", "Key Food", "King Soopers", "Kroger", "Meijer", "Piggly Wiggly", "Publix", "Ralphs", "Safeway", "Sam\'s Club", "Save-A-Lot", "Shaw\'s", "ShopRite", "Sprouts Farmers Market", "Stater Bros.", "Stop & Shop", "Target", "Trader Joe\'s", "Vons", "Walmart", "Wegmans", "Whole Foods Market", "Winn-Dixie", "other"],
+                        'options': ["Acme", "Aldi", "Costco", "Food Lion", "Fred Meyer", "Giant", "Giant Eagle", "H-E-B", "Harris Teeter", "Jewel-Osco", "Key Food", "King Soopers", "Kroger", "Meijer", "Piggly Wiggly", "Publix", "Ralphs", "Safeway", "Sam&#x2032;s Club", "Save-A-Lot", "Shaw&#x2032;s", "ShopRite", "Sprouts Farmers Market", "Stater Bros.", "Stop & Shop", "Target", "Trader Joe&#x2032;s", "Vons", "Walmart", "Wegmans", "Whole Foods Market", "Winn-Dixie", "other"],
                         'type': 'select'
                     },
                     {
-                        'question': "What types of food do you consume? (Minimum 1; Maximum ∞)",
+                        'question': "What types of food do you consume? (Minimum 1; Maximum &#8734)",
                         'options': ["Beef", "pork", "lamb", "chicken", "turkey", "duck", "fish (including salmon, tuna, cod)", "seafood (including shrimp, crab, lobster)", "vegetables", "fruits", "legumes (including beans, lentils, chickpeas)", "grains (including rice, quinoa, oats)", "dairy products (including milk, cheese, yogurt)", "eggs", "nuts and seeds (including almonds, walnuts, sunflower seeds)", "plant-based meat alternatives (including tofu, tempeh, seitan)", "baked goods (bread, pastries, cakes)", "processed foods (including chips, cookies, candy)", "fast food", "coffee", "tea", "soft drinks", "gluten-free options", "vegetarian or vegan options", "organic or locally sourced foods"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     },
                     {
                         'question': "What are your top 3 favorite fast food restaurants? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Arby\'s", "Burger King", "Carl\'s Jr.", "Chick-fil-A", "Chipotle", "Dairy Queen", "Domino\'s", "Dunkin\'", "Five Guys", "Hardee\'s", "In-N-Out Burger", "Jack in the Box", "KFC", "Little Caesars", "McDonald\'s", "Panda Express", "Panera Bread", "Papa John\'s", "Pizza Hut", "Popeyes", "Quiznos", "Sonic Drive-In", "Starbucks", "Subway", "Taco Bell", "Tim Hortons", "Wendy\'s", "Whataburger", "White Castle", "Wingstop", "Other", "None"],
+                        'options': ["Arby&#x2032;s", "Burger King", "Carl&#x2032;s Jr.", "Chick-fil-A", "Chipotle", "Dairy Queen", "Domino&#x2032;s", "Dunkin&#x2032;", "Five Guys", "Hardee&#x2032;s", "In-N-Out Burger", "Jack in the Box", "KFC", "Little Caesars", "McDonald&#x2032;s", "Panda Express", "Panera Bread", "Papa John&#x2032;s", "Pizza Hut", "Popeyes", "Quiznos", "Sonic Drive-In", "Starbucks", "Subway", "Taco Bell", "Tim Hortons", "Wendy&#x2032;s", "Whataburger", "White Castle", "Wingstop", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your top 3 favorite condiments? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Barbecue sauce", "Buffalo sauce", "Dijon mustard", "Honey mustard", "Hot sauce", "Ketchup", "Mayonnaise", "Mustard", "Olive oil", "Pepper", "Pesto", "Ranch dressing", "Relish", "Salt", "Salsa", "Soy sauce", "Sriracha", "Steak sauce", "Sweet and sour sauce", "Tabasco sauce", "Tartar sauce", "Teriyaki sauce", "Thousand island dressing", "Vinegar", "Worcestershire sauce", "Yellow mustard"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What is your favorite meal of the day? (Minimum 1; Maximum 1)",
@@ -2579,7 +2733,7 @@ const questionnareData = [
                     },
                     {
                         'question': "How much coffee do you drink? (Minimum 1; Maximum 1)",
-                        'options': ["Less than one cup a day", "1 cup a day", "2 cups a day", "3 cups a day", "4 or more cups a day", "I don\'t drink coffee"],
+                        'options': ["Less than one cup a day", "1 cup a day", "2 cups a day", "3 cups a day", "4 or more cups a day", "I don&#x2032;t drink coffee"],
                         'type': 'select'
                     },
                     {
@@ -2599,12 +2753,12 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "Do you keep kosher? If so, to what extent? (Minimum 1; Maximum 1)",
-                        'options': ["Fully kosher both at home and outside", "Fully kosher at home and partially kosher outside", "Partially kosher at home and outside", "I don\'t keep kosher"],
+                        'options': ["Fully kosher both at home and outside", "Fully kosher at home and partially kosher outside", "Partially kosher at home and outside", "I don&#x2032;t keep kosher"],
                         'type': 'select'
                     },
                     {
                         'question': "Do you keep halal? If so, to what extent? (Minimum 1; Maximum 1)",
-                        'options': ["Fully halal both at home and outside", "Fully halal at home and partially halal outside", "Partially halal at home and outside", "I don\'t keep halal"],
+                        'options': ["Fully halal both at home and outside", "Fully halal at home and partially halal outside", "Partially halal at home and outside", "I don&#x2032;t keep halal"],
                         'type': 'select'
                     },
                     {
@@ -2618,10 +2772,11 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Do you have any of the following dietary restrictions? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Do you have any of the following dietary restrictions? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Gluten-free", "Dairy-free", "Pescatarian", "Low sodium", "Low carb", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
                         'question': "How important is it for your partner to share your dietary preferences or restrictions? (Minimum 1; Maximum 1)",
@@ -2640,7 +2795,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Would you change your food and cuisine preferences for a partner? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, I\'m open to change", "Maybe, depends on the situation", "No, my preferences are important to me"],
+                        'options': ["Yes, I&#x2032;m open to change", "Maybe, depends on the situation", "No, my preferences are important to me"],
                         'type': 'select'
                     },
                     {
@@ -2681,7 +2836,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your favorite clothing brands? (Minimum 1; Maximum 5)",
-                        'options': ["3.1 Phillip Lim", "7 For All Mankind", "Acne Studios", "Adidas", "A.P.C.", "Alice + Olivia", "AllSaints", "American Eagle Outfitters", "Anthropologie", "Armani", "ASOS", "Balenciaga", "Balmain", "Banana Republic", "Barneys New York", "BCBGMAXAZRIA", "Berluti", "Bottega Veneta", "Brioni", "Brooks", "Brooks Brothers", "Brunello Cucinelli", "Bulgari", "Burberry", "Calvin Klein", "Carhartt", "Cartier", "Chanel", "Chloé", "Christian Louboutin", "Citizens of Humanity", "Coach", "Comme des Garçons", "Converse", "COS", "Cuyana", "Diane von Fürstenberg", "Diesel", "Dior", "Dolce & Gabbana", "Dr. Martens", "Dsquared2", "Eddie Bauer", "Eileen Fisher", "Elie Tahari", "Ermenegildo Zegna", "Everlane", "Faherty", "Fendi", "Fila", "Filson", "Forever 21", "FRAME", "Free People", "Ganni", "Gap", "Givenchy", "G-Star Raw", "Gucci", "H&M", "Helmut Lang", "Heron Preston", "Hollister", "Hugo Boss", "IRO", "Isabel Marant", "J Brand", "J.Crew", "Jacquemus", "James Perse", "Joie", "John Varvatos", "Karen Millen", "Karl Lagerfeld", "Kate Spade", "Kenzo", "Kiton", "Kith", "L\'Agence", "Lacoste", "Lanvin", "La Perla", "Levi\'s", "Loeffler Randall", "Longchamp", "Louis Vuitton", "Lululemon", "Maje", "Mansur Gavriel", "Marc Jacobs", "Marni", "Massimo Dutti", "Michael Kors", "Miu Miu", "MM6 Maison Margiela", "Montblanc", "Moschino", "Mulberry", "Nanushka", "Nautica", "Nili Lotan", "Nike", "North Face", "O\'Neill", "Old Navy", "Orlebar Brown", "Oscar de la Renta", "Paige", "Palm Angels", "Patagonia", "Paul Smith", "Philipp Plein", "Polo Ralph Lauren", "Prada", "Proenza Schouler", "Puma", "Rag & Bone", "Ralph & Russo", "Ralph Lauren", "Rebecca Minkoff", "Reebok", "Reformation", "Reiss", "Rick Owens", "Roberto Cavalli", "Rodarte", "Roksanda", "Saint Laurent", "Salvatore Ferragamo", "Sandro", "Scotch & Soda", "Self-Portrait", "Simon Miller", "Soludos", "St. John", "Staud", "Stella McCartney", "Steve Madden", "Stuart Weitzman", "Superdry", "Supreme", "Ted Baker", "Theory", "Thom Sweeney", "Tibi", "Tiffany & Co.", "Tod\'s", "Tom Ford", "Tommy Hilfiger", "Topshop", "Tory Burch", "Totême", "UGG", "Under Armour", "Uniqlo", "Ulla Johnson", "Urban Outfitters", "Valentino", "Vans", "Versace", "Victoria\'s Secret", "Vince", "Virgil Abloh", "Visvim", "Y-3", "Yeezy", "Yohji Yamamoto", "Zara", "Zimmermann", "Other"],
+                        'options': ["3.1 Phillip Lim", "7 For All Mankind", "Acne Studios", "Adidas", "A.P.C.", "Alice + Olivia", "AllSaints", "American Eagle Outfitters", "Anthropologie", "Armani", "ASOS", "Balenciaga", "Balmain", "Banana Republic", "Barneys New York", "BCBGMAXAZRIA", "Berluti", "Bottega Veneta", "Brioni", "Brooks", "Brooks Brothers", "Brunello Cucinelli", "Bulgari", "Burberry", "Calvin Klein", "Carhartt", "Cartier", "Chanel", "Chloé", "Christian Louboutin", "Citizens of Humanity", "Coach", "Comme des Garçons", "Converse", "COS", "Cuyana", "Diane von Fürstenberg", "Diesel", "Dior", "Dolce & Gabbana", "Dr. Martens", "Dsquared2", "Eddie Bauer", "Eileen Fisher", "Elie Tahari", "Ermenegildo Zegna", "Everlane", "Faherty", "Fendi", "Fila", "Filson", "Forever 21", "FRAME", "Free People", "Ganni", "Gap", "Givenchy", "G-Star Raw", "Gucci", "H&M", "Helmut Lang", "Heron Preston", "Hollister", "Hugo Boss", "IRO", "Isabel Marant", "J Brand", "J.Crew", "Jacquemus", "James Perse", "Joie", "John Varvatos", "Karen Millen", "Karl Lagerfeld", "Kate Spade", "Kenzo", "Kiton", "Kith", "L&#x2032;Agence", "Lacoste", "Lanvin", "La Perla", "Levi&#x2032;s", "Loeffler Randall", "Longchamp", "Louis Vuitton", "Lululemon", "Maje", "Mansur Gavriel", "Marc Jacobs", "Marni", "Massimo Dutti", "Michael Kors", "Miu Miu", "MM6 Maison Margiela", "Montblanc", "Moschino", "Mulberry", "Nanushka", "Nautica", "Nili Lotan", "Nike", "North Face", "O&#x2032;Neill", "Old Navy", "Orlebar Brown", "Oscar de la Renta", "Paige", "Palm Angels", "Patagonia", "Paul Smith", "Philipp Plein", "Polo Ralph Lauren", "Prada", "Proenza Schouler", "Puma", "Rag & Bone", "Ralph & Russo", "Ralph Lauren", "Rebecca Minkoff", "Reebok", "Reformation", "Reiss", "Rick Owens", "Roberto Cavalli", "Rodarte", "Roksanda", "Saint Laurent", "Salvatore Ferragamo", "Sandro", "Scotch & Soda", "Self-Portrait", "Simon Miller", "Soludos", "St. John", "Staud", "Stella McCartney", "Steve Madden", "Stuart Weitzman", "Superdry", "Supreme", "Ted Baker", "Theory", "Thom Sweeney", "Tibi", "Tiffany & Co.", "Tod&#x2032;s", "Tom Ford", "Tommy Hilfiger", "Topshop", "Tory Burch", "Totême", "UGG", "Under Armour", "Uniqlo", "Ulla Johnson", "Urban Outfitters", "Valentino", "Vans", "Versace", "Victoria&#x2032;s Secret", "Vince", "Virgil Abloh", "Visvim", "Y-3", "Yeezy", "Yohji Yamamoto", "Zara", "Zimmermann", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 5
                     },
@@ -2689,7 +2844,8 @@ const questionnareData = [
                         'question': "Which clothing colors look best on you? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Black", "White", "Gray", "Brown", "Beige", "Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Pink", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -2700,7 +2856,8 @@ const questionnareData = [
                         'question': "Which of these fashion trends do you like the most? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Streetwear", "Athleisure", "Vintage-inspired", "Eco-friendly", "Monochrome", "Bold prints", "Pastels", "Oversized fits", "Tailored suits", "High-end designer", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "How often do you go to the tanning salon? (Minimum 1; Maximum 1)",
@@ -2733,7 +2890,7 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Which of the following physical characteristics do you have? (Minimum 1; Maximum ∞)",
+                        'question': "Which of the following physical characteristics do you have? (Minimum 1; Maximum &#8734)",
                         'options': ["Freckles", "Scars", "Birthmarks", "Moles", "Dimples", "Beauty marks", "Stretch marks", "Vitiligo", "Glasses", "Contact lenses", "Braces", "Unusual eye color", "Heterochromia (different colored eyes)"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
@@ -2765,18 +2922,19 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "Do you own any pets? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, I have one or more pets", "No, but I would like to have pets", "No, and I don\'t want any pets"],
+                        'options': ["Yes, I have one or more pets", "No, but I would like to have pets", "No, and I don&#x2032;t want any pets"],
                         'type': 'select'
                     },
                     {
                         'question': "What types of pets do you prefer? (Minimum 1; Maximum 3) (Cannot select both \"No preference\" and other options)",
                         'options': ["Dogs", "Cats", "Birds", "Fish", "Reptiles", "Small mammals (e.g., rabbits, hamsters)", "Exotic pets (e.g., tarantulas, sugar gliders)", "Other", "No preference"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'No preference'
                     },
                     {
                         'question': "Are you open to adopting or rescuing pets? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, definitely", "Maybe, depends on the circumstances", "No, I prefer getting pets from breeders or other sources", "I don\'t want any pets"],
+                        'options': ["Yes, definitely", "Maybe, depends on the circumstances", "No, I prefer getting pets from breeders or other sources", "I don&#x2032;t want any pets"],
                         'type': 'select'
                     },
                     {
@@ -2788,13 +2946,15 @@ const questionnareData = [
                         'question': "What type of animal-related activities do you enjoy? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Visiting zoos or aquariums", "Volunteering at animal shelters", "Going to pet-friendly events", "Watching wildlife", "Birdwatching", "Horseback riding", "Dog training or agility", "Animal photography", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What are your favorite animals? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Alpacas", "Apes", "Armadillos", "Axolotls", "Bats", "Bears", "Bees", "Bison", "Butterflies", "Camels", "Cats", "Cheetahs", "Chickens", "Chameleons", "Chimpanzees", "Cockatoos", "Coral reefs", "Cows", "Crabs", "Crocodiles", "Deer", "Dolphins", "Dogs", "Eagles", "Elephants", "Flamingos", "Foxes", "Frogs", "Geckos", "Giraffes", "Goats", "Gorillas", "Hedgehogs", "Hermit crabs", "Horses", "Hummingbirds", "Iguanas", "Jellyfish", "Kangaroos", "Koalas", "Lemurs", "Leopards", "Lizards", "Lions", "Macaws", "Manatees", "Meerkats", "Monkeys", "Narwhals", "Octopuses", "Orangutans", "Otters", "Owls", "Ostriches", "Parrots", "Peacocks", "Penguins", "Pigs", "Platypuses", "Polar bears", "Porcupines", "Rabbits", "Raccoons", "Rhinoceroses", "Seals", "Sea turtles", "Sharks", "Sloths", "Snakes", "Squirrels", "Stingrays", "Swans", "Tapirs", "Tasmanian devils", "Tigers", "Toucans", "Turtles", "Walruses", "Warthogs", "Weasels", "Whales", "Wolves", "Zebras", "Zeppelin", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -2833,9 +2993,10 @@ const questionnareData = [
                     },
                     {
                         'question': "Which relationship goals are most important to you? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Emotional intimacy", "Financial stability", "Starting a family", "Personal growth", "Shared hobbies/interests", "Traveling together", "Supporting each other\'s careers", "Spiritual connection", "Other", "None"],
+                        'options': ["Emotional intimacy", "Financial stability", "Starting a family", "Personal growth", "Shared hobbies/interests", "Traveling together", "Supporting each other&#x2032;s careers", "Spiritual connection", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -2865,7 +3026,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Which of these personal boundaries are important to you in a relationship? (Minimum 1; Maximum 3)",
-                        'options': ["Respecting privacy and personal space", "Maintaining a balance between individual and couple time", "Communicating openly about feelings and emotions", "Establishing clear expectations regarding finances", "Setting limits on social media usage", "Agreeing on appropriate boundaries with ex-partners", "Respecting each other\'s family and cultural backgrounds", "Defining emotional and physical boundaries", "Supporting each other\'s career and personal growth", "Deciding on acceptable levels of contact with friends of the opposite sex", "Agreeing on boundaries for discussing past relationships", "Establishing boundaries for decision-making and problem-solving", "Deciding on the role of spirituality or religion in the relationship", "Navigating and respecting dietary preferences and lifestyle choices", "Other"],
+                        'options': ["Respecting privacy and personal space", "Maintaining a balance between individual and couple time", "Communicating openly about feelings and emotions", "Establishing clear expectations regarding finances", "Setting limits on social media usage", "Agreeing on appropriate boundaries with ex-partners", "Respecting each other&#x2032;s family and cultural backgrounds", "Defining emotional and physical boundaries", "Supporting each other&#x2032;s career and personal growth", "Deciding on acceptable levels of contact with friends of the opposite sex", "Agreeing on boundaries for discussing past relationships", "Establishing boundaries for decision-making and problem-solving", "Deciding on the role of spirituality or religion in the relationship", "Navigating and respecting dietary preferences and lifestyle choices", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 3
                     },
@@ -2912,7 +3073,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "What aspects of relationship security are most important to you? (Minimum 1; Maximum 3)",
-                        'options': ["Emotional support", "Financial stability", "Shared life goals", "Commitment", "Trust", "Consistent communication", "Quality time together", "Supporting each other\'s personal growth", "Shared values and beliefs", "Respect for each other\'s boundaries", "Mutual understanding and empathy", "Problem-solving and conflict resolution", "Other"],
+                        'options': ["Emotional support", "Financial stability", "Shared life goals", "Commitment", "Trust", "Consistent communication", "Quality time together", "Supporting each other&#x2032;s personal growth", "Shared values and beliefs", "Respect for each other&#x2032;s boundaries", "Mutual understanding and empathy", "Problem-solving and conflict resolution", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 3
                     }
@@ -2923,7 +3084,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "Which of the following actions make you feel safe and supported in a relationship? (Minimum 1; Maximum 5)",
-                        'options': ["Emotional vulnerability", "Open communication", "Active listening", "Showing empathy and understanding", "Expressing love and affection", "Trusting each other", "Encouraging each other\'s personal growth", "Respecting each other\'s boundaries", "Providing financial support", "Supporting each other\'s career", "Consistent acts of care and kindness", "Celebrating each other\'s achievements", "Other"],
+                        'options': ["Emotional vulnerability", "Open communication", "Active listening", "Showing empathy and understanding", "Expressing love and affection", "Trusting each other", "Encouraging each other&#x2032;s personal growth", "Respecting each other&#x2032;s boundaries", "Providing financial support", "Supporting each other&#x2032;s career", "Consistent acts of care and kindness", "Celebrating each other&#x2032;s achievements", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 5
                     },
@@ -2949,7 +3110,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What is your current marital status? (Minimum 1; Maximum 1)",
-                        'options': ["Never married", "Married", "Separated", "Divorced", "Widowed", "It\'s complicated"],
+                        'options': ["Never married", "Married", "Separated", "Divorced", "Widowed", "It&#x2032;s complicated"],
                         'type': 'select'
                     },
                     {
@@ -2981,10 +3142,11 @@ const questionnareData = [
                         'maxOptions': 3
                     },
                     {
-                        'question': "Which of the following voices do you like the most, and which do you generally like? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "Which of the following voices do you like the most, and which do you generally like? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["American accent (Northern)", "American accent (Southern)", "American accent (California)", "French accent", "Italian accent", "Spanish accent", "English accent (British)", "Irish accent", "Scottish accent", "Brazilian Portuguese accent", "Australian accent", "Argentine accent", "South African accent", "New Zealand accent", "Greek accent", "Caribbean accent", "Swedish accent", "Hungarian accent", "Czech accent", "Norwegian accent", "Dutch accent", "Swiss accent (provide audio clips)", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -2992,16 +3154,18 @@ const questionnareData = [
                 'title': 'Romantic Gestures & Expression',
                 'parts': [
                     {
-                        'question': "How do you express your love and affection? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "How do you express your love and affection? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Romantic gestures", "Verbal affirmations", "Physical touch", "Quality time", "Acts of service", "Gift-giving", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
-                        'question': "What romantic gestures do you appreciate most? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What romantic gestures do you appreciate most? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Surprises", "Love notes", "Flowers", "Candlelit dinners", "Weekend getaways", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3015,7 +3179,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What is your opinion on who should pay on the first date? (Minimum 1; Maximum 1)",
-                        'options': ["The guy", "The girl", "The person who initiated the date", "Split the bill equally", "The person with higher income", "Whoever feels comfortable paying", "Take turns paying for different parts of the date (e.g., one pays for dinner, the other pays for dessert)", "It doesn\'t matter", "Other"],
+                        'options': ["The guy", "The girl", "The person who initiated the date", "Split the bill equally", "The person with higher income", "Whoever feels comfortable paying", "Take turns paying for different parts of the date (e.g., one pays for dinner, the other pays for dessert)", "It doesn&#x2032;t matter", "Other"],
                         'type': 'select'
                     },
                     {
@@ -3024,7 +3188,7 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "How often do you prefer to communicate with someone you\'re dating? (Minimum 1; Maximum 1)",
+                        'question': "How often do you prefer to communicate with someone you&#x2032;re dating? (Minimum 1; Maximum 1)",
                         'options': ["Multiple times a day", "Daily", "Every few days", "Once a week", "As needed", "It depends on the relationship"],
                         'type': 'select'
                     },
@@ -3065,7 +3229,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "How important is physical affection to you in a relationship? (Minimum 1; Maximum 1)",
-                        'options': ["Crucial", "Very important", "Somewhat important", "Not important at all", "Don\'t know"],
+                        'options': ["Crucial", "Very important", "Somewhat important", "Not important at all", "Don&#x2032;t know"],
                         'type': 'select'
                     },
                     {
@@ -3080,7 +3244,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What is your preferred level of intimacy in a relationship? (Minimum 1; Maximum 1)",
-                        'options': ["Deep emotional connection", "Strong physical connection", "Balanced emotional and physical connection", "Casual and lighthearted connection", "Don\'t know"],
+                        'options': ["Deep emotional connection", "Strong physical connection", "Balanced emotional and physical connection", "Casual and lighthearted connection", "Don&#x2032;t know"],
                         'type': 'select'
                     },
                     {
@@ -3117,19 +3281,22 @@ const questionnareData = [
                         'question': "What times of the day do you, or would you, prefer to have sex? (Minimum 1; Maximum 2) (Cannot select both \"No preference\" and other options)",
                         'options': ["Morning", "Afternoon", "Evening", "Night", "Late night", "No preference"],
                         'type': 'multi-select',
-                        'maxOptions': 2
+                        'maxOptions': 2,
+                        'exclusive': 'No preference'
                     },
                     {
                         'question': "How much lighting do you, or would you, prefer during sex? (Minimum 1; Maximum 2) (Cannot select both \"No preference\" and other options)",
                         'options': ["Bright", "Dim", "Candlelight", "Complete darkness", "No preference"],
                         'type': 'multi-select',
-                        'maxOptions': 2
+                        'maxOptions': 2,
+                        'exclusive': 'No preference'
                     },
                     {
                         'question': "Where do you, or would you, prefer to have sex? (Minimum 1; Maximum 2) (Cannot select both \"No preference\" and other options)",
                         'options': ["Bedroom", "Living room", "Kitchen", "Bathroom", "Outdoors", "In a car", "Other", "No preference"],
                         'type': 'multi-select',
-                        'maxOptions': 2
+                        'maxOptions': 2,
+                        'exclusive': 'No preference'
                     },
                     {
                         'question': "At what age did you start puberty? (Minimum 1; Maximum 1)",
@@ -3142,9 +3309,10 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "Are you able to conceive a child? (Minimum 1; Maximum 1) (Question disappears if Sex ≠ Female)",
+                        'question': "Are you able to conceive a child? (Minimum 1; Maximum 1) (Question disappears if Sex &#x2260; Female)",
                         'options': ["Yes", "No", "Unsure"],
-                        'type': 'select'
+                        'type': 'select',
+                        'id': 'q_conceive_child'
                     },
                     {
                         'question': "Have you ever had a one-night stand? (Minimum 1; Maximum 1)",
@@ -3172,16 +3340,27 @@ const questionnareData = [
                 'title': 'Love Languages',
                 'parts': [
                     {
-                        'question': "What is your love language? (Minimum 1; Maximum ∞) (Cannot select both \"Don\'t know\" or \"None\" and other options)",
-                        'options': ["Words of affirmation", "Quality time", "Receiving gifts", "Acts of service", "Physical touch", "Don\'t know", "None"],
+                        'question': "What is your love language? (Minimum 1; Maximum &#8734) (Cannot select both \"Don&#x2032;t know\" or \"None\" and other options)",
+                        'options': ["Words of affirmation", "Quality time", "Receiving gifts", "Acts of service", "Physical touch", "Don&#x2032;t know", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'optionExclusives': [
+                            {
+                                'main': 'Don&#x2032;t know',
+                                'others': ["Words of affirmation", "Quality time", "Receiving gifts", "Acts of service", "Physical touch",  "None"]
+                            },
+                            {
+                                'main': 'None',
+                                'others': ["Words of affirmation", "Quality time", "Receiving gifts", "Acts of service", "Physical touch", "Don&#x2032;t know"]
+                            }
+                        ],
                     },
                     {
-                        'question': "How do you like to express love and affection to your partner? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "How do you like to express love and affection to your partner? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Surprises", "Thoughtful gestures", "Verbal affirmations", "Physical affection", "Listening and providing emotional support", "Gift-giving", "Acts of service", "Spending time together", "Encouraging their dreams and goals", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3220,7 +3399,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Are you open to seeking professional help for relationship issues? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, definitely", "Maybe, if necessary", "No, I prefer to handle things on my own", "Don\'t know"],
+                        'options': ["Yes, definitely", "Maybe, if necessary", "No, I prefer to handle things on my own", "Don&#x2032;t know"],
                         'type': 'select'
                     },
                 ]
@@ -3230,7 +3409,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "How do you feel about apologizing in a relationship? (Minimum 1; Maximum 1)",
-                        'options': ["I apologize easily", "I apologize when I feel I\'m wrong", "I struggle to apologize", "I rarely apologize", "Other"],
+                        'options': ["I apologize easily", "I apologize when I feel I&#x2032;m wrong", "I struggle to apologize", "I rarely apologize", "Other"],
                         'type': 'select'
                     },
                     {
@@ -3304,14 +3483,14 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What do you believe should be a man\'s responsibilities in marriage? (Minimum 1; Maximum 5)",
-                        'options': ["Emotional support", "Household chores", "Cooking", "Childcare", "Financial planning", "Generating income", "Sex, intimacy and romance", "Making decisions", "Resolving conflicts", "Planning for the family", "Home maintenance and repairs", "Creating a safe and loving home environment", "Fostering a sense of humor and fun", "Celebrating successes and milestones", "Upholding family traditions", "Caring for extended family members", "Staying fit and healthy", "Advocating for spouse\'s needs and dreams"],
+                        'question': "What do you believe should be a man&#x2032;s responsibilities in marriage? (Minimum 1; Maximum 5)",
+                        'options': ["Emotional support", "Household chores", "Cooking", "Childcare", "Financial planning", "Generating income", "Sex, intimacy and romance", "Making decisions", "Resolving conflicts", "Planning for the family", "Home maintenance and repairs", "Creating a safe and loving home environment", "Fostering a sense of humor and fun", "Celebrating successes and milestones", "Upholding family traditions", "Caring for extended family members", "Staying fit and healthy", "Advocating for spouse&#x2032;s needs and dreams"],
                         'type': 'multi-select',
                         'maxOptions': 5
                     },
                     {
-                        'question': "What do you believe should be a woman\'s responsibilities in marriage? (Select up to 5)",
-                        'options': ["Emotional support", "Household chores", "Cooking", "Childcare", "Financial planning", "Generating income", "Sex, intimacy and romance", "Making decisions", "Resolving conflicts", "Planning for the family", "Home maintenance and repairs", "Creating a safe and loving home environment", "Fostering a sense of humor and fun", "Celebrating successes and milestones", "Upholding family traditions", "Caring for extended family members", "Staying fit and healthy", "Advocating for spouse\'s needs and dreams"],
+                        'question': "What do you believe should be a woman&#x2032;s responsibilities in marriage? (Select up to 5)",
+                        'options': ["Emotional support", "Household chores", "Cooking", "Childcare", "Financial planning", "Generating income", "Sex, intimacy and romance", "Making decisions", "Resolving conflicts", "Planning for the family", "Home maintenance and repairs", "Creating a safe and loving home environment", "Fostering a sense of humor and fun", "Celebrating successes and milestones", "Upholding family traditions", "Caring for extended family members", "Staying fit and healthy", "Advocating for spouse&#x2032;s needs and dreams"],
                         'type': 'multi-select',
                         'maxOptions': 5
                     }
@@ -3326,10 +3505,11 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What style of baby names do you find appealing? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What style of baby names do you find appealing? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Classic/traditional (e.g., William, Elizabeth)", "Modern/trendy (e.g., Mason, Harper)", "Unique/uncommon (e.g., Zephyr, Seraphina)", "Cultural/ethnic (e.g., Ravi, Amara)", "Nature-inspired (e.g., River, Willow)", "Vintage/old-fashioned (e.g., Theodore, Evelyn)", "Short/simple (e.g., Max, Mia)", "Gender-neutral (e.g., Taylor, Jordan)", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3337,16 +3517,18 @@ const questionnareData = [
                 'title': 'Support & Encouragement',
                 'parts': [
                     {
-                        'question': "How do you typically show support and encouragement to your partner? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "How do you typically show support and encouragement to your partner? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Verbal affirmations", "Acts of service", "Quality time", "Physical touch", "Gift-giving", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
-                        'question': "What type of support do you appreciate most from your partner? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What type of support do you appreciate most from your partner? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Verbal affirmations", "Acts of service", "Quality time", "Physical touch", "Gift-giving", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3354,16 +3536,18 @@ const questionnareData = [
                 'title': 'Trust Building & Loyalty',
                 'parts': [
                     {
-                        'question': "How do you build trust in a relationship? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "How do you build trust in a relationship? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Open communication", "Honesty", "Consistency", "Quality time", "Sharing vulnerabilities", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     },
                     {
-                        'question': "What does loyalty mean to you in a relationship? (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
+                        'question': "What does loyalty mean to you in a relationship? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Unwavering support", "Trustworthiness", "Emotional fidelity", "Sexual fidelity", "Commitment to shared goals", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -3392,12 +3576,12 @@ const questionnareData = [
                     },
                     {
                         'question': "What is the highest level of education your dad attained? (Minimum 1; Maximum 1)",
-                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor\'s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
+                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
                         'type': 'select'
                     },
                     {
                         'question': "v.	What is the highest level of education your mom attained? (Minimum 1; Maximum 1)",
-                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor\'s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
+                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
                         'type': 'select'
                     },
                     {
@@ -3422,7 +3606,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Are your dad and mom still together? (Minimum 1; Maximum 1)",
-                        'options': ["Yes, still together", "No, separated but not divorced", "No, divorced", "No, never were together", "No, one of them passed away", "Complicated", "Don\'t know"],
+                        'options': ["Yes, still together", "No, separated but not divorced", "No, divorced", "No, never were together", "No, one of them passed away", "Complicated", "Don&#x2032;t know"],
                         'type': 'select'
                     },
                     {
@@ -3446,23 +3630,23 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "What is your dad\'s occupation? (Minimum 1; Maximum 1)",
+                        'question': "What is your dad&#x2032;s occupation? (Minimum 1; Maximum 1)",
                         'options': ["Accountant", "Actor", "Architect", "Artist", "Banker", "Bartender", "Chef", "Chemist", "Civil servant", "Consultant", "Dentist", "Designer", "Doctor", "Economist", "Editor", "Electrician", "Engineer", "Entrepreneur", "Farmer", "Financial advisor", "Graphic designer", "Health care professional", "Homemaker", "Human resources professional", "IT professional", "Journalist", "Lawyer", "Librarian", "Manager", "Marketer", "Mechanic", "Nurse", "Pharmacist", "Photographer", "Pilot", "Police officer", "Professor", "Programmer", "Psychologist", "Real estate agent", "Receptionist", "Researcher", "Retired", "Salesperson", "Scientist", "Social worker", "Software developer", "Student", "Surgeon", "Teacher", "Technician", "Translator", "Veterinarian", "Waiter/waitress", "Writer", "Other", "None"],
                         'type': 'select'
                     },
                     {
-                        'question': "What is your mom\'s occupation? (Minimum 1; Maximum 1)",
+                        'question': "What is your mom&#x2032;s occupation? (Minimum 1; Maximum 1)",
                         'options': ["Accountant", "Actor", "Architect", "Artist", "Banker", "Bartender", "Chef", "Chemist", "Civil servant", "Consultant", "Dentist", "Designer", "Doctor", "Economist", "Editor", "Electrician", "Engineer", "Entrepreneur", "Farmer", "Financial advisor", "Graphic designer", "Health care professional", "Homemaker", "Human resources professional", "IT professional", "Journalist", "Lawyer", "Librarian", "Manager", "Marketer", "Mechanic", "Nurse", "Pharmacist", "Photographer", "Pilot", "Police officer", "Professor", "Programmer", "Psychologist", "Real estate agent", "Receptionist", "Researcher", "Retired", "Salesperson", "Scientist", "Social worker", "Software developer", "Student", "Surgeon", "Teacher", "Technician", "Translator", "Veterinarian", "Waiter/waitress", "Writer", "Other", "None"],
                         'type': 'select'
                     },
                     {
-                        'question': "How would you describe your parents\' financial situation? (Minimum 1; Maximum 1)",
+                        'question': "How would you describe your parents&#x2032; financial situation? (Minimum 1; Maximum 1)",
                         'options': ["Living in poverty", "Lower income", "Lower-middle class", "Middle class", "Upper-middle class", "Affluent", "Very wealthy", "Not sure"],
                         'type': 'select'
                     },
                     {
                         'question': "What role does your family play in your decision-making process? (Minimum 1; Maximum 1)",
-                        'options': ["My family\'s opinions are crucial", "Significant influence", "Some influence", "Minimal role", "No role"],
+                        'options': ["My family&#x2032;s opinions are crucial", "Significant influence", "Some influence", "Minimal role", "No role"],
                         'type': 'select'
                     },
                     {
@@ -3566,10 +3750,12 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "For your past relationship experiences, provide their first and last name, current college, and relationship length (e.g., Y years and X months). (Minimum 1; Maximum ∞) (Cannot select both \"None\" and other options)",
-                        'options': [""],
-                        'type': 'multi-select',
-                        'maxOptions': 'infinity'
+                        'question': "For your past relationship experiences, provide their first and last name, current college, and relationship length (e.g., Y years and X months). (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'type': 'text-option',
+                        'textCount': 'infinity',
+                        'textMinCount': 5,
+                        'options': ['None'],
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3580,7 +3766,8 @@ const questionnareData = [
                         'question': "What patterns have you noticed in your relationships? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Attraction to similar personality types", "Repeating the same conflicts", "Losing interest over time", "Frequently becoming emotionally distant", "Often taking on a caretaker role", "Quickly becoming codependent", "Experiencing on-and-off relationships", "Falling into cycles of jealousy or insecurity", "Developing strong connections but struggling to maintain them", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3591,7 +3778,8 @@ const questionnareData = [
                         'question': "Which lessons have you learned from past relationships that you will apply to future ones? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Importance of communication", "Setting healthy boundaries", "Maintaining individuality", "Prioritizing emotional support", "Compromising and problem-solving", "Managing conflict effectively", "Being more patient and understanding", "Investing in personal growth", "Recognizing and breaking unhealthy patterns", "Nurturing trust and emotional intimacy", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -3617,7 +3805,8 @@ const questionnareData = [
                         'question': "Which of the following adventure-seeking activities appeal to you the most? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Traveling to new places", "Skydiving", "Scuba diving", "Mountain climbing", "Camping", "Trying exotic cuisines", "Attending cultural events", "Learning new languages", "Engaging in extreme sports", "Exploring urban environments", "Hiking in remote locations", "Starting a new hobby", "Going on impromptu road trips", "Attending music festivals", "Joining social clubs or groups", "Trying new fitness routines", "Pursuing artistic endeavors", "Experimenting with new technologies", "Participating in outdoor sports", "Engaging in environmental conservation efforts", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             },
@@ -3640,10 +3829,48 @@ const questionnareData = [
                 'title': 'Hates & Dislikes',
                 'parts': [
                     {
-                        'question': "i.	Which of the following do you seriously dislike or hate? (Minimum 1; Maximum 3) (E.g., \"Dishonesty\") (Cannot select both \"None\" and other options)",
-                        'options': [""],
+                        'question': "Which of the following do you seriously dislike or hate? (Minimum 1; Maximum 3) (E.g., \"Dishonesty\") (Cannot select both \"None\" and other options)",
+                        'optionGroups': [
+                            {
+                                "title": 'Personal Traits',
+                                'options': ["Dishonesty", "Arrogance", "Selfishness", "Hypocrisy", "Jealousy", "Overconfidence", "Rudeness", "Pessimism", "Bad manners", "Impatience", "Disorganization", "Irresponsibility", "Disrespect", "Passive-aggressiveness", "Narrow-mindedness", "Manipulation", "Vanity", "Entitlement"]
+                            },
+                            {
+                                "title": 'Social Issues',
+                                'options': ["Racism", "Sexism", "Ageism", "Bullying", "Injustice", "Corruption", "Animal cruelty", "Pollution", "Traffic", "Judgmental people", "Insensitivity", "Cliques", "Inequality", "Discrimination", "Religious intolerance", "Social inequality", "Abuse", "Homelessness", "Poverty", "Animal testing", "Consumerism", "Materialism", "War", "Deforestation", "Habitat destruction", "Littering", "Overpopulation"]
+                            },
+                            {
+                                "title": 'Substance Use',
+                                'options': ["Alcohol", "Drugs", "Smoking"]
+                            },
+                            {
+                                "title": 'Communication & Media',
+                                'options': ["Gossip", "Spam emails", "Reality TV", "Telemarketers", "Excessive social media usage", "Bad grammar", "Poor communication", "Excessive swearing", "Incompetence", "Liars", "Violence in the media", "Spoilers", "Reality television", "Online trolls", "Fake news"]
+                            },
+                            {
+                                "title": 'Daily Annoyances',
+                                'options': ["Inefficiency", "Ignorance", "Procrastination", "Laziness", "Greed", "Cold weather", "Hot weather", "Waiting in line", "Wasting time", "Delays", "Traffic", "Public restrooms", "Crying babies", "Excessive noise", "Mosquitoes", "Slow internet", "Being rushed", "Fast food", "Ignorance", "Plagiarism", "Bad customer service", "Broken promises", "Double standards", "Pettiness", "Ill-fitting clothes", "Overpriced items", "Uncertainty"]
+                            },
+                            {
+                                "title": 'Relationships & Interactions',
+                                'options': ["Unreliable people", "Bad drivers", "Complainers", "Drama", "Public speaking", "Vanity", "Broken promises", "Poor hygiene", "Bad odors", "Ungratefulness", "Fake people", "Inconsiderate people", "Betrayal"]
+                            },
+                            {
+                                "title": 'Politics & Government',
+                                'options': ["Politics", "Political correctness", "Corruption"]
+                            },
+                            {
+                                "title": 'Public Figures',
+                                'options': ["6ix9ine (Daniel Hernandez)", "Alexandria Ocasio-Cortez", "Amber Heard", "Anderson Cooper", "Andrew Tate", "Ann Coulter", "Anthony Fauci", "Barack Obama", "Ben Shapiro", "Benjamin Netanyahu", "Bernie Sanders", "Bill Cosby", "Bill Gates", "Brett Kavanaugh", "Candace Owens", "Cardi B", "Chris Brown", "Chris Cuomo", "Chuck Schumer", "David Duke", "Derek Chauvin", "Dick Cheney", "Don Lemon", "Donald Trump", "Donald Trump Jr.", "Ellen DeGeneres", "Elon Musk", "Ghislaine Maxwell", "Greta Thunberg", "Hillary Clinton", "Ilhan Omar", "J.K. Rowling", "Jack Dorsey", "Jake Paul", "Jeff Bezos", "Jimmy Kimmel", "Joe Biden", "Joe Scarborough", "Jordan Peterson", "Justin Bieber", "Kamala Harris", "Kanye West", "Kim Jong Un", "Laura Ingraham", "Logan Paul", "Marilyn Manson", "Marjorie Taylor Greene", "Martin Shkreli", "Matt Gaetz", "Maxine Waters", "Meghan Markle", "Mike Pence", "Milo Yiannopoulos", "Mitch McConnell", "Nancy Pelosi", "Nicki Minaj", "Piers Morgan", "Prince Harry", "Rachel Maddow", "Rudy Giuliani", "Sean Hannity", "Ted Cruz", "Ted Nugent", "Tucker Carlson", "Vladimir Putin", "Volodymyr Zelensky", "Xi Jinping"]
+                            },
+                            {
+                                "title": '',
+                                'options': ["None"]
+                            }
+                        ],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -3657,9 +3884,9 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "List all your favorite brands (Minimum 15; Maximum 100)",
-                        'type': 'text',
-                        'min': 15,
-                        'max': 100
+                        'type': 'multi-text',
+                        'textMinCount': 3,
+                        'textMaxCount': 7
                     }
                 ]
             }
@@ -3702,7 +3929,34 @@ const temp = {
                     'question': "",
                     'options': [""],
                     'type': 'multi-select',
-                    'maxOptions': 'infinity'
+                    'maxOptions': 'infinity',
+                    'exclusive': 'No',
+                    'optionGroups': [
+                        {
+                            "title": '',
+                            'options': ["", ""]
+                        }
+                    ],
+                    'optionExclusives': [
+                        {
+                            'main': 'Finger',
+                            'others': ["Multiple fingers"]
+                        },
+                        {
+                            'main': 'Multiple fingers',
+                            'others': ["Finger"]
+                        }
+                    ],
+                    'type': 'text-option',
+                    'textCount': 10,
+                    'textMinCount': 1,
+                    'textMaxCount': 1,
+                    'type': 'multi-text',
+                    'inputGroups': [
+                        {
+                            "title": ''
+                        }
+                    ]
                 }
             ]
         },

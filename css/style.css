@@ -90,6 +90,15 @@ h2 {
     /* padding-left: 20px; */
 }
 
+.form-group-container.hide {
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+.form-group-container.hide .form-group {
+    display: none;
+}
+
 .form-group {
     margin-bottom: 16px;
 }
@@ -254,4 +263,35 @@ input:hover,
 .image-select-option.selected {
     border: 1px solid #6487ceF5;
     filter: brightness(.5);
+}
+
+.options-group-container {
+    margin-top: 20px;
+}
+
+.hide .options-group-container {
+    margin-top: 0px;
+}
+
+.btn {
+    background: #547bc9;
+    color: #f9fafa;
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn.disabled {
+    background: #547bc952;
+    color: #547bc952;
+    cursor: no-drop;
+}
+
+.content-container {
+    margin-bottom: 50px;
 }

@@ -43,7 +43,8 @@ const questionnareData = [
                     {
                         'question': "What is your sex? (Minimum 1; Maximum 1)",
                         'options': ["Male", "Female", "Intersex"],
-                        'type': 'select',
+                        'type': 'multi-select',
+                        'maxOptions': 1,
                         'id': 'q_sex'
                     },
                     {
@@ -429,7 +430,7 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "iv.	How COVID-19 vaccine doses have you received? (Minimum 1; Maximum 1)",
+                        'question': "How COVID-19 vaccine doses have you received? (Minimum 1; Maximum 1)",
                         'options': ["None", "1", "2", "3", "4", "5 or more"],
                         'type': 'select'
                     },
@@ -544,47 +545,47 @@ const questionnareData = [
                     },
                     {
                         'question': "Have you ever been a victim of a serious crime? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes", "No"],
+                        'options': ["Yes", "No"],
                         'type': 'select'
                     },
                     {
                         'question': "Have you ever been a victim of terrorism? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes", "No"],
+                        'options': ["Yes", "No"],
                         'type': 'select'
                     },
                     {
                         'question': "Have you ever experienced a serious instance of sexual assault? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes", "No", "Unsure"],
+                        'options': ["Yes", "No", "Unsure"],
                         'type': 'select'
                     },
                     {
                         'question': "Have you ever sought therapy or counseling for mental health reasons? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes, and it was helpful", "Yes, but it wasn&#x2032;t helpful", "No, but I&#x2032;m open to it", "No, and I&#x2032;m not interested"],
+                        'options': ["Yes, and it was helpful", "Yes, but it wasn&#x2032;t helpful", "No, but I&#x2032;m open to it", "No, and I&#x2032;m not interested"],
                         'type': 'select'
                     },
                     {
                         'question': "Have you ever had a near death experience? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes", "No"],
+                        'options': ["Yes", "No"],
                         'type': 'select'
                     },
                     {
                         'question': "Have you ever attempted suicide? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes", "No"],
+                        'options': ["Yes", "No"],
                         'type': 'select'
                     },
                     {
                         'question': "Have you ever considered suicide? (Minimum 1; Maximum 1)",
-                        'options': ["1.	Yes", "No"],
+                        'options': ["Yes", "No"],
                         'type': 'select'
                     },
                     {
                         'question': "How many people do you personally know that have committed suicide? (Minimum 1; Maximum 1)",
-                        'options': ["1.	None", "1", "2", "3", "4", "5 or more"],
+                        'options': ["None", "1", "2", "3", "4", "5 or more"],
                         'type': 'select'
                     },
                     {
                         'question': "Which of these phobias, if any, do you experience? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
-                        'options': ["1.	Acrophobia (fear of heights)", "Agoraphobia (fear of open spaces or crowds)", "Arachnophobia (fear of spiders)", "Astraphobia (fear of thunder and lightning)", "Claustrophobia (fear of enclosed spaces)", "Cynophobia (fear of dogs)", "Glossophobia (fear of public speaking)", "Mysophobia (fear of germs or dirt)", "Nyctophobia (fear of darkness)", "Ophidiophobia (fear of snakes)", "Pteromerhanophobia (fear of flying)", "Social phobia (fear of social situations)", "Trypanophobia (fear of needles or injections)", "Other", "None"],
+                        'options': ["Acrophobia (fear of heights)", "Agoraphobia (fear of open spaces or crowds)", "Arachnophobia (fear of spiders)", "Astraphobia (fear of thunder and lightning)", "Claustrophobia (fear of enclosed spaces)", "Cynophobia (fear of dogs)", "Glossophobia (fear of public speaking)", "Mysophobia (fear of germs or dirt)", "Nyctophobia (fear of darkness)", "Ophidiophobia (fear of snakes)", "Pteromerhanophobia (fear of flying)", "Social phobia (fear of social situations)", "Trypanophobia (fear of needles or injections)", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity'
                     }
@@ -2262,7 +2263,7 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "x.	What are the top 10 countries you would you like to visit next? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
+                        'question': "What are the top 10 countries you would you like to visit next? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
                         'options': ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. \"Swaziland\")", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "None"],
                         'type': 'multi-select',
                         'maxOptions': 10,
@@ -3580,7 +3581,7 @@ const questionnareData = [
                         'type': 'select'
                     },
                     {
-                        'question': "v.	What is the highest level of education your mom attained? (Minimum 1; Maximum 1)",
+                        'question': "What is the highest level of education your mom attained? (Minimum 1; Maximum 1)",
                         'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
                         'type': 'select'
                     },
@@ -3885,8 +3886,8 @@ const questionnareData = [
                     {
                         'question': "List all your favorite brands (Minimum 15; Maximum 100)",
                         'type': 'multi-text',
-                        'textMinCount': 3,
-                        'textMaxCount': 7
+                        'textMinCount': 15,
+                        'textMaxCount': 100
                     }
                 ]
             }

@@ -21,6 +21,8 @@ $(document).on('click', '.image-select-option', function() {
     $(this).parent().find('.image-select-option').removeClass('selected');
     $(this).addClass('selected');
 
+    $(this).parents('.form-group-container').removeClass('error');
+
     submitAnswer(qIndex, answer);
 })
 
@@ -28,13 +30,18 @@ $(document).on('click', '.image-select-option', function() {
 
 $(document).on('click', '.multiselect-option:not(.text-option-itself)', function() {
     let qIndex = $(this).parent().attr('data-qIndex');
+
+    if ($(this).parents('.form-group-container').attr('data-id') != 'null') {
+        qIndex = $(this).parents('.form-group-container').attr('data-id');
+    }
+    
     let answer = parseInt($(this).attr('data-value'));
     let optionText = $(this).text().trim();
     let maxOptions = $(this).parent().attr('data-maxOptions') == 'infinity' ? 'infinity' : parseInt($(this).parent().attr('data-maxOptions'));
     let exclusive = $(this).parent().attr('data-exclusive');
     let optionExclusives = $(this).parent().attr('data-optionExclusives');
 
-    if(optionExclusives) {
+    if(typeof optionExclusives != 'undefined') {
         optionExclusives = JSON.parse(optionExclusives);
     }
 
@@ -88,6 +95,13 @@ $(document).on('click', '.multiselect-option:not(.text-option-itself)', function
         }
     }
 
+    if (curAnswers.length == 0) {
+        $(this).parents('.form-group-container').addClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+
     submitAnswer(qIndex, curAnswers);
 })
 
@@ -97,7 +111,19 @@ $(document).on('change', '.inputbox.text-option-input', function() {
     let tIndex = $(this).attr('data-tIndex');
     let curAnswers = typeof userData[qIndex] == 'undefined' ? {} : userData[qIndex];
 
-    curAnswers[tIndex] = $(this).val();
+    if($(this).val() == '') {
+        delete curAnswers[tIndex];
+    }
+    else {
+        curAnswers[tIndex] = $(this).val();
+    }
+
+    if (Object.keys(curAnswers).length == 0) {
+        $(this).parents('.form-group-container').addClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
 
     submitAnswer(qIndex, curAnswers);
 })
@@ -133,6 +159,13 @@ $(document).on('click', '.multiselect-option.text-option-itself', function() {
         curAnswers = answer;
     }
 
+    if(curAnswers == '' || Object.keys(curAnswers).length == 0) {
+        $(this).parents('.form-group-container').addClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+
     submitAnswer(qIndex, curAnswers);
 })
 
@@ -154,17 +187,31 @@ $(document).on('click', '.btn-add-text-option-input', function() {
 
 // select handler
 $(document).on('customChange', '.fancy-dropdown', function(event, data) {
-    if ($(this).attr('data-id')) {
+    if ($(this).attr('data-id') != 'null') {
         submitAnswer($(this).attr('data-id'), data.value);
     }
     else {
         submitAnswer($(this).attr('data-qIndex'), data.value);
     }
     
+    if (data.value != '') {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').addClass('error');
+    }
 })
 
 // text handler
 $(document).on('change', '.inputbox.single-input', function() {
+
+    if($(this).val() == '') {
+        $(this).parents('.form-group-container').addClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+
     submitAnswer($(this).attr('data-qIndex'), $(this).val());
 })
 
@@ -181,6 +228,12 @@ $(document).on('change', '.inputbox.multi-text-input', function() {
         curAnswers[tIndex] = $(this).val();
     }
     
+    if(Object.keys(curAnswers).length > 0) {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').addClass('error');
+    }
 
     submitAnswer(qIndex, curAnswers);
 })
@@ -212,7 +265,14 @@ function saveUserAnswers() {
 }
 
 function submitAnswer(qIndex, answer) {
-    userData[qIndex] = answer;
+
+    if(answer == '') {
+        delete userData[qIndex];
+
+    } else {
+        userData[qIndex] = answer;
+    }
+    
     saveUserAnswers();
 
     $(document).trigger('answerUpdate', { userData })
@@ -220,6 +280,13 @@ function submitAnswer(qIndex, answer) {
 
 $(document).on('answerUpdate', function(event, data) {
     setQuestionVisible(data['userData']);
+})
+
+$(document).on('click', '#btn_submit', function() {
+    if(isValid()) {
+        getFullQAList();
+        alert('Sent');
+    }
 })
 
 function setQuestionVisible(data) {
@@ -242,6 +309,242 @@ function setQuestionVisible(data) {
 
         $('.form-group-container[data-id="q_conceive_child"]').addClass('hide');
     }
+}
+
+function isValid() {
+    let questions = $('.form-group-container');
+    let isValid = true;
+
+    for(let index = 0; index < questions.length; index ++) {
+        let qId = $(questions[index]).attr('data-id');
+
+        if(qId == 'null') {
+            qId = $(questions[index]).attr('data-qIndex');
+        }
+
+        if (qId != 'null') {
+
+            if (typeof userData[qId] == 'undefined') {
+                $(questions[index]).addClass('error');
+                isValid = false;
+            }
+            else {
+
+                if (userData[qId] == '' || Object.keys(userData[qId]).length == 0) {
+                    $(questions[index]).addClass('error');
+                    isValid = false;
+                }
+                else {
+                    $(questions[index]).removeClass('error');
+                }
+            }
+        }
+    }
+
+    return isValid;
+
+    // $('.form-group-container').addClass('error');
+}
+
+function getFullQAList() {
+    let qaList = [];
+    let questionIndex = 1;
+
+    for(let qIndex = 0; qIndex < questionnareData.length; qIndex ++) {
+        let sections = questionnareData[qIndex]['sections'];
+
+        for(let sIndex = 0; sIndex < sections.length; sIndex ++) {
+            let parts = sections[sIndex]['parts'];
+
+            for(let pIndex = 0; pIndex < parts.length; pIndex ++) {
+                let options = parts[pIndex]['options'] ? parts[pIndex]['options'] : null;
+                let id = parts[pIndex]['id'] ? parts[pIndex]['id'] : null;
+                let type = parts[pIndex]['type'];
+                let optionGroups = parts[pIndex]['optionGroups'] ? parts[pIndex]['optionGroups'] : null;
+                let textCount = parts[pIndex]['textCount'] ? parts[pIndex]['textCount'] : null;
+                let textMinCount = parts[pIndex]['textMinCount'] ? parts[pIndex]['textMinCount'] : 5;
+                let inputGroups = parts[pIndex]['inputGroups'] ? parts[pIndex]['inputGroups'] : null;
+
+                let userAnswer = '';
+
+                if (id) {
+                    userAnswer = typeof userData[id] != 'undefined' ? userData[id] : '';
+                }
+                else {
+                    userAnswer = typeof userData[questionIndex] != 'undefined' ? userData[questionIndex] : '';
+                }
+
+                let answers = [];
+
+                if (type == 'text') {
+
+                    if(userAnswer != '') {
+                        answers.push({
+                            'subText': '',
+                            'text': userAnswer
+                        })
+                    }
+
+                } else if(type == 'multi-text') {
+
+                    if(inputGroups) {
+                        
+                        for(let gIndex = 0; gIndex < inputGroups.length; gIndex ++) {
+                            let answer = typeof userAnswer[gIndex] != 'undefined' ? userAnswer[gIndex] : '';
+
+                            if(answer != '') {
+                                answers.push({
+                                    'subText': inputGroups[gIndex]['title'],
+                                    'text': answer
+                                });
+                            }
+                        }
+
+                    } else {
+                        let textInputCount = textMinCount;
+
+                        Object.keys(userAnswer).map((tIndex) => {
+
+                            answers.push({
+                                'subText': '',
+                                'text': userAnswer[tIndex]
+                            });
+                        });
+                    }
+
+                } else if (type == 'select') {
+
+                    if (userAnswer != '') {
+                        answers.push({
+                            'subText': '',
+                            'text': userAnswer
+                        });
+                    }
+                    
+                } else if (type == 'text-option') {
+
+                    if (textCount == 'infinity') {
+
+                        let textInputCount = textMinCount;
+                        Object.keys(userAnswer).map((tIndex) => {
+                            if (parseInt(textInputCount) <= parseInt(tIndex) && userAnswer[tIndex] != '') {
+                                textInputCount = parseInt(tIndex) + 1;
+                            }
+                        });
+
+                        for(let tIndex = 0; tIndex < textInputCount; tIndex++) {
+                            let textAnswer = '';
+
+                            if (isJson(userAnswer)) {
+                                textAnswer = typeof userAnswer[tIndex] != 'undefined' ? userAnswer[tIndex] : '';
+                            }
+
+                            if (textAnswer != '') {
+                                answers.push({
+                                    'subText': '',
+                                    'text': textAnswer
+                                })
+                            }
+                        }
+                        
+                    } else if (textCount) {
+
+                        for(let tIndex = 0; tIndex < textCount; tIndex++) {
+                            let textAnswer = '';
+
+                            if (isJson(userAnswer)) {
+                                textAnswer = typeof userAnswer[tIndex] != 'undefined' ? userAnswer[tIndex] : '';
+                            }
+
+                            if (textAnswer != '') {
+                                answers.push({
+                                    'subText': '',
+                                    'text': textAnswer
+                                })
+                            }
+                        }
+                    }
+                    
+                    if (options) {
+
+                        for(let oIndex = 0; oIndex < options.length; oIndex++) {
+
+                            if (userAnswer != '' && !isJson(userAnswer)) {
+
+                                if(userAnswer != '' && userAnswer == oIndex) {
+                                    answers.push({
+                                        'subText': '',
+                                        'text': options[oIndex]
+                                    })
+                                }
+                            }
+                        }
+                    }
+
+                } else if (type == 'image-select') {
+
+                    if (options) {
+
+                        if(userAnswer != '') {
+                            answers.push({
+                                'subText': '',
+                                'text': options[userAnswer]
+                            });
+                        }
+                        
+                    }
+                    
+                } else if (type == 'multi-select') {
+
+                    if (options) {
+                        
+                        for(let oIndex = 0; oIndex < options.length; oIndex ++) {
+    
+                            if(userAnswer != '' && userAnswer.filter((answer) => answer == oIndex).length) {
+                                answers.push({
+                                    'subText': '',
+                                    'text': options[oIndex]
+                                })
+                            }
+                        }
+
+                    } else if (optionGroups) {
+
+                        let answerIndex = 0;
+
+                        for(let gIndex = 0; gIndex < optionGroups.length; gIndex ++) {
+                            let groupTitle = optionGroups[gIndex]['title'];
+                            let groupOptions = optionGroups[gIndex]['options'];
+
+                            for(let oIndex = 0; oIndex < groupOptions.length; oIndex ++) {
+    
+                                if(userAnswer != '' && userAnswer.filter((answer) => answer == answerIndex).length) {
+                                    answers.push({
+                                        'subText': groupTitle,
+                                        'text': groupOptions[oIndex]
+                                    })
+                                }
+
+                                answerIndex ++;
+                            }
+                        }
+                    }
+                    
+                }
+
+                if (answers.length > 0) {
+                    qaList.push({
+                        'question': parts[pIndex]['question'],
+                        'answers': answers
+                    });
+                }
+
+                questionIndex ++;
+            }
+        }
+    }
+
+    console.log(qaList);
 }
 
 function renderPage() {
@@ -275,6 +578,7 @@ function renderPage() {
                 let textMinCount = parts[pIndex]['textMinCount'] ? parts[pIndex]['textMinCount'] : 5;
                 let textMaxCount = parts[pIndex]['textMaxCount'] ? parts[pIndex]['textMaxCount'] : 10;
                 let inputGroups = parts[pIndex]['inputGroups'] ? parts[pIndex]['inputGroups'] : null;
+                let errorMessage = parts[pIndex]['errorMessage'] ? parts[pIndex]['errorMessage'] : 'This is required.';
 
                 let userAnswer = '';
 
@@ -292,6 +596,7 @@ function renderPage() {
                         <div class="form-group">
                             <label>${question}</label>
                             <input type="text" class="inputbox single-input" data-qIndex="${questionIndex}" value="${userAnswer}" min="${min}" max="${max}">
+                            <div class="error-message">${errorMessage}</div>
                         </div>
                     `;
 
@@ -314,6 +619,7 @@ function renderPage() {
                         formGroupHtml = `
                             <label>${question}</label>
                             <div class="multi-text-input-container">${formGroupHtml}</div>
+                            <div class="error-message">${errorMessage}</div>
                         `;
                     } else {
                         let textInputCount = textMinCount;
@@ -338,10 +644,11 @@ function renderPage() {
                             <div class="form-group-input-list">
                             ${formGroupHtml}
                             </div>
+                            <div class="error-message">${errorMessage}</div>
                         `;
 
                         formGroupHtml += `
-                            <div class="form-group" style="text-align:right">
+                            <div class="form-group form-group-btn-add">
                                 <span class="btn btn-add-multi-text-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}">+</span>
                             </div>
                         `;
@@ -364,6 +671,7 @@ function renderPage() {
                             <label>${question}</label>
                             <div class="form-group">
                                 <input type="text" value="${userAnswer}" class="fancy-dropdown" data-fd-options='${JSON.stringify(options)}' data-qIndex="${questionIndex}" data-id="${id}">
+                                <div class="error-message">${errorMessage}</div>
                             </div>
                         `;
                     }
@@ -400,24 +708,6 @@ function renderPage() {
                                 </div>
                             `;
                         }
-
-                        textListHtml = `
-                            <div class="form-group-input-list">
-                            ${textListHtml}
-                            </div>
-                        `;
-
-                        textListHtml += `
-                            <div class="form-group" style="text-align:right">
-                                <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}">+</span>
-                            </div>
-                        `;
-
-                        textListHtml = `
-                            <div class="form-group-input-list-wrap" style="${formGroupInputStyle}">
-                            ${textListHtml}
-                            </div>
-                        `
                     } else if (textCount) {
 
                         for(let tIndex = 0; tIndex < textCount; tIndex++) {
@@ -428,13 +718,31 @@ function renderPage() {
                             }
 
                             textListHtml += `
-                                <div class="form-group form-group-input" style="${formGroupInputStyle}">
+                                <div class="form-group form-group-input">
                                     <input type="text" class="inputbox text-option-input" data-qIndex="${questionIndex}" data-tIndex="${tIndex}" value="${textAnswer}">
                                 </div>
                             `;
                         }
                     }
 
+                    textListHtml = `
+                        <div class="form-group-input-list">
+                        ${textListHtml}
+                        </div>
+                    `;
+
+                    textListHtml += `
+                        <div class="form-group form-group-btn-add">
+                            <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}">+</span>
+                        </div>
+                    `;
+
+                    textListHtml = `
+                        <div class="form-group-input-list-wrap" style="${formGroupInputStyle}">
+                        ${textListHtml}
+                        </div>
+                    `;
+                    
                     if (options) {
 
                         for(let oIndex = 0; oIndex < options.length; oIndex++) {
@@ -469,6 +777,7 @@ function renderPage() {
                                 <label>${question}</label>
                                 ${textListHtml}${optionListHtml}
                             </div>
+                            <div class="error-message">${errorMessage}</div>
                         </div>
                     `;
                     
@@ -480,7 +789,7 @@ function renderPage() {
                         for(let oIndex = 0; oIndex < options.length; oIndex ++) {
                             let selected = '';
     
-                            if(userAnswer == oIndex) {
+                            if(parseInt(userAnswer) == oIndex) {
                                 selected = 'selected';
                             }
     
@@ -493,6 +802,7 @@ function renderPage() {
                             <div class="form-group">
                                 <label>${question}</label>
                                 <div class="image-select" data-qIndex="${questionIndex}" data-maxOptions="${maxOptions}">${optionsHtml}</div>
+                                <div class="error-message">${errorMessage}</div>
                             </div>
                         `;
                     }
@@ -543,6 +853,7 @@ function renderPage() {
                             <div class="form-group">
                                 <label>${question}</label>
                                 <div class="multiselect" data-qIndex="${questionIndex}" data-maxOptions="${maxOptions}" data-exclusive="${exclusiveIndex}" data-optionExclusives='${JSON.stringify(optionExclusives)}'>${optionsHtml}</div>
+                                <div class="error-message">${errorMessage}</div>
                             </div>
                         `;
 
@@ -588,13 +899,14 @@ function renderPage() {
                         formGroupHtml = `
                             <label>${question}</label>
                             <div class="options-group-container">${formGroupHtml}</div>
+                            <div class="error-message">${errorMessage}</div>
                         `;
                     }
                     
                 }
 
                 partsHtml += `
-                    <div class="form-group-container" data-id="${id}">${formGroupHtml}</div>
+                    <div class="form-group-container" data-id="${id}" data-type="${type}" data-qIndex="${questionIndex}">${formGroupHtml}</div>
                 `;
 
                 questionIndex ++;

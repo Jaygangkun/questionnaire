@@ -15,15 +15,20 @@ function isJson(data) {
 // image-select handler
 
 $(document).on('click', '.image-select-option', function() {
-    let qIndex = $(this).parent().attr('data-qIndex');
+    let qId = $(this).parents('.form-group-container').attr('data-id');
+
+    if (qId == 'null') {
+        qId = $(this).parents('.form-group-container').attr('data-qIndex');
+    }
+    
     let answer = $(this).attr('data-value');
 
-    $(this).parent().find('.image-select-option').removeClass('selected');
+    $(this).parents('.form-group-container').find('.image-select-option').removeClass('selected');
     $(this).addClass('selected');
 
     $(this).parents('.form-group-container').removeClass('error');
 
-    submitAnswer(qIndex, answer);
+    submitAnswer(qId, answer);
 })
 
 // multi-select hander
@@ -70,7 +75,7 @@ $(document).on('click', '.multiselect-option:not(.text-option-itself)', function
                 let mainExistInAnswers = curAnswers.filter((curAnswer) => curAnswer == main);
                 
                 if(mainExistInAnswers.length > 0) {
-                    let othersExistInAnswers = others.filter((other) => other == curAnswer);
+                    let othersExistInAnswers = others.filter((other) => other == answer);
 
                     if(othersExistInAnswers.length > 0) {
                         return;
@@ -92,6 +97,12 @@ $(document).on('click', '.multiselect-option:not(.text-option-itself)', function
         if (maxOptions == 'infinity' || curAnswers.length < maxOptions) {
             $(this).addClass('selected');
             curAnswers.push(answer);
+        }
+
+        if (maxOptions == 1) {
+            $(this).parents('.form-group-container').find('.multiselect-option').removeClass('selected');
+            $(this).addClass('selected');
+            curAnswers = [answer];
         }
     }
 
@@ -169,20 +180,20 @@ $(document).on('click', '.multiselect-option.text-option-itself', function() {
     submitAnswer(qIndex, curAnswers);
 })
 
-$(document).on('click', '.btn-add-text-option-input', function() {
+$(document).on('click', '.btn-add-text-option-input, .btn-add-multi-text-input', function() {
     let qIndex = $(this).attr('data-qIndex');
     let tIndex = $(this).parents('.form-group-input-list-wrap').find('.form-group-input').length;
     let maxCount = parseInt($(this).attr('data-maxCount'));
-
-    if(tIndex >= maxCount) {
-        return;
-    }
 
     $(this).parents('.form-group-input-list-wrap').find('.form-group-input-list').append(`
         <div class="form-group form-group-input">
             <input type="text" class="inputbox text-option-input" data-qindex="${qIndex}" data-tindex="${tIndex}" value="">
         </div>
     `);
+
+    if(tIndex >= (maxCount -1)) {
+        $(this).parent().hide();
+    }
 })
 
 // select handler
@@ -217,9 +228,14 @@ $(document).on('change', '.inputbox.single-input', function() {
 
 // multi-text handlers
 $(document).on('change', '.inputbox.multi-text-input', function() {
-    let qIndex = $(this).attr('data-qIndex');
+    let qId = $(this).parents('.form-group-container').attr('data-id');
+
+    if(qId == 'null') {
+        qId = $(this).attr('data-qIndex');
+    }
+    
     let tIndex = $(this).attr('data-tIndex');
-    let curAnswers = typeof userData[qIndex] == 'undefined' ? {} : userData[qIndex];
+    let curAnswers = typeof userData[qId] == 'undefined' ? {} : userData[qId];
 
     if($(this).val() == '') {
         delete curAnswers[tIndex];
@@ -235,24 +251,57 @@ $(document).on('change', '.inputbox.multi-text-input', function() {
         $(this).parents('.form-group-container').addClass('error');
     }
 
-    submitAnswer(qIndex, curAnswers);
+    submitAnswer(qId, curAnswers);
 })
 
-$(document).on('click', '.btn-add-multi-text-input', function() {
-    let qIndex = $(this).attr('data-qIndex');
-    let tIndex = $(this).parents('.form-group-input-list-wrap').find('.form-group-input').length;
-    let maxCount = parseInt($(this).attr('data-maxCount'));
+// custom handlers
 
-    if(tIndex >= maxCount) {
-        return;
+$(document).on('change', '[data-id="q_percent_ethnicity"] input', function(){
+    let inputs = $('[data-id="q_percent_ethnicity"] input');
+    let sum = 0;
+
+    for(let index = 0; index < inputs.length; index ++) {
+
+        if($(inputs[index]).val() != '') {
+            sum += parseFloat($(inputs[index]).val());
+        }
     }
 
-    $(this).parents('.form-group-input-list-wrap').find('.form-group-input-list').append(`
-        <div class="form-group form-group-input">
-            <input type="text" class="inputbox text-option-input" data-qindex="${qIndex}" data-tindex="${tIndex}" value="">
-        </div>
-    `);
+    if(Math.round(sum*100)/100 == 100.0) {
+        $(this).parents('.form-group-container').find('.error-message').text('This is required.');
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').find('.error-message').text('Sum must equal 100.');
+        $(this).parents('.form-group-container').addClass('error');
+    }
 })
+
+// alert handlers
+function setAlertMessage(message) {
+    $('#alert .alert-message').text(message);
+}
+
+function showAlert() {
+    $('#alert').removeClass('hide');
+}
+
+function hideAlert() {
+    $('#alert').addClass('hide');
+}
+
+$(document).on('click', '#alert_btn_ok', function() {
+    hideAlert();
+})
+
+// loader handlers
+function showLoader() {
+    $('#loader').removeClass('hide');
+}
+
+function hideLoader() {
+    $('#loader').addClass('hide');
+}
 
 function loadUserAnswers() {
     if (localStorage.getItem(LS_KEY)) {
@@ -284,35 +333,83 @@ $(document).on('answerUpdate', function(event, data) {
 
 $(document).on('click', '#btn_submit', function() {
     if(isValid()) {
-        getFullQAList();
-        alert('Sent');
+        showLoader();
+
+        $.ajax({
+            url: 'send-email.php',
+            type: 'post',
+            data: {
+                qa: JSON.stringify(getFullQAList()),
+                user_email: $('#user_email').val()
+            },
+            dataType: 'json',
+            success: function(resp) {
+                if (resp.success) {
+                    setAlertMessage('Email sent successfull!');
+                } else {
+                    setAlertMessage(resp.message);
+                }
+
+                hideLoader();
+                showAlert();
+            }
+        });
+    }
+    else {
+        let errorContainers = $('.form-group-container.error');
+        console.log('errorContainers:', errorContainers);
+        if(errorContainers.length > 0) {
+            $('html, body').animate({
+                scrollTop: $(errorContainers[0]).offset().top
+            });
+        }
     }
 })
 
 function setQuestionVisible(data) {
 
-    if (data['q_sex'] == 'Female') {
-        $('.form-group-container[data-id="q_hormonal_birth"]').removeClass('hide');
+    if (typeof data['q_sex'] != 'undefined') {
+        let q_sex = data['q_sex'][0];
 
-        $('.form-group-container[data-id="q_have_abortion"]').removeClass('hide');
-
-        $('.form-group-container[data-id="q_have_plan_b"]').removeClass('hide');
-
-        $('.form-group-container[data-id="q_conceive_child"]').removeClass('hide');
-    }
-    else {
-        $('.form-group-container[data-id="q_hormonal_birth"]').addClass('hide');
-
-        $('.form-group-container[data-id="q_have_abortion"]').addClass('hide');
-
-        $('.form-group-container[data-id="q_have_plan_b"]').addClass('hide');
-
-        $('.form-group-container[data-id="q_conceive_child"]').addClass('hide');
+        if (q_sex == 1) {
+            // Female
+            $('.form-group-container[data-id="q_hormonal_birth"]').removeClass('hide');
+    
+            $('.form-group-container[data-id="q_have_abortion"]').removeClass('hide');
+    
+            $('.form-group-container[data-id="q_have_plan_b"]').removeClass('hide');
+    
+            $('.form-group-container[data-id="q_conceive_child"]').removeClass('hide');
+    
+            $('.form-group-container[data-id="q_girl_type"]').removeClass('hide');
+        }
+        else {
+            $('.form-group-container[data-id="q_hormonal_birth"]').addClass('hide');
+    
+            $('.form-group-container[data-id="q_have_abortion"]').addClass('hide');
+    
+            $('.form-group-container[data-id="q_have_plan_b"]').addClass('hide');
+    
+            $('.form-group-container[data-id="q_conceive_child"]').addClass('hide');
+    
+            $('.form-group-container[data-id="q_girl_type"]').addClass('hide');
+        }
+    
+        if (q_sex == 0) {
+            // Male
+            $('.form-group-container[data-id="q_guy_type"]').removeClass('hide');
+        }
+        else {
+            $('.form-group-container[data-id="q_guy_type"]').addClass('hide');
+        }
+    
+        $('.form-group-container[data-id="q_body_type"').find('.image-select').addClass('hide');
+        $('.form-group-container[data-id="q_body_type"').find('.image-select[data-type="' + q_sex + '"]').removeClass('hide');
     }
 }
 
 function isValid() {
-    let questions = $('.form-group-container');
+    let questions = $('.form-group-container:not(.hide)');
     let isValid = true;
 
     for(let index = 0; index < questions.length; index ++) {
@@ -483,15 +580,29 @@ function getFullQAList() {
 
                 } else if (type == 'image-select') {
 
-                    if (options) {
+                    if (optionGroups) {
+                        let groupOptionsHtml = '';
+                        let gAnswerIndex = 0;
 
-                        if(userAnswer != '') {
-                            answers.push({
-                                'subText': '',
-                                'text': options[userAnswer]
-                            });
+                        for(let gIndex = 0; gIndex < optionGroups.length; gIndex ++) {
+                            let optionsHtml = '';
+                            let groupOptions = optionGroups[gIndex]['options'];
+                            let visibleClass = '';
+
+                            for(let oIndex = 0; oIndex < groupOptions.length; oIndex ++) {
+                                let selected = '';
+    
+                                if(parseInt(userAnswer) == gAnswerIndex) {
+                                    answers.push({
+                                        'subText': '',
+                                        'text': groupOptions[oIndex]
+                                    });
+                                }
+
+                                gAnswerIndex ++;
+                            }
+
                         }
-                        
                     }
                     
                 } else if (type == 'multi-select') {
@@ -535,6 +646,7 @@ function getFullQAList() {
                 if (answers.length > 0) {
                     qaList.push({
                         'question': parts[pIndex]['question'],
+                        'type': type,
                         'answers': answers
                     });
                 }
@@ -544,7 +656,8 @@ function getFullQAList() {
         }
     }
 
-    console.log(qaList);
+    console.log('qaList:', qaList);
+    return qaList;
 }
 
 function renderPage() {
@@ -566,6 +679,7 @@ function renderPage() {
                 let options = parts[pIndex]['options'] ? parts[pIndex]['options'] : null;
                 let id = parts[pIndex]['id'] ? parts[pIndex]['id'] : null;
                 let type = parts[pIndex]['type'];
+                let inputType = parts[pIndex]['inputType'] ? parts[pIndex]['inputType'] : 'text';
                 let width = parts[pIndex]['width'];
                 let height = parts[pIndex]['height'];
                 let maxOptions = parts[pIndex]['maxOptions'] ? parts[pIndex]['maxOptions'] : 1;
@@ -611,7 +725,7 @@ function renderPage() {
                             formGroupHtml += `
                                 <div class="form-group">
                                     <label>${inputGroups[gIndex]['title']}</label>
-                                    <input type="text" class="inputbox multi-text-input" data-qIndex="${questionIndex}" data-tIndex="${gIndex}" value="${answer}">
+                                    <input type="${inputType}" class="inputbox multi-text-input" data-qIndex="${questionIndex}" data-tIndex="${gIndex}" value="${answer}">
                                 </div>
                             `;
                         }
@@ -725,6 +839,12 @@ function renderPage() {
                         }
                     }
 
+                    let btnDisplayStyle = '';
+                    
+                    if (textCount >= textMaxCount) {
+                        btnDisplayStyle = 'display: none';
+                    }
+
                     textListHtml = `
                         <div class="form-group-input-list">
                         ${textListHtml}
@@ -732,8 +852,8 @@ function renderPage() {
                     `;
 
                     textListHtml += `
-                        <div class="form-group form-group-btn-add">
-                            <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}">+</span>
+                        <div class="form-group form-group-btn-add" style="${btnDisplayStyle}">
+                            <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}">+</span>
                         </div>
                     `;
 
@@ -782,26 +902,50 @@ function renderPage() {
                     `;
                     
                 } else if (type == 'image-select') {
+                    
+                    if (optionGroups) {
+                        let groupOptionsHtml = '';
+                        let gAnswerIndex = 0;
 
-                    if (options) {
-                        let optionsHtml = '';
+                        for(let gIndex = 0; gIndex < optionGroups.length; gIndex ++) {
+                            let optionsHtml = '';
+                            let groupOptions = optionGroups[gIndex]['options'];
+                            let visibleClass = '';
 
-                        for(let oIndex = 0; oIndex < options.length; oIndex ++) {
-                            let selected = '';
+                            for(let oIndex = 0; oIndex < groupOptions.length; oIndex ++) {
+                                let selected = '';
     
-                            if(parseInt(userAnswer) == oIndex) {
-                                selected = 'selected';
+                                if(parseInt(userAnswer) == gAnswerIndex) {
+                                    selected = 'selected';
+                                }
+        
+                                optionsHtml += `
+                                    <div class="image-select-option ${selected}" style="background-image:url(${groupOptions[oIndex]}); width: ${width}px; height: ${height}px" data-value="${gAnswerIndex}"></div>
+                                `;
+
+                                gAnswerIndex ++;
                             }
-    
-                            optionsHtml += `
-                                <div class="image-select-option ${selected}" style="background-image:url(${options[oIndex]}); width: ${width}px; height: ${height}px" data-value="${oIndex}"></div>
+
+                            if (id == 'q_body_type') {
+
+                                if (typeof userData['q_sex'] != 'undefined' && typeof optionGroups[gIndex]['type'] != 'undefined') {
+
+                                    if (userData['q_sex'][0] == optionGroups[gIndex]['type']) {
+                                        visibleClass = 'hide';
+                                    }
+                                }
+                            }
+
+                            groupOptionsHtml += `<div class="image-select ${visibleClass}" data-type="${optionGroups[gIndex]['type']}">
+                                    ${optionsHtml}
+                                </div>
                             `
                         }
-    
+
                         formGroupHtml = `
                             <div class="form-group">
                                 <label>${question}</label>
-                                <div class="image-select" data-qIndex="${questionIndex}" data-maxOptions="${maxOptions}">${optionsHtml}</div>
+                                <div class="image-select-group" data-qIndex="${questionIndex}" data-maxOptions="${maxOptions}">${groupOptionsHtml}</div>
                                 <div class="error-message">${errorMessage}</div>
                             </div>
                         `;

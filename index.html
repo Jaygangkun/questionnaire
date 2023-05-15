@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/custom-select.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/custom-select.js"></script>
-    <script type="text/javascript" src="/js/data.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom-select.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/custom-select.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
     <div class="container content-container">
@@ -74,8 +74,27 @@
             </div>
         </div>
         <div class="step-container">
+            <div class="form-group">
+                <label>Would you like to receive a copy of these answers? If so, please provide your email address here:</label>
+                <input type="text" class="inputbox single-input" id="user_email" value="">
+            </div>
+        </div>
+        <div class="step-container">
             <span class="btn disabled1" id="btn_submit">Submit</span>
         </div>
+    </div>
+    <div class="alert hide" id="alert">
+        <div class="alert-content">
+            <div class="alert-body">
+                <div class="alert-message">Success</div>
+            </div>
+            <div class="alert-foot">
+                <span class="btn btn-sm" id="alert_btn_ok">OK</span>
+            </div>
+        </div>
+    </div>
+    <div class="loader hide" id="loader">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
 </body>
 </html>

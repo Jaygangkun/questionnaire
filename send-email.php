@@ -19,38 +19,39 @@ foreach($qaList as $qa) {
 
     $answerTexts = [];
     foreach($answers as $answer) {
-        $answerTexts[] = $answer['text'];
+
+        if($answer['subText'] != '') {
+            $answerTexts[] = $answer['subText'].":".$answer['text'];    
+        }
+        else {
+            $answerTexts[] = $answer['text'];    
+        }
     }
 
-    if ($type == 'image-select') {
-        $qaHtml .= '<h3>'.$question.'</h3><img src="'.$siteURL.$answerTexts[0].'">';
-    }
-    else {
-        $qaHtml .= '<h3>'.$question.'</h3><p>'.implode(', ', $answerTexts).'</p>';
-    }
+    $qaHtml .= '<h3>'.$question.'</h3><p>'.implode(', ', $answerTexts).'</p>';
 }
-
-$to = 'jaygangkun@hotmail.com';
 
 $mail = new PHPMailer();
 
 $mail->IsSMTP();
-$mail->Host = 'smtp.fused.com';
-$mail->Username = 'contact@lovestory.ai';
-$mail->Password = 'JvpvVS6cKiW,';
+$mail->Host = 'mail.lovestory.ai';
+$mail->Username = 'noreply@lovestory.ai';
+$mail->Password = 'NoReply@43908349055980980345';
 $mail->Port = 587;
 
 $mail->SMTPAuth = true;
-$mail->SMTPSecure = 'ssl';
+$mail->SMTPSecure = 'tls';
 $mail->SMTPDebug  = 0;  
 
 $mail->isHTML();
 
-$mail->From = 'contact@lovestory.ai';
-$mail->FromName = 'Lovestory';
+$mail->From = 'noreply@lovestory.ai';
+$mail->FromName = 'Love Story Inc.';
 
 $mail->Subject = 'Lovestory QA';
 $mail->Body    = $qaHtml;
+
+$to = 'info@lovestory.ai';
 $mail->AddAddress($to);
 
 if(!$mail->Send()) {
@@ -60,6 +61,22 @@ if(!$mail->Send()) {
     ]);
     die;
 }
+
+if (isset($_POST['user_email']) && $_POST['user_email'] != '') {
+    $to = $_POST['user_email'];
+
+    $mail->AddAddress($to);
+
+    if(!$mail->Send()) {
+        echo json_encode([
+            'success' => false,
+            'message' => $mail->ErrorInfo
+        ]);
+        die;
+    }
+}
+
+
 
 echo json_encode([
     'success' => true

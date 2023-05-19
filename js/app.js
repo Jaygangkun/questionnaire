@@ -22,13 +22,41 @@ $(document).on('click', '.image-select-option', function() {
     }
     
     let answer = $(this).attr('data-value');
+    let maxOptions = parseInt($(this).parents('.image-select-group').attr('data-maxoptions'));
 
-    $(this).parents('.form-group-container').find('.image-select-option').removeClass('selected');
-    $(this).addClass('selected');
+    let curAnswers = typeof userData[qId] == 'undefined' ? [] : userData[qId];
+    
+    if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+        curAnswers = curAnswers.filter((curAnswer) => curAnswer != answer);
+    }
+    else {
 
-    $(this).parents('.form-group-container').removeClass('error');
+        if (maxOptions == 'infinity' || curAnswers.length < maxOptions) {
+            $(this).addClass('selected');
+            curAnswers.push(answer);
+        }
 
-    submitAnswer(qId, answer);
+        if (maxOptions == 1) {
+            $(this).parents('.form-group-container').find('.image-select-option').removeClass('selected');
+            $(this).addClass('selected');
+            curAnswers = [answer];
+        }
+    }
+
+    if (curAnswers.length == 0) {
+        $(this).parents('.form-group-container').addClass('error');
+    }
+    else {
+        $(this).parents('.form-group-container').removeClass('error');
+    }
+
+    // $(this).parents('.form-group-container').find('.image-select-option').removeClass('selected');
+    // $(this).addClass('selected');
+
+    // $(this).parents('.form-group-container').removeClass('error');
+
+    submitAnswer(qId, curAnswers);
 })
 
 // multi-select hander
@@ -324,11 +352,15 @@ function submitAnswer(qIndex, answer) {
     
     saveUserAnswers();
 
-    $(document).trigger('answerUpdate', { userData })
+    $(document).trigger('answerUpdate', { qIndex, userData })
 }
 
 $(document).on('answerUpdate', function(event, data) {
-    setQuestionVisible(data['userData']);
+    
+    if (data['qIndex'] == 'q_sex' || data['qIndex'] == 'q_sexual_orientation') {
+        setQuestionVisible(data['userData']);
+    }
+    
 })
 
 $(document).on('click', '#btn_submit', function() {
@@ -405,6 +437,57 @@ function setQuestionVisible(data) {
     
         $('.form-group-container[data-id="q_body_type"').find('.image-select').addClass('hide');
         $('.form-group-container[data-id="q_body_type"').find('.image-select[data-type="' + q_sex + '"]').removeClass('hide');
+
+
+        if (q_sex == 2) {
+            // If Sex = "Intersex" display images M1-20, F1-20, I1-20.
+
+            $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').removeClass('hide');
+        }
+
+        if (typeof data['q_sexual_orientation'] != 'undefined') {
+            let q_sexual_orientation = data['q_sexual_orientation'][0];
+
+            if (q_sex == 0 && q_sexual_orientation == 0) {
+                // If Sex = "Male" and Orientation = "Straight" display images F1-20.
+
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').addClass('hide');
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select[data-type="1"]').removeClass('hide');
+            }
+
+            if (q_sex == 0 && q_sexual_orientation == 1) {
+                // If Sex = "Male" and Orientation = "Homosexual" display images M1-20.
+
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').addClass('hide');
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select[data-type="0"]').removeClass('hide');
+            }
+
+            if (q_sex == 0 && (q_sexual_orientation == 2 || q_sexual_orientation == 3 || q_sexual_orientation == 4 || q_sexual_orientation == 5 || q_sexual_orientation == 6)) {
+                // If Sex = "Male" and Orientation = "Bisexual", "Pansexual", "Asexual", "Queer", or "Other" display images M1-20, F1-20, I1-20.
+
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').removeClass('hide');
+            }
+
+            if (q_sex == 1 && q_sexual_orientation == 0) {
+                // If Sex = "Female" and Orientation = "Straight" display images M1-20.
+
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').addClass('hide');
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select[data-type="0"]').removeClass('hide');
+            }
+
+            if (q_sex == 1 && q_sexual_orientation == 1) {
+                // If Sex = "Female" and Orientation = "Homosexual" display images F1-20.
+
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').addClass('hide');
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select[data-type="1"]').removeClass('hide');
+            }
+
+            if (q_sex == 0 && (q_sexual_orientation == 2 || q_sexual_orientation == 3 || q_sexual_orientation == 4 || q_sexual_orientation == 5 || q_sexual_orientation == 6)) {
+                // If Sex = "Female" and Orientation = "Bisexual", "Pansexual", "Asexual", "Queer", or "Other" display images M1-20, F1-20, I1-20.
+
+                $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').removeClass('hide');
+            }
+        }
     }
 }
 
@@ -434,6 +517,11 @@ function isValid() {
                 else {
                     $(questions[index]).removeClass('error');
                 }
+
+                if (qId == 'q_body_type_attracted' && $(questions[index]).find('.image-select-option.selected').parent().hasClass('hide')) {
+                    $(questions[index]).addClass('error');
+                    isValid = false;
+                }
             }
         }
     }
@@ -461,6 +549,7 @@ function getFullQAList() {
                 let textCount = parts[pIndex]['textCount'] ? parts[pIndex]['textCount'] : null;
                 let textMinCount = parts[pIndex]['textMinCount'] ? parts[pIndex]['textMinCount'] : 5;
                 let inputGroups = parts[pIndex]['inputGroups'] ? parts[pIndex]['inputGroups'] : null;
+                let answerIncludeSubTitle = parts[pIndex]['answerIncludeSubTitle'] ? parts[pIndex]['answerIncludeSubTitle'] : null;
 
                 let userAnswer = '';
 
@@ -581,25 +670,25 @@ function getFullQAList() {
                 } else if (type == 'image-select') {
 
                     if (optionGroups) {
-                        let groupOptionsHtml = '';
-                        let gAnswerIndex = 0;
 
                         for(let gIndex = 0; gIndex < optionGroups.length; gIndex ++) {
-                            let optionsHtml = '';
                             let groupOptions = optionGroups[gIndex]['options'];
-                            let visibleClass = '';
 
                             for(let oIndex = 0; oIndex < groupOptions.length; oIndex ++) {
-                                let selected = '';
+                                let value = '';
     
-                                if(parseInt(userAnswer) == gAnswerIndex) {
-                                    answers.push({
-                                        'subText': '',
-                                        'text': groupOptions[oIndex]
-                                    });
+                                if (optionGroups[gIndex]['valuePrefix']) {
+                                    value = optionGroups[gIndex]['valuePrefix'] + (oIndex + 1);
                                 }
 
-                                gAnswerIndex ++;
+                                if (value) {
+                                    if (userAnswer.includes(value)) {
+                                        answers.push({
+                                            'subText': '',
+                                            'text': value
+                                        });
+                                    }
+                                }
                             }
 
                         }
@@ -630,10 +719,19 @@ function getFullQAList() {
                             for(let oIndex = 0; oIndex < groupOptions.length; oIndex ++) {
     
                                 if(userAnswer != '' && userAnswer.filter((answer) => answer == answerIndex).length) {
-                                    answers.push({
-                                        'subText': groupTitle,
-                                        'text': groupOptions[oIndex]
-                                    })
+
+                                    if (answerIncludeSubTitle) {
+                                        answers.push({
+                                            'subText': groupTitle,
+                                            'text': groupOptions[oIndex]
+                                        })
+                                    }
+                                    else {
+                                        answers.push({
+                                            'subText': '',
+                                            'text': groupOptions[oIndex]
+                                        })
+                                    }
                                 }
 
                                 answerIndex ++;
@@ -913,14 +1011,25 @@ function renderPage() {
                             let visibleClass = '';
 
                             for(let oIndex = 0; oIndex < groupOptions.length; oIndex ++) {
+                                let value = null;
                                 let selected = '';
     
-                                if(parseInt(userAnswer) == gAnswerIndex) {
-                                    selected = 'selected';
+                                // if(parseInt(userAnswer) == gAnswerIndex) {
+                                //     selected = 'selected';
+                                // }
+
+                                if (optionGroups[gIndex]['valuePrefix']) {
+                                    value = optionGroups[gIndex]['valuePrefix'] + (oIndex + 1);
+                                }
+
+                                if (value) {
+                                    if (userAnswer.includes(value)) {
+                                        selected = 'selected';
+                                    }
                                 }
         
                                 optionsHtml += `
-                                    <div class="image-select-option ${selected}" style="background-image:url(${groupOptions[oIndex]}); width: ${width}px; height: ${height}px" data-value="${gAnswerIndex}"></div>
+                                    <div class="image-select-option ${selected}" data-value="${value}" style="background-image:url(${groupOptions[oIndex]}); width: ${width}px; height: ${height}px" data-value="${gAnswerIndex}"></div>
                                 `;
 
                                 gAnswerIndex ++;
@@ -932,6 +1041,74 @@ function renderPage() {
 
                                     if (userData['q_sex'][0] == optionGroups[gIndex]['type']) {
                                         visibleClass = 'hide';
+                                    }
+                                }
+                            }
+
+                            if (id == 'q_body_type_attracted') {
+                                if (typeof userData['q_sex'] != 'undefined' && typeof optionGroups[gIndex]['type'] != 'undefined') {
+
+                                    if (typeof userData['q_sexual_orientation'] != 'undefined') {
+
+                                        if (userData['q_sex'] == 0 && userData['q_sexual_orientation'] == 0) {
+                                            // If Sex = "Male" and Orientation = "Straight" display images F1-20.
+                            
+                                            if (optionGroups[gIndex]['type'] == '1') {
+                                                visibleClass = '';
+                                            }
+                                            else {
+                                                visibleClass = 'hide';
+                                            }
+                                        }
+                            
+                                        if (userData['q_sex'] == 0 && userData['q_sexual_orientation'] == 1) {
+                                            // If Sex = "Male" and Orientation = "Homosexual" display images M1-20.
+                            
+                                            if (optionGroups[gIndex]['type'] == '0') {
+                                                visibleClass = '';
+                                            }
+                                            else {
+                                                visibleClass = 'hide';
+                                            }
+                                        }
+                            
+                                        if (userData['q_sex'] == 0 && (userData['q_sexual_orientation'] == 2 || userData['q_sexual_orientation'] == 3 || userData['q_sexual_orientation'] == 4 || userData['q_sexual_orientation'] == 5 || userData['q_sexual_orientation'] == 6)) {
+                                            // If Sex = "Male" and Orientation = "Bisexual", "Pansexual", "Asexual", "Queer", or "Other" display images M1-20, F1-20, I1-20.
+                            
+                                            visibleClass = '';
+                                        }
+                            
+                                        if (userData['q_sex'] == 1 && userData['q_sexual_orientation'] == 0) {
+                                            // If Sex = "Female" and Orientation = "Straight" display images M1-20.
+                            
+                                            if (optionGroups[gIndex]['type'] == '0') {
+                                                visibleClass = '';
+                                            }
+                                            else {
+                                                visibleClass = 'hide';
+                                            }
+                                        }
+                            
+                                        if (userData['q_sex'] == 1 && userData['q_sexual_orientation'] == 1) {
+                                            // If Sex = "Female" and Orientation = "Homosexual" display images F1-20.
+                            
+                                            if (optionGroups[gIndex]['type'] == '1') {
+                                                visibleClass = '';
+                                            }
+                                            else {
+                                                visibleClass = 'hide';
+                                            }
+                                        }
+                            
+                                        if (userData['q_sex'] == 0 && (userData['q_sexual_orientation'] == 2 || userData['q_sexual_orientation'] == 3 || userData['q_sexual_orientation'] == 4 || userData['q_sexual_orientation'] == 5 || userData['q_sexual_orientation'] == 6)) {
+                                            // If Sex = "Female" and Orientation = "Bisexual", "Pansexual", "Asexual", "Queer", or "Other" display images M1-20, F1-20, I1-20.
+                            
+                                            visibleClass = '';
+                                        }
+                                    }
+
+                                    if (userData['q_sex'] == 2) {
+                                        visibleClass = '';
                                     }
                                 }
                             }

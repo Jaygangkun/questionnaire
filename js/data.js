@@ -69,15 +69,18 @@ const questionnareData = [
                         'question': "What is your body type? (Minimum 1; Maximum 1)",
                         'optionGroups': [
                             {
-                                'type': '0', // Male
+                                'type': '0', // Male,
+                                'valuePrefix': 'M',
                                 'options': ["img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png"]
                             },
                             {
                                 'type': '1', // Female
+                                'valuePrefix': 'F',
                                 'options': ["img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png"]
                             },
                             {
                                 'type': '2', // Intersex
+                                'valuePrefix': 'I',
                                 'options': ["img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png"]
                             }
                         ],
@@ -284,7 +287,7 @@ const questionnareData = [
                 'parts': [
                     {
                         'question': "How would you describe your sense of humor? (Minimum 1; Maximum 1)",
-                        'options': ["Dark", "Sarcastic", "Slapstick", "Witty", "Self-deprecating", "Punny", "Observational", "Deadpan", "None", "Other"],
+                        'options': ["Dark", "Sarcastic", "Slapstick", "Witty", "Self-deprecating", "Punny", "Observational", "Deadpan", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -349,10 +352,10 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "What self-care practices do you regularly engage in? (Minimum 1; Maximum 1)",
+                        'question': "What self-care practices do you regularly engage in? (Minimum 1; Maximum 3)",
                         'options': ["Exercise", "Healthy eating", "Meditation", "Therapy", "Journaling", "Hobbies", "Relaxation techniques", "Spending time with loved ones", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 3,
                     },
                     {
                         'question': "How often do you practice mindfulness or meditation? (Minimum 1; Maximum 1)",
@@ -568,7 +571,7 @@ const questionnareData = [
                     },
                     {
                         'question': "How many times do you cry each year, on average? (Minimum 1; Maximum 1)",
-                        'options': ["0-5 times", "6-10 times", "11-20 times", "21-30 times", "31-50 times", "50+ timess"],
+                        'options': ["0-5 times", "6-10 times", "11-20 times", "21-30 times", "31-50 times", "50+ times"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -782,7 +785,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your beliefs about death and the afterlife? (Minimum 1; Maximum 1)",
-                        'options': ["Heaven and/or hell (eternal reward and/or punishment)", "Spiritual realm (existence in a non-physical form)", "Reincarnation (returning to life in a new form)", "Nothingness (cessation of consciousness)", "ancestral realm (joining ancestors in a different realm)", "Unsure or agnostic", "Other"],
+                        'options': ["Heaven and/or hell (eternal reward and/or punishment)", "Spiritual realm (existence in a non-physical form)", "Reincarnation (returning to life in a new form)", "Nothingness (cessation of consciousness)", "Ancestral realm (joining ancestors in a different realm)", "Unsure or agnostic", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -973,7 +976,7 @@ const questionnareData = [
                                 'options': ["Aboriginal Australian", "Carolinian (e.g., Northern Mariana Islands)", "Chamorro (e.g., Guam, Northern Mariana Islands)", "Chuukese (e.g., Chuuk)", "Cook Islander (e.g., Cook Islands)", "Fijian", "Hawaiian", "I-Kiribati (e.g., Kiribati)", "Kanaka Maoli (Native Hawaiian)", "Maori (e.g., New Zealand)", "Marshallese (e.g., Marshall Islands)", "Micronesian", "Ni-Vanuatu (e.g., Vanuatu)", "Niuean (e.g., Niue)", "Palauan (e.g., Palau)", "Papua New Guinean", "Polynesian (e.g., Samoan, Tongan, Tokelauan)", "Pohnpeian (e.g., Pohnpei)", "Rotuman (e.g., Rotuma)", "Solomon Islander (e.g., Solomon Islands)", "Tahitian", "Tokelauan (e.g., Tokelau)", "Tongan", "Tuvaluan (e.g., Tuvalu)", "Yapese (e.g., Micronesian)"]
                             },
                             {
-                                "title": 'Other',
+                                "title": '',
                                 'options': ["None"]
                             }
                         ],
@@ -999,10 +1002,11 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "Which cultural or religious celebrations do you partake in? (Minimum 1; Maximum 1)",
+                        'question': "Which cultural or religious celebrations do you partake in? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Christmas", "Diwali", "Easter", "Eid al-Fitr", "Hanukkah", "Holi", "Kwanzaa", "Lunar New Year", "Passover", "Thanksgiving", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -1035,7 +1039,7 @@ const questionnareData = [
                         'maxOptions': 2
                     },
                     {
-                        'question': "What are your minor(s)? (Minimum 1; Maximum 2) (Cannot select both \"None\" and other options)",
+                        'question': "What are your minor(s)? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'options': ["Accounting", "Actuarial Science", "Aerospace Engineering", "African-American Studies", "Agricultural Engineering", "Agriculture", "American Studies", "Animal Science", "Anthropology", "Applied Mathematics", "Architectural Engineering", "Architecture", "Art History", "Asian Studies", "Astrophysics", "Biochemistry", "Biology", "Biomedical Engineering", "Biophysics", "Business Administration", "Chemical Engineering", "Chemistry", "Civil Engineering", "Classics", "Cognitive Science", "Communication", "Comparative Literature", "Computer Engineering", "Computer Science", "Creative Writing", "Criminal Justice", "Dance", "Data Science", "Earth Science", "Ecology", "Economics", "Education", "Electrical Engineering", "Engineering Management", "English", "Environmental Engineering", "Environmental Science", "Ethnic Studies", "Film Studies", "Finance", "Fine Arts", "Food Science", "Forensic Science", "French", "Gender Studies", "Genetics", "Geography", "Geological Engineering", "Geology", "German", "Graphic Design", "Health Sciences", "History", "Hospitality Management", "Human Resources", "Industrial Engineering", "Information Systems", "International Business", "International Relations", "Italian", "Japanese", "Journalism", "Kinesiology", "Landscape Architecture", "Latin American Studies", "Linguistics", "Management Information Systems", "Marine Biology", "Marketing", "Materials Science", "Mathematics", "Mechanical Engineering", "Media Studies", "Meteorology", "Microbiology", "Middle Eastern Studies", "Molecular Biology", "Music", "Neuroscience", "Nursing", "Nutrition", "Oceanography", "Operations Management", "Petroleum Engineering", "Pharmaceutical Sciences", "Philosophy", "Photography", "Physical Education", "Physics", "Political Science", "Psychology", "Public Health", "Public Relations", "Religious Studies", "Russian", "Social Work", "Sociology", "Software Engineering", "Spanish", "Special Education", "Sports Management", "Statistics", "Studio Art", "Supply Chain Management", "Theatre", "Urban Planning", "Women&#x2032;s Studies", "Zoology", "Undecided", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 3,
@@ -1109,7 +1113,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What is your preferred learning style? (Minimum 1; Maximum 1)",
-                        'options': ["Visual (learning through images, diagrams, or videos)", "Auditory (learning through listening or speaking)", "Kinesthetic (learning through physical activities or hands-on experience)", "Reading/writing (learning through written text)", "a combination of styles", "It varies depending on the subject", "Not sure"],
+                        'options': ["Visual (learning through images, diagrams, or videos)", "Auditory (learning through listening or speaking)", "Kinesthetic (learning through physical activities or hands-on experience)", "Reading/writing (learning through written text)", "A combination of styles", "It varies depending on the subject", "Not sure"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -1202,7 +1206,7 @@ const questionnareData = [
                     },
                     {
                         'question': "Which curse words do you tend to use most frequently, if any? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Ass", "Assclown", "Asshat", "Asshole", "Badass", "Bastard", "Bitch", "Bloody", "Bullshit", "Cock", "Crap", "Cunt", "Damn", "Dick", "Dickhead", "Dipshit", "Douche", "Douchebag", "Fuck", "Hell", "Moron", "Motherfucker", "Prick", "Pussy", "Scum", "Shit", "Shithead", "Slut", "Son of a bitch", "Twat", "Whore", "None", "Other"],
+                        'options': ["Ass", "Assclown", "Asshat", "Asshole", "Badass", "Bastard", "Bitch", "Bloody", "Bullshit", "Cock", "Crap", "Cunt", "Damn", "Dick", "Dickhead", "Dipshit", "Douche", "Douchebag", "Fuck", "Hell", "Moron", "Motherfucker", "Prick", "Pussy", "Scum", "Shit", "Shithead", "Slut", "Son of a bitch", "Twat", "Whore", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 3,
                         'exclusive': 'None',
@@ -1536,7 +1540,7 @@ const questionnareData = [
                     },
                     {
                         'question': "How often do you engage with local groups, organizations, and events? (Minimum 1; Maximum 1)",
-                        'options': ["Weekly", "Monthly", "A few times a year", "Once a year", "ever"],
+                        'options': ["Weekly", "Monthly", "A few times a year", "Once a year", "Never"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -1635,10 +1639,10 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "What do you expect from your friends? (Minimum 1; Maximum 1)",
+                        'question': "What do you expect from your friends? (Minimum 1; Maximum 2)",
                         'options': ["Loyalty and trustworthiness", "Emotional support", "Shared interests and hobbies", "Intellectual stimulation", "A sense of adventure", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 2,
                     },
                     {
                         'question': "How do you feel about merging social circles with your partner? (Minimum 1; Maximum 1)",
@@ -1717,10 +1721,10 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "Which social media platforms do you use most frequently? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'question': "Which social media platforms do you use most frequently? (Minimum 1; Maximum 5) (Cannot select both \"None\" and other options)",
                         'options': ["Facebook", "Instagram", "Twitter", "Snapchat", "TikTok", "LinkedIn", "Pinterest", "Reddit", "YouTube", "Twitch", "Discord", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3,
+                        'maxOptions': 5,
                         'exclusive': 'None',
                     },
                     {
@@ -2113,10 +2117,10 @@ const questionnareData = [
                 'title': 'Hobbies, Interests & Leisure',
                 'parts': [
                     {
-                        'question': "How do you prefer to spend your leisure time? (Minimum 1; Maximum 1)",
+                        'question': "How do you prefer to spend your leisure time? (Minimum 1; Maximum 5)",
                         'options': ["Reading", "Watching movies/television", "Playing video games", "Outdoor activities", "Sports", "Socializing", "Cooking", "Traveling", "Crafting", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 5,
                     },
                     {
                         'question': "How important is relaxation and downtime in your life? (Minimum 1; Maximum 1)",
@@ -2314,7 +2318,7 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "Which countries have you visited for more than 5 days? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'question': "Which countries have you visited for more than 3 days? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. \"Swaziland\")", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity',
@@ -2328,33 +2332,38 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "What are the top 10 countries you would you like to visit next? (Minimum 1; Maximum 10) (Cannot select both \"None\" and other options)",
+                        'question': "What are the top 10 countries you would you like to visit next? (Minimum 1; Maximum 25) (Cannot select both \"None\" and other options)",
                         'options': ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. \"Swaziland\")", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 10,
+                        'maxOptions': 25,
                         'exclusive': 'None'
                     },
                     {
-                        'question': "What are your favorite types of destinations to visit? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'question': "What are your favorite types of destinations to visit? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Beaches", "Tropical islands", "Lakes and rivers", "Mountains", "Forests", "National parks", "Wildlife reserves", "Nature trails and hiking paths", "Deserts", "Cities", "Small towns", "Countrysides", "Historical sites", "Ancient ruins", "Castles and palaces", "Museums", "Art galleries", "Science centers and planetariums", "Theme parks", "Adventure parks", "Zoos and aquariums", "Religious sites and places of worship", "Gardens and parks", "Roadside attractions", "Sports events and stadiums", "Golf courses and country clubs", "Music festivals", "Nightclubs and entertainment districts", "Movie theaters and live performance venues", "Food markets and street food venues", "Wineries and vineyards", "Shopping districts", "Cruise ships", "Ski resorts", "Spa and wellness retreats", "Campgrounds", "Farm stays and agritourism", "Bed and breakfasts and inns", "Libraries and bookstores", "Casinos and gaming venues", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3,
+                        'maxOptions': 'infinity',
                         'exclusive': 'None',
                     },
                     {
-                        'question': "What are your top 3 favorite airlines? (Minimum 1; Maximum 3)",
+                        'question': "What are your top 3 favorite airlines? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'optionGroups': [
                             {
                                 "title": 'U.S. Airlines',
-                                'options': ["Alaska Airlines", "Allegiant Air", "American Airlines", "Delta Air Lines", "Frontier Airlines", "Hawaiian Airlines", "JetBlue Airways", "Southwest Airlines", "Spirit Airlines", "Sun Country Airlines", "United Airlines", "Other", "None"]
+                                'options': ["Alaska Airlines", "Allegiant Air", "American Airlines", "Delta Air Lines", "Frontier Airlines", "Hawaiian Airlines", "JetBlue Airways", "Southwest Airlines", "Spirit Airlines", "Sun Country Airlines", "United Airlines", "Other"]
                             },
                             {
                                 "title": 'Foreign Airlines',
-                                'options': ["Aer Lingus (Ireland)", "Aeroflot (Russia)", "Aeromexico (Mexico)", "Air Canada (Canada)", "Air China (China)", "Air France (France)", "Air India (India)", "Air New Zealand (New Zealand)", "Alitalia (Italy)", "All Nippon Airways (ANA) (Japan)", "Asiana Airlines (South Korea)", "Austrian Airlines (Austria)", "Avianca (Colombia)", "British Airways (UK)", "Cathay Pacific (Hong Kong)", "China Airlines (Taiwan)", "China Southern Airlines (China)", "Copa Airlines (Panama)", "EgyptAir (Egypt)", "Emirates (UAE)", "Ethiopian Airlines (Ethiopia)", "Etihad Airways (UAE)", "EVA Air (Taiwan)", "Finnair (Finland)", "Fiji Airways (Fiji)", "Iberia (Spain)", "Icelandair (Iceland)", "Japan Airlines (Japan)", "Kenya Airways (Kenya)", "KLM Royal Dutch Airlines (Netherlands)", "Korean Air (South Korea)", "LATAM Airlines (Chile)", "Lufthansa (Germany)", "Malaysia Airlines (Malaysia)", "Philippine Airlines (Philippines)", "Qantas (Australia)", "Qatar Airways (Qatar)", "Royal Air Maroc (Morocco)", "Royal Jordanian (Jordan)", "SAS Scandinavian Airlines (Sweden, Norway, Denmark)", "Singapore Airlines (Singapore)", "South African Airways (South Africa)", "Swiss International Air Lines (Switzerland)", "TAP Air Portugal (Portugal)", "Thai Airways (Thailand)", "Turkish Airlines (Turkey)", "Virgin Atlantic (UK)", "WestJet (Canada)", "Wizz Air (Hungary)", "Oman Air (Oman)", "Azul Brazilian Airlines (Brazil)", "Air Mauritius (Mauritius)", "Air Tahiti Nui (French Polynesia)", "Air Europa (Spain)", "Air Astana (Kazakhstan)", "RwandAir (Rwanda)", "Vueling (Spain)", "Caribbean Airlines (Trinidad and Tobago)", "Air Baltic (Latvia)", "Other", "None"]
+                                'options': ["Aer Lingus (Ireland)", "Aeroflot (Russia)", "Aeromexico (Mexico)", "Air Canada (Canada)", "Air China (China)", "Air France (France)", "Air India (India)", "Air New Zealand (New Zealand)", "Alitalia (Italy)", "All Nippon Airways (ANA) (Japan)", "Asiana Airlines (South Korea)", "Austrian Airlines (Austria)", "Avianca (Colombia)", "British Airways (UK)", "Cathay Pacific (Hong Kong)", "China Airlines (Taiwan)", "China Southern Airlines (China)", "Copa Airlines (Panama)", "EgyptAir (Egypt)", "Emirates (UAE)", "Ethiopian Airlines (Ethiopia)", "Etihad Airways (UAE)", "EVA Air (Taiwan)", "Finnair (Finland)", "Fiji Airways (Fiji)", "Iberia (Spain)", "Icelandair (Iceland)", "Japan Airlines (Japan)", "Kenya Airways (Kenya)", "KLM Royal Dutch Airlines (Netherlands)", "Korean Air (South Korea)", "LATAM Airlines (Chile)", "Lufthansa (Germany)", "Malaysia Airlines (Malaysia)", "Philippine Airlines (Philippines)", "Qantas (Australia)", "Qatar Airways (Qatar)", "Royal Air Maroc (Morocco)", "Royal Jordanian (Jordan)", "SAS Scandinavian Airlines (Sweden, Norway, Denmark)", "Singapore Airlines (Singapore)", "South African Airways (South Africa)", "Swiss International Air Lines (Switzerland)", "TAP Air Portugal (Portugal)", "Thai Airways (Thailand)", "Turkish Airlines (Turkey)", "Virgin Atlantic (UK)", "WestJet (Canada)", "Wizz Air (Hungary)", "Oman Air (Oman)", "Azul Brazilian Airlines (Brazil)", "Air Mauritius (Mauritius)", "Air Tahiti Nui (French Polynesia)", "Air Europa (Spain)", "Air Astana (Kazakhstan)", "RwandAir (Rwanda)", "Vueling (Spain)", "Caribbean Airlines (Trinidad and Tobago)", "Air Baltic (Latvia)", "Other"]
+                            },
+                            {
+                                'title': '',
+                                'options': ["None"]
                             }
                         ],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     }
                 ]
             }
@@ -2367,10 +2376,10 @@ const questionnareData = [
                 'title': 'Living Location Preferences',
                 'parts': [
                     {
-                        'question': "What type of living environment do you prefer? (Minimum 1; Maximum 1)",
-                        'options': ["Urban city center", "Suburban neighborhood", "Small town", "Rural countryside", "Coastal community", "Mountainous area", "Other", "None or open to various living environments"],
+                        'question': "What type of living environments do you prefer? (Minimum 1; Maximum 3)",
+                        'options': ["Urban city center", "Suburban neighborhood", "Small town", "Rural countryside", "Coastal community", "Mountainous area", "Other", "Open to various living environments or none"],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 3,
                     },
                     {
                         'question': "When choosing a place to live, what factors are most important to you? (Minimum 1; Maximum 3)",
@@ -2482,7 +2491,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your top 3 favorite Disney movies? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
-                        'options': ["Alice in Wonderland", "Aladdin", "Atlantis: The Lost Empire", "Avengers: Endgame", "Bambi", "Beauty and the Beast", "Big Hero 6", "Black Is King", "Black Panther", "Brave", "Cars", "Cinderella", "Coco", "Enchanted", "Encanto", "Emperor&#x2032;s New Groove", "Fantasia", "Finding Dory", "Finding Nemo", "Frozen", "Hercules", "Honey, I Shrunk the Kids", "Homeward Bound", "Inside Out", "Lilo & Stitch", "Maleficent", "Mary Poppins", "Moana", "Monsters, Inc.", "Mulan", "Old Yeller", "One Hundred and One Dalmatians", "Pocahontas", "Pinocchio", "Pirates of the Caribbean", "Queen of Katwe", "Raya and the Last Dragon", "Ratatouille", "Remember the Titans", "Robin Hood", "Sleeping Beauty", "Snow White and the Seven Dwarfs", "Star Wars", "Strange World", "Tangled", "Tarzan", "The Aristocats", "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", "The Fox and the Hound", "The Hunchback of Notre Dame", "The Incredibles", "The Jungle Book", "The Lion King", "The Little Mermaid", "The Mighty Ducks", "The Muppets", "The Nightmare Before Christmas", "The Parent Trap", "The Princess and the Frog", "The Jungle Book", "Treasure Planet", "Up", "WALL-E", "Wreck-It Ralph", "Who Framed Roger Rabbit", "Zootopia", "Other", "None"],
+                        'options': ["Alice in Wonderland", "Aladdin", "Atlantis: The Lost Empire", "Avengers: Endgame", "Bambi", "Beauty and the Beast", "Big Hero 6", "Black Is King", "Black Panther", "Brave", "Cars", "Cinderella", "Coco", "Enchanted", "Encanto", "Emperor&#x2032;s New Groove", "Fantasia", "Finding Dory", "Finding Nemo", "Frozen", "Hercules", "Honey, I Shrunk the Kids", "Homeward Bound", "Inside Out", "Lilo & Stitch", "Maleficent", "Mary Poppins", "Moana", "Monsters, Inc.", "Mulan", "Old Yeller", "One Hundred and One Dalmatians", "Pocahontas", "Pinocchio", "Pirates of the Caribbean", "Queen of Katwe", "Raya and the Last Dragon", "Ratatouille", "Remember the Titans", "Robin Hood", "Sleeping Beauty", "Snow White and the Seven Dwarfs", "Strange World", "Tangled", "Tarzan", "The Aristocats", "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe", "The Fox and the Hound", "The Hunchback of Notre Dame", "The Incredibles", "The Jungle Book", "The Lion King", "The Little Mermaid", "The Mighty Ducks", "The Muppets", "The Nightmare Before Christmas", "The Parent Trap", "The Princess and the Frog", "The Jungle Book", "Treasure Planet", "Up", "WALL-E", "Wreck-It Ralph", "Who Framed Roger Rabbit", "Zootopia", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 3,
                         'exclusive': 'None'
@@ -2547,7 +2556,7 @@ const questionnareData = [
                     },
                     {
                         'question': "How do you prefer to consume movies and TV shows? (Minimum 1; Maximum 2) (Cannot select both \"None\" and other options)",
-                        'options': ["Streaming services (e.g., Netflix, Hulu)", "Live TV", "Physical media (e.g., DVDs, Blu-rays)", "Movie theaters", "Downloading", "Other", "None"],
+                        'options': ["Streaming services (e.g., Netflix, Hulu)", "Live TV", "Physical media (e.g., DVDs, Blu-rays)", "Movie theaters", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 2,
                         'exclusive': 'None'
@@ -2645,7 +2654,7 @@ const questionnareData = [
                     },
                     {
                         'question': "How many days a week do you usually go to the gym or work out? (Minimum 1; Maximum 1)",
-                        'options': ["Every day", "5-6 days", "3-4 days", "1-2 days", "Never"],
+                        'options': ["Every day", "5-6 days", "3-4 days", "1-2 days", "Rarely or never"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -2773,10 +2782,10 @@ const questionnareData = [
                 'title': 'Food & Cuisine Preferences',
                 'parts': [
                     {
-                        'question': "What are your top 3 favorite foods? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'question': "What are your top 3 favorite foods? (Minimum 1; Maximum 5) (Cannot select both \"None\" and other options)",
                         'options': ["Burgers", "Burritos", "Cakes", "Cheese", "Chicken nuggets", "Chocolate-based desserts", "Curry", "Fries", "Fried chicken", "Ice cream", "Pasta", "Pizza", "Ramen", "Salad", "Sandwiches", "Seafood", "Soups", "Steak", "Sushi", "Tacos", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3,
+                        'maxOptions': 5,
                         'exclusive': 'None'
                     },
                     {
@@ -2806,10 +2815,10 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "What are your top 3 favorite condiments? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'question': "What are your top 3 favorite condiments? (Minimum 1; Maximum 7) (Cannot select both \"None\" and other options)",
                         'options': ["Barbecue sauce", "Buffalo sauce", "Dijon mustard", "Honey mustard", "Hot sauce", "Ketchup", "Mayonnaise", "Mustard", "Olive oil", "Pepper", "Pesto", "Ranch dressing", "Relish", "Salt", "Salsa", "Soy sauce", "Sriracha", "Steak sauce", "Sweet and sour sauce", "Tabasco sauce", "Tartar sauce", "Teriyaki sauce", "Thousand island dressing", "Vinegar", "Worcestershire sauce", "Yellow mustard", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3,
+                        'maxOptions': 7,
                         'exclusive': 'None'
                     },
                     {
@@ -2927,7 +2936,7 @@ const questionnareData = [
                     },
                     {
                         'question': "What are your favorite clothing brands? (Minimum 1; Maximum 5)",
-                        'options': ["3.1 Phillip Lim", "7 For All Mankind", "Acne Studios", "Adidas", "A.P.C.", "Alice + Olivia", "AllSaints", "American Eagle Outfitters", "Anthropologie", "Armani", "ASOS", "Balenciaga", "Balmain", "Banana Republic", "Barneys New York", "BCBGMAXAZRIA", "Berluti", "Bottega Veneta", "Brioni", "Brooks", "Brooks Brothers", "Brunello Cucinelli", "Bulgari", "Burberry", "Calvin Klein", "Carhartt", "Cartier", "Chanel", "Chloé", "Christian Louboutin", "Citizens of Humanity", "Coach", "Comme des Garçons", "Converse", "COS", "Cuyana", "Diane von Fürstenberg", "Diesel", "Dior", "Dolce & Gabbana", "Dr. Martens", "Dsquared2", "Eddie Bauer", "Eileen Fisher", "Elie Tahari", "Ermenegildo Zegna", "Everlane", "Faherty", "Fendi", "Fila", "Filson", "Forever 21", "FRAME", "Free People", "Ganni", "Gap", "Givenchy", "G-Star Raw", "Gucci", "H&M", "Helmut Lang", "Heron Preston", "Hollister", "Hugo Boss", "IRO", "Isabel Marant", "J Brand", "J.Crew", "Jacquemus", "James Perse", "Joie", "John Varvatos", "Karen Millen", "Karl Lagerfeld", "Kate Spade", "Kenzo", "Kiton", "Kith", "L&#x2032;Agence", "Lacoste", "Lanvin", "La Perla", "Levi&#x2032;s", "Loeffler Randall", "Longchamp", "Louis Vuitton", "Lululemon", "Maje", "Mansur Gavriel", "Marc Jacobs", "Marni", "Massimo Dutti", "Michael Kors", "Miu Miu", "MM6 Maison Margiela", "Montblanc", "Moschino", "Mulberry", "Nanushka", "Nautica", "Nili Lotan", "Nike", "North Face", "O&#x2032;Neill", "Old Navy", "Orlebar Brown", "Oscar de la Renta", "Paige", "Palm Angels", "Patagonia", "Paul Smith", "Philipp Plein", "Polo Ralph Lauren", "Prada", "Proenza Schouler", "Puma", "Rag & Bone", "Ralph & Russo", "Ralph Lauren", "Rebecca Minkoff", "Reebok", "Reformation", "Reiss", "Rick Owens", "Roberto Cavalli", "Rodarte", "Roksanda", "Saint Laurent", "Salvatore Ferragamo", "Sandro", "Scotch & Soda", "Self-Portrait", "Simon Miller", "Soludos", "St. John", "Staud", "Stella McCartney", "Steve Madden", "Stuart Weitzman", "Superdry", "Supreme", "Ted Baker", "Theory", "Thom Sweeney", "Tibi", "Tiffany & Co.", "Tod&#x2032;s", "Tom Ford", "Tommy Hilfiger", "Topshop", "Tory Burch", "Totême", "UGG", "Under Armour", "Uniqlo", "Ulla Johnson", "Urban Outfitters", "Valentino", "Vans", "Versace", "Victoria&#x2032;s Secret", "Vince", "Virgil Abloh", "Visvim", "Y-3", "Yeezy", "Yohji Yamamoto", "Zara", "Zimmermann", "Other"],
+                        'options': ["3.1 Phillip Lim", "7 For All Mankind", "Acne Studios", "Adidas", "A.P.C.", "Alice + Olivia", "AllSaints", "American Eagle Outfitters", "Anthropologie", "Armani", "ASOS", "Balenciaga", "Balmain", "Banana Republic", "Barneys New York", "BCBGMAXAZRIA", "Berluti", "Bottega Veneta", "Brioni", "Brooks", "Brooks Brothers", "Brunello Cucinelli", "Bulgari", "Burberry", "Calvin Klein", "Carhartt", "Cartier", "Chanel", "Chlo&#xE9", "Christian Louboutin", "Citizens of Humanity", "Coach", "Comme des Gar&#xE7ons", "Converse", "COS", "Cuyana", "Diane von F&#xFCrstenberg", "Diesel", "Dior", "Dolce & Gabbana", "Dr. Martens", "Dsquared2", "Eddie Bauer", "Eileen Fisher", "Elie Tahari", "Ermenegildo Zegna", "Everlane", "Faherty", "Fendi", "Fila", "Filson", "Forever 21", "FRAME", "Free People", "Ganni", "Gap", "Givenchy", "G-Star Raw", "Gucci", "H&M", "Helmut Lang", "Heron Preston", "Hollister", "Hugo Boss", "IRO", "Isabel Marant", "J Brand", "J.Crew", "Jacquemus", "James Perse", "Joie", "John Varvatos", "Karen Millen", "Karl Lagerfeld", "Kate Spade", "Kenzo", "Kiton", "Kith", "L&#x2032;Agence", "Lacoste", "Lanvin", "La Perla", "Levi&#x2032;s", "Loeffler Randall", "Longchamp", "Louis Vuitton", "Lululemon", "Maje", "Mansur Gavriel", "Marc Jacobs", "Marni", "Massimo Dutti", "Michael Kors", "Miu Miu", "MM6 Maison Margiela", "Montblanc", "Moschino", "Mulberry", "Nanushka", "Nautica", "Nili Lotan", "Nike", "North Face", "O&#x2032;Neill", "Old Navy", "Orlebar Brown", "Oscar de la Renta", "Paige", "Palm Angels", "Patagonia", "Paul Smith", "Philipp Plein", "Polo Ralph Lauren", "Prada", "Proenza Schouler", "Puma", "Rag & Bone", "Ralph & Russo", "Ralph Lauren", "Rebecca Minkoff", "Reebok", "Reformation", "Reiss", "Rick Owens", "Roberto Cavalli", "Rodarte", "Roksanda", "Saint Laurent", "Salvatore Ferragamo", "Sandro", "Scotch & Soda", "Self-Portrait", "Simon Miller", "Soludos", "St. John", "Staud", "Stella McCartney", "Steve Madden", "Stuart Weitzman", "Superdry", "Supreme", "Ted Baker", "Theory", "Thom Sweeney", "Tibi", "Tiffany & Co.", "Tod&#x2032;s", "Tom Ford", "Tommy Hilfiger", "Topshop", "Tory Burch", "Tot&#xEAme", "UGG", "Under Armour", "Uniqlo", "Ulla Johnson", "Urban Outfitters", "Valentino", "Vans", "Versace", "Victoria&#x2032;s Secret", "Vince", "Virgil Abloh", "Visvim", "Y-3", "Yeezy", "Yohji Yamamoto", "Zara", "Zimmermann", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 5
                     },
@@ -3043,10 +3052,10 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "What are your favorite animals? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'question': "What are your top 5 favorite animals? (Minimum 1; Maximum 5) (Cannot select both \"None\" and other options)",
                         'options': ["Alpacas", "Apes", "Armadillos", "Axolotls", "Bats", "Bears", "Bees", "Bison", "Butterflies", "Camels", "Cats", "Cheetahs", "Chickens", "Chameleons", "Chimpanzees", "Cockatoos", "Coral reefs", "Cows", "Crabs", "Crocodiles", "Deer", "Dolphins", "Dogs", "Eagles", "Elephants", "Flamingos", "Foxes", "Frogs", "Geckos", "Giraffes", "Goats", "Gorillas", "Hedgehogs", "Hermit crabs", "Horses", "Hummingbirds", "Iguanas", "Jellyfish", "Kangaroos", "Koalas", "Lemurs", "Leopards", "Lizards", "Lions", "Macaws", "Manatees", "Meerkats", "Monkeys", "Narwhals", "Octopuses", "Orangutans", "Otters", "Owls", "Ostriches", "Parrots", "Peacocks", "Penguins", "Pigs", "Platypuses", "Polar bears", "Porcupines", "Rabbits", "Raccoons", "Rhinoceroses", "Seals", "Sea turtles", "Sharks", "Sloths", "Snakes", "Squirrels", "Stingrays", "Swans", "Tapirs", "Tasmanian devils", "Tigers", "Toucans", "Turtles", "Walruses", "Warthogs", "Weasels", "Whales", "Wolves", "Zebras", "Zeppelin", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3,
+                        'maxOptions': 5,
                         'exclusive': 'None'
                     }
                 ]
@@ -3107,16 +3116,16 @@ const questionnareData = [
                 'title': 'Boundaries & Deal Breakers',
                 'parts': [
                     {
-                        'question': "What are your deal breakers in a relationship? (Minimum 1; Maximum 3)",
+                        'question': "What are your deal breakers in a relationship? (Minimum 1; Maximum 5)",
                         'options': ["Lack of trust or honesty", "Poor communication", "Substance abuse", "Incompatible life goals", "Financial irresponsibility", "Infidelity", "Lack of emotional support", "Different views on family planning", "Disregard for personal boundaries", "Incompatible political views", "Long distance relationship", "Lack of ambition or motivation", "Different religious beliefs", "Incompatible lifestyle choices (e.g., diet, exercise)", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 5
                     },
                     {
-                        'question': "Which of these personal boundaries are important to you in a relationship? (Minimum 1; Maximum 3)",
+                        'question': "Which of these personal boundaries are important to you in a relationship? (Minimum 1; Maximum 5)",
                         'options': ["Respecting privacy and personal space", "Maintaining a balance between individual and couple time", "Communicating openly about feelings and emotions", "Establishing clear expectations regarding finances", "Setting limits on social media usage", "Agreeing on appropriate boundaries with ex-partners", "Respecting each other&#x2032;s family and cultural backgrounds", "Defining emotional and physical boundaries", "Supporting each other&#x2032;s career and personal growth", "Deciding on acceptable levels of contact with friends of the opposite sex", "Agreeing on boundaries for discussing past relationships", "Establishing boundaries for decision-making and problem-solving", "Deciding on the role of spirituality or religion in the relationship", "Navigating and respecting dietary preferences and lifestyle choices", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 5
                     },
                     {
                         'question': "How willing are you to compromise on your boundaries or deal breakers in a relationship? (Minimum 1; Maximum 1)",
@@ -3191,6 +3200,7 @@ const questionnareData = [
                         'options': ["Straight", "Homosexual", "Bisexual", "Pansexual", "Asexual", "Queer", "Other"],
                         'type': 'multi-select',
                         'maxOptions': 1,
+                        'id': 'q_sexual_orientation'
                     },
                     {
                         'question': "What is your current marital status? (Minimum 1; Maximum 1)",
@@ -3212,23 +3222,32 @@ const questionnareData = [
                     },
                     {
                         'question': "How important is physical attraction to you? (Minimum 1; Maximum 1)",
-                        'options': ["Not important at all", "Somewhat important", "Important", "Very important", "Crucial"],
+                        'options': ["Crucial", "Very important", "Important", "Somewhat important", "Not important at all"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
                     {
-                        'question': "What physical features are you most attracted to? (Minimum 1; Maximum 2)",
+                        'question': "What physical features are you most attracted to? (Minimum 1; Maximum 3)",
                         'options': ["Eyes", "Smile", "Hair", "Height", "Body type", "Style", "Fitness level", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 2
+                        'maxOptions': 3
                     },
                     {
                         'question': "Which of the following body shapes are you most attracted to? (Minimum 1; Maximum 5)",                        
                         'optionGroups': [
                             {
+                                'type': '0', // Male
+                                'valuePrefix': 'M',
                                 'options': ["img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png"]
                             },
                             {
+                                'type': '1', // Female
+                                'valuePrefix': 'F',
+                                'options': ["img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png"]
+                            },
+                            {
+                                'type': '2', // Intersex
+                                'valuePrefix': 'I',
                                 'options': ["img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png"]
                             }
                         ],
@@ -3239,8 +3258,8 @@ const questionnareData = [
                         'id': 'q_body_type_attracted'
                     },
                     {
-                        'question': "Which of the following voices do you like the most, and which do you generally like? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
-                        'options': ["American accent (Northern)", "American accent (Southern)", "American accent (California)", "French accent", "Italian accent", "Spanish accent", "English accent (British)", "Irish accent", "Scottish accent", "Brazilian Portuguese accent", "Australian accent", "Argentine accent", "South African accent", "New Zealand accent", "Greek accent", "Caribbean accent", "Swedish accent", "Hungarian accent", "Czech accent", "Norwegian accent", "Dutch accent", "Swiss accent (provide audio clips)", "None"],
+                        'question': "Which of the following voices do you like? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'options': ["American accent (Northern)", "American accent (Southern)", "American accent (California)", "French accent", "Italian accent", "Spanish accent", "English accent (British)", "Irish accent", "Swiss accent", "Brazilian Portuguese accent", "Australian accent", "Argentine accent", "South African accent", "New Zealand accent", "Greek accent", "Caribbean accent", "Swedish accent", "Hungarian accent", "Czech accent", "Norwegian accent", "Dutch accent", "Swiss accent (provide audio clips)", "None"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity',
                         'exclusive': 'None'
@@ -3260,10 +3279,10 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "What is your ideal first date? (Minimum 1; Maximum 1)",
+                        'question': "What is your ideal first date? (Minimum 1; Maximum 2)",
                         'options': ["Casual coffee or drink", "Fancy dinner", "Outdoor activity", "Movie or theater", "Art exhibit or museum", "Live music or concert", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 2
                     },
                     {
                         'question': "What is your opinion on who should pay on the first date? (Minimum 1; Maximum 1)",
@@ -3354,7 +3373,8 @@ const questionnareData = [
                             }
                         ],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 2,
+                        'answerIncludeSubTitle': true
                     },
                     {
                         'question': "At what age did you first consensually engage in the following activities?",
@@ -3369,7 +3389,8 @@ const questionnareData = [
                             }
                         ],
                         'type': 'multi-select',
-                        'maxOptions': 1,
+                        'maxOptions': 2,
+                        'answerIncludeSubTitle': true
                     },
                     {
                         'question': "How often do you currently have sex? (Minimum 1; Maximum 1)",
@@ -3539,10 +3560,10 @@ const questionnareData = [
                 'title': 'Quality Time & Relationship Maintenance',
                 'parts': [
                     {
-                        'question': "How do you prefer to spend quality time with your partner? (Minimum 1; Maximum 3)",
+                        'question': "How do you prefer to spend quality time with your partner? (Minimum 1; Maximum 5)",
                         'options': ["Deep conversations", "Cuddling and watching movies", "Trying new activities together", "Cooking together", "Traveling", "Exercising together", "Going out with friends", "Attending events", "Pursuing hobbies together", "Alone time to recharge", "Working on projects together", "Romantic dates", "Exploring nature", "Attending workshops or classes", "Volunteering", "Playing games", "Reading together", "Listening to music or attending concerts", "Spontaneous adventures", "Other"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 5
                     },
                     {
                         'question': "How often do you prefer to have date nights? (Minimum 1; Maximum 1)",
@@ -3679,13 +3700,13 @@ const questionnareData = [
                     },
                     {
                         'question': "How important are family values to you? (Minimum 1; Maximum 1)",
-                        'options': ["Not important at all", "Slightly important", "Moderately important", "Very important", "Extremely important"],
+                        'options': ["Extremely important", "Very important", "Moderately important", "Slightly important", "Not important at all"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
                     {
                         'question': "What is the highest level of education your dad attained? (Minimum 1; Maximum 1)",
-                        'options': ["High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
+                        'options': ["Elementary school", "Middle school", "High school or General Educational Development (G.E.D.)", "Vocational/technical school", "Associate degree (A.A., A.S.)", "Bachelor&#x2032;s degree (B.A., B.S., B.F.A., B.B.A.)", "Master of Arts (M.A.), Master of Science (M.S.), or Master of Education (M.Ed.) degree", "Master of Business Administration (M.B.A.) degree", "Master of Social Work (M.S.W.) or Master of Public Health (M.P.H.) degree", "Juris Doctor (J.D.) degree", "Medical Doctor (M.D.), Doctor of Dental Surgery (D.D.S.), Doctor of Dental Medicine (D.M.D.), Doctor of Veterinary Medicine (D.V.M.), or Doctor of Psychology (Psy.D.) degree", "Doctoral degree (Ph.D., Ed.D.)", "None or drop out"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -3904,10 +3925,10 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "Which of the following adventure-seeking activities appeal to you the most? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
+                        'question': "Which of the following adventure-seeking activities appeal to you the most? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
                         'options': ["Traveling to new places", "Skydiving", "Scuba diving", "Mountain climbing", "Camping", "Trying exotic cuisines", "Attending cultural events", "Learning new languages", "Engaging in extreme sports", "Exploring urban environments", "Hiking in remote locations", "Starting a new hobby", "Going on impromptu road trips", "Attending music festivals", "Joining social clubs or groups", "Trying new fitness routines", "Pursuing artistic endeavors", "Experimenting with new technologies", "Participating in outdoor sports", "Engaging in environmental conservation efforts", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3,
+                        'maxOptions': 'infinity',
                         'exclusive': 'None'
                     },
                     {
@@ -3927,7 +3948,7 @@ const questionnareData = [
                 'title': 'Hates & Dislikes',
                 'parts': [
                     {
-                        'question': "Which of the following do you seriously dislike or hate? (Minimum 1; Maximum 15) (E.g., \"Dishonesty\") (Cannot select both \"None\" and other options)",
+                        'question': "Which of the following do you seriously dislike or hate? (Minimum 1; Maximum &#8734) (E.g., \"Dishonesty\") (Cannot select both \"None\" and other options)",
                         'optionGroups': [
                             {
                                 "title": 'Personal Traits',
@@ -3967,7 +3988,7 @@ const questionnareData = [
                             }
                         ],
                         'type': 'multi-select',
-                        'maxOptions': 15,
+                        'maxOptions': 'infinity',
                         'exclusive': 'None'
                     }
                 ]
@@ -4056,7 +4077,8 @@ const temp = {
                         {
                             "title": ''
                         }
-                    ]
+                    ],
+                    // Maximum &#8734
                 }
             ]
         },

@@ -319,7 +319,8 @@ function hideAlert() {
 }
 
 $(document).on('click', '#alert_btn_ok', function() {
-    hideAlert();
+    // hideAlert();
+    location.href = "https://www.lovestory.ai";
 })
 
 // loader handlers
@@ -377,7 +378,7 @@ $(document).on('click', '#btn_submit', function() {
             dataType: 'json',
             success: function(resp) {
                 if (resp.success) {
-                    setAlertMessage('Email sent successfull!');
+                    setAlertMessage('Thank you! Your submission has been sent.');
                 } else {
                     setAlertMessage(resp.message);
                 }
@@ -482,7 +483,7 @@ function setQuestionVisible(data) {
                 $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select[data-type="1"]').removeClass('hide');
             }
 
-            if (q_sex == 0 && (q_sexual_orientation == 2 || q_sexual_orientation == 3 || q_sexual_orientation == 4 || q_sexual_orientation == 5 || q_sexual_orientation == 6)) {
+            if (q_sex == 1 && (q_sexual_orientation == 2 || q_sexual_orientation == 3 || q_sexual_orientation == 4 || q_sexual_orientation == 5 || q_sexual_orientation == 6)) {
                 // If Sex = "Female" and Orientation = "Bisexual", "Pansexual", "Asexual", "Queer", or "Other" display images M1-20, F1-20, I1-20.
 
                 $('.form-group-container[data-id="q_body_type_attracted"').find('.image-select').removeClass('hide');

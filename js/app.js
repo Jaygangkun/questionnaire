@@ -553,12 +553,21 @@ function getFullQAList() {
                 let answerIncludeSubTitle = parts[pIndex]['answerIncludeSubTitle'] ? parts[pIndex]['answerIncludeSubTitle'] : null;
 
                 let userAnswer = '';
+                let formGroupContainer = null;
+
+                if (id == 'q_guy_type') {
+                    let dataTest = 1;
+                }
 
                 if (id) {
                     userAnswer = typeof userData[id] != 'undefined' ? userData[id] : '';
+
+                    formGroupContainer = $('.form-group-container[data-id="' + id + '"]');
                 }
                 else {
                     userAnswer = typeof userData[questionIndex] != 'undefined' ? userData[questionIndex] : '';
+
+                    formGroupContainer = $('.form-group-container[data-qindex="' + questionIndex + '"]');
                 }
 
                 let answers = [];
@@ -742,13 +751,19 @@ function getFullQAList() {
                     
                 }
 
-                if (answers.length > 0) {
-                    qaList.push({
-                        'question': parts[pIndex]['question'],
-                        'type': type,
-                        'answers': answers
-                    });
+
+                let answerVisible = true;
+                if ($(formGroupContainer).hasClass('hide')) {
+                    answerVisible = false;
                 }
+
+                qaList.push({
+                    'webQuestion': questionIndex + '. ' + parts[pIndex]['question'],
+                    'question': parts[pIndex]['question'],
+                    'type': type,
+                    'answers': answers,
+                    'visible': answerVisible
+                });
 
                 questionIndex ++;
             }

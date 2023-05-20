@@ -8,6 +8,41 @@ use PHPMailer\PHPMailer\PHPMailer;
 $siteURL = 'http://localhost:9005';
 $siteURL = 'https://lovestory.ai/';
 
+function sendEmail($to, $body) {
+    $mail = new PHPMailer();
+
+    $mail->IsSMTP();
+    $mail->Host = 'mail.lovestory.ai';
+    $mail->Username = 'noreply@lovestory.ai';
+    $mail->Password = 'NoReply@43908349055980980345';
+    $mail->Port = 587;
+    
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->SMTPDebug  = 0;  
+    
+    $mail->isHTML();
+    
+    $mail->From = 'noreply@lovestory.ai';
+    $mail->FromName = 'Love Story Inc.';
+    
+    $mail->Subject = 'Lovestory QA';
+    $mail->Body    = $body;
+    
+    $mail->AddAddress($to);
+    
+    if(!$mail->Send()) {
+        return [
+            'success' => false,
+            'message' => $mail->ErrorInfo
+        ];
+    }
+    
+    return [
+        'success' => true
+    ];
+
+}
 $qaList = json_decode($_POST['qa'], true);
 
 $qaCompanyHtml = '';
@@ -33,11 +68,16 @@ foreach($qaList as $qa) {
         }
     }
 
-    $qaUserHtml .= '<tr><td>'.$question.'</td><td>'.implode('; ', $answerTexts).'</td></tr>';
-    $qaCompanyHtmlQuestion .= '<td>'.$question.'</td>';
-    $qaCompanyHtmlAnser .= '<td>'.implode('; ', $answerTexts).'</td>';
+    if ($qa['visible']) {
+        $qaUserHtml .= '<tr><td>'.$question.'</td><td>'.implode('; ', $answerTexts).'</td></tr>';
+        $qIndex ++;
+    }
+    else {
+        $answerTexts = [];
+    }
 
-    $qIndex ++;
+    $qaCompanyHtmlQuestion .= '<td>'.$qa['webQuestion'].'</td>';
+    $qaCompanyHtmlAnser .= '<td>'.implode('; ', $answerTexts).'</td>';
 }
 
 if (isset($_POST['user_email']) && $_POST['user_email'] != '') {
@@ -50,54 +90,15 @@ $qaCompanyHtml = '<table border style="border-collapse:collapse"><tr>'.$qaCompan
 
 // echo $qaCompanyHtml; die();
 
-$mail = new PHPMailer();
+$ret = sendEmail('info@lovestory.ai', $qaCompanyHtml);
 
-$mail->IsSMTP();
-$mail->Host = 'mail.lovestory.ai';
-$mail->Username = 'noreply@lovestory.ai';
-$mail->Password = 'NoReply@43908349055980980345';
-$mail->Port = 587;
+if ($ret['success']) {
 
-$mail->SMTPAuth = true;
-$mail->SMTPSecure = 'tls';
-$mail->SMTPDebug  = 0;  
-
-$mail->isHTML();
-
-$mail->From = 'noreply@lovestory.ai';
-$mail->FromName = 'Love Story Inc.';
-
-$mail->Subject = 'Lovestory QA';
-$mail->Body    = $qaCompanyHtml;
-
-$to = 'info@lovestory.ai';
-$mail->AddAddress($to);
-
-if(!$mail->Send()) {
-    echo json_encode([
-        'success' => false,
-        'message' => $mail->ErrorInfo
-    ]);
-    die;
+    if (isset($_POST['user_email']) && $_POST['user_email'] != '') {    
+        $ret = sendEmail($_POST['user_email'], $qaUserHtml);
+    }    
 }
 
-if (isset($_POST['user_email']) && $_POST['user_email'] != '') {
-    $to = $_POST['user_email'];
-
-    $mail->Body  = $qaUserHtml;
-    $mail->AddAddress($to);
-
-    if(!$mail->Send()) {
-        echo json_encode([
-            'success' => false,
-            'message' => $mail->ErrorInfo
-        ]);
-        die;
-    }
-}
-
-echo json_encode([
-    'success' => true
-]);
+echo json_encode($ret);
 
 ?>

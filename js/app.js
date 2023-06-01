@@ -191,8 +191,10 @@ $(document).on('click', '.multiselect-option.text-option-itself', function() {
         }
     }
     else {
+        $(this).parents('.form-group-container').find('.multiselect-option').removeClass('selected');
+
         $(this).addClass('selected');
-        
+
         $(this).parents('.text-option-container').find('.form-group-input-list-wrap').hide();
 
         curAnswers = answer;
@@ -212,10 +214,13 @@ $(document).on('click', '.btn-add-text-option-input, .btn-add-multi-text-input',
     let qIndex = $(this).attr('data-qIndex');
     let tIndex = $(this).parents('.form-group-input-list-wrap').find('.form-group-input').length;
     let maxCount = parseInt($(this).attr('data-maxCount'));
+    let tabbing = $(this).attr('data-tabbing');
+
+    $(this).parents('.form-group-input-list-wrap').find('.form-group-input-list input').attr('data-tabbing', 'true');
 
     $(this).parents('.form-group-input-list-wrap').find('.form-group-input-list').append(`
         <div class="form-group form-group-input">
-            <input type="text" class="inputbox text-option-input" data-qindex="${qIndex}" data-tindex="${tIndex}" value="">
+            <input type="text" class="inputbox text-option-input" data-qindex="${qIndex}" data-tindex="${tIndex}" value="" data-tabbing="${tabbing}">
         </div>
     `);
 
@@ -243,6 +248,7 @@ $(document).on('customChange', '.fancy-dropdown', function(event, data) {
 
 // text handler
 $(document).on('change', '.inputbox.single-input', function() {
+    let qId = $(this).parents('.form-group-container').attr('data-id');
 
     if($(this).val() == '') {
         $(this).parents('.form-group-container').addClass('error');
@@ -251,8 +257,19 @@ $(document).on('change', '.inputbox.single-input', function() {
         $(this).parents('.form-group-container').removeClass('error');
     }
 
-    submitAnswer($(this).attr('data-qIndex'), $(this).val());
+    if(qId == 'null') {
+        qId = $(this).attr('data-qIndex');
+    }
+    
+    submitAnswer(qId, $(this).val());
 })
+
+$(document).on('keydown', 'input', function(e){ 
+
+    if($(this).attr('data-tabbing') == 'false') {
+        if (e.keyCode == 9)  e.preventDefault() 
+    }
+});
 
 // multi-text handlers
 $(document).on('change', '.inputbox.multi-text-input', function() {
@@ -296,7 +313,7 @@ $(document).on('change', '[data-id="q_percent_ethnicity"] input', function(){
     }
 
     if(Math.round(sum*100)/100 == 100.0) {
-        $(this).parents('.form-group-container').find('.error-message').text('This is required.');
+        $(this).parents('.form-group-container').find('.error-message').text('Please select a response.');
         $(this).parents('.form-group-container').removeClass('error');
     }
     else {
@@ -412,7 +429,7 @@ function setQuestionVisible(data) {
     
             $('.form-group-container[data-id="q_have_plan_b"]').removeClass('hide');
     
-            $('.form-group-container[data-id="q_conceive_child"]').removeClass('hide');
+            // $('.form-group-container[data-id="q_conceive_child"]').removeClass('hide');
     
             $('.form-group-container[data-id="q_girl_type"]').removeClass('hide');
         }
@@ -423,7 +440,7 @@ function setQuestionVisible(data) {
     
             $('.form-group-container[data-id="q_have_plan_b"]').addClass('hide');
     
-            $('.form-group-container[data-id="q_conceive_child"]').addClass('hide');
+            // $('.form-group-container[data-id="q_conceive_child"]').addClass('hide');
     
             $('.form-group-container[data-id="q_girl_type"]').addClass('hide');
         }
@@ -490,6 +507,27 @@ function setQuestionVisible(data) {
             }
         }
     }
+
+    if (typeof data['q_sexual_orientation'] != 'undefined') {
+        let q_sexual_orientation = data['q_sexual_orientation'][0];
+
+        if (q_sexual_orientation != 0) {
+            $('.form-group-container[data-id="q_believe_man_responsibilities"]').addClass('hide');
+    
+            $('.form-group-container[data-id="q_believe_woman_responsibilities"]').addClass('hide');
+        }
+        else {
+            $('.form-group-container[data-id="q_believe_man_responsibilities"]').removeClass('hide');
+    
+            $('.form-group-container[data-id="q_believe_woman_responsibilities"]').removeClass('hide');
+        }
+    }
+}
+
+function isValidDate(dateString) {
+    // var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    var regEx = /^([0][1-9]|[1][0-2])\/([1-2][0-9]|[0][1-9]|[3][0-1])\/[1-9][0-9][0-9]{2}$/;
+    return dateString.match(regEx) != null;
 }
 
 function isValid() {
@@ -499,6 +537,10 @@ function isValid() {
     for(let index = 0; index < questions.length; index ++) {
         let qId = $(questions[index]).attr('data-id');
 
+        if ($(questions[index]).attr('data-required') == 'false') {
+            continue;
+        }
+
         if(qId == 'null') {
             qId = $(questions[index]).attr('data-qIndex');
         }
@@ -506,17 +548,34 @@ function isValid() {
         if (qId != 'null') {
 
             if (typeof userData[qId] == 'undefined') {
+
+                if (qId == 'q_birthdate') {
+                    $(questions[index]).find('.error-message').text('Please select a response.');
+                }
+
                 $(questions[index]).addClass('error');
                 isValid = false;
             }
             else {
 
                 if (userData[qId] == '' || Object.keys(userData[qId]).length == 0) {
+
+                    if (qId == 'q_birthdate') {
+                        $(questions[index]).find('.error-message').text('Please select a response.');
+                    }
+
                     $(questions[index]).addClass('error');
                     isValid = false;
                 }
                 else {
-                    $(questions[index]).removeClass('error');
+
+                    if (qId == 'q_birthdate' && !isValidDate(userData[qId])) {
+                        $(questions[index]).find('.error-message').text('Please provide a valid date of birth.');
+                        $(questions[index]).addClass('error');
+                        isValid = false;
+                    } else {
+                        $(questions[index]).removeClass('error');
+                    }
                 }
 
                 if (qId == 'q_body_type_attracted' && $(questions[index]).find('.image-select-option.selected').parent().hasClass('hide')) {
@@ -760,6 +819,7 @@ function getFullQAList() {
                 qaList.push({
                     'webQuestion': questionIndex + '. ' + parts[pIndex]['question'],
                     'question': parts[pIndex]['question'],
+                    'questionEmail': parts[pIndex]['questionEmail'],
                     'type': type,
                     'answers': answers,
                     'visible': answerVisible
@@ -806,7 +866,12 @@ function renderPage() {
                 let textMinCount = parts[pIndex]['textMinCount'] ? parts[pIndex]['textMinCount'] : 5;
                 let textMaxCount = parts[pIndex]['textMaxCount'] ? parts[pIndex]['textMaxCount'] : 10;
                 let inputGroups = parts[pIndex]['inputGroups'] ? parts[pIndex]['inputGroups'] : null;
-                let errorMessage = parts[pIndex]['errorMessage'] ? parts[pIndex]['errorMessage'] : 'This is required.';
+                let errorMessage = parts[pIndex]['errorMessage'] ? parts[pIndex]['errorMessage'] : 'Please select a response.';
+                let required = typeof parts[pIndex]['required'] != 'undefined' ? parts[pIndex]['required'] : true;
+
+                let placeholder = typeof parts[pIndex]['placeholder'] != 'undefined' ? parts[pIndex]['placeholder'] : '';
+
+                let tabbing = typeof parts[pIndex]['tabbing'] != 'undefined' ? parts[pIndex]['tabbing'] : true;
 
                 let userAnswer = '';
 
@@ -823,7 +888,7 @@ function renderPage() {
                     formGroupHtml = `
                         <div class="form-group">
                             <label>${question}</label>
-                            <input type="text" class="inputbox single-input" data-qIndex="${questionIndex}" value="${userAnswer}" min="${min}" max="${max}">
+                            <input type="text" class="inputbox single-input" data-qIndex="${questionIndex}" data-tabbing="${tabbing}" value="${userAnswer}" min="${min}" max="${max}" placeholder="${placeholder}">
                             <div class="error-message">${errorMessage}</div>
                         </div>
                     `;
@@ -835,11 +900,12 @@ function renderPage() {
                         for(let gIndex = 0; gIndex < inputGroups.length; gIndex ++) {
                             
                             let answer = typeof userAnswer[gIndex] != 'undefined' ? userAnswer[gIndex] : '';
+                            let optionTabbing = typeof inputGroups[gIndex]['tabbing'] != 'undefined' ? inputGroups[gIndex]['tabbing'] : true;
 
                             formGroupHtml += `
                                 <div class="form-group">
                                     <label>${inputGroups[gIndex]['title']}</label>
-                                    <input type="${inputType}" class="inputbox multi-text-input" data-qIndex="${questionIndex}" data-tIndex="${gIndex}" value="${answer}">
+                                    <input type="${inputType}" class="inputbox multi-text-input" data-qIndex="${questionIndex}" data-tabbing="${optionTabbing}" data-tIndex="${gIndex}" value="${answer}">
                                 </div>
                             `;
                         }
@@ -924,6 +990,12 @@ function renderPage() {
                         });
 
                         for(let tIndex = 0; tIndex < textInputCount; tIndex++) {
+                            let optionTabbing = true;
+
+                            if(tIndex == (textInputCount - 1) && !tabbing) {
+                                optionTabbing = false;
+                            }
+
                             let textAnswer = '';
 
                             if (isJson(userAnswer)) {
@@ -932,13 +1004,19 @@ function renderPage() {
 
                             textListHtml += `
                                 <div class="form-group form-group-input">
-                                    <input type="text" class="inputbox text-option-input" data-qIndex="${questionIndex}" data-tIndex="${tIndex}" value="${textAnswer}">
+                                    <input type="text" class="inputbox text-option-input" data-qIndex="${questionIndex}" data-tIndex="${tIndex}" value="${textAnswer}" data-tabbing="${optionTabbing}">
                                 </div>
                             `;
                         }
                     } else if (textCount) {
 
                         for(let tIndex = 0; tIndex < textCount; tIndex++) {
+                            let optionTabbing = true;
+
+                            if(tIndex == (textCount - 1) && !tabbing) {
+                                optionTabbing = false;
+                            }
+
                             let textAnswer = '';
 
                             if (isJson(userAnswer)) {
@@ -947,7 +1025,7 @@ function renderPage() {
 
                             textListHtml += `
                                 <div class="form-group form-group-input">
-                                    <input type="text" class="inputbox text-option-input" data-qIndex="${questionIndex}" data-tIndex="${tIndex}" value="${textAnswer}">
+                                    <input type="text" class="inputbox text-option-input" data-qIndex="${questionIndex}" data-tIndex="${tIndex}" value="${textAnswer}" data-tabbing="${optionTabbing}">
                                 </div>
                             `;
                         }
@@ -967,7 +1045,7 @@ function renderPage() {
 
                     textListHtml += `
                         <div class="form-group form-group-btn-add" style="${btnDisplayStyle}">
-                            <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}">+</span>
+                            <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}" data-tabbing="${tabbing}">+</span>
                         </div>
                     `;
 
@@ -1243,7 +1321,7 @@ function renderPage() {
                 }
 
                 partsHtml += `
-                    <div class="form-group-container" data-id="${id}" data-type="${type}" data-qIndex="${questionIndex}">${formGroupHtml}</div>
+                    <div class="form-group-container" data-id="${id}" data-type="${type}" data-qIndex="${questionIndex}" data-required="${required}">${formGroupHtml}</div>
                 `;
 
                 questionIndex ++;

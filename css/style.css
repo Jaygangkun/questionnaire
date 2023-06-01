@@ -94,6 +94,7 @@ h2 {
 .form-group-container.hide {
     opacity: 0;
     margin-bottom: 20px;
+    display: none;
 }
 
 .hide label {
@@ -118,7 +119,7 @@ h2 {
 
 label {
     font-family: Inter, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     color: #868f98;
     display: block;
     margin-bottom: 5px;
@@ -402,7 +403,7 @@ input[type=number] {
 }
 
 .alert-foot {
-    text-align: right;
+    text-align: center;
 }
 
 .lds-roller {

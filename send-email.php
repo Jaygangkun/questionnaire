@@ -54,6 +54,7 @@ $qaUserHtml = '';
 $qIndex = 1;
 foreach($qaList as $qa) {
     $question = $qIndex.". ".$qa['question'];
+    $questionEmail = $qIndex.". ".$qa['questionEmail'];
     $type = $qa['type'];
     $answers = $qa['answers'];
 
@@ -69,7 +70,7 @@ foreach($qaList as $qa) {
     }
 
     if ($qa['visible']) {
-        $qaUserHtml .= '<tr><td>'.$question.'</td><td>'.implode('; ', $answerTexts).'</td></tr>';
+        $qaUserHtml .= '<tr><td>'.$questionEmail.'</td><td>'.implode('; ', $answerTexts).'</td></tr>';
         $qIndex ++;
     }
     else {
@@ -88,7 +89,7 @@ if (isset($_POST['user_email']) && $_POST['user_email'] != '') {
 $qaUserHtml = '<table border style="border-collapse:collapse">'.$qaUserHtml.'</table>';
 $qaCompanyHtml = '<table border style="border-collapse:collapse"><tr>'.$qaCompanyHtmlQuestion.'</tr><tr>'.$qaCompanyHtmlAnser.'</tr></table>';
 
-// echo $qaCompanyHtml; die();
+// echo $qaUserHtml; die();
 
 $ret = sendEmail('info@lovestory.ai', $qaCompanyHtml);
 

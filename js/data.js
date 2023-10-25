@@ -589,12 +589,21 @@ const questionnareData = [
                         ]
                     },
                     {
-                        'question': "Do you have any STDs? (Minimum 1; Maximum &#8734) (Cannot select both \"No, I don&#x2032;t have any STDs\" and other options)",
+                        'question': "Do you have any STDs? (Minimum 1; Maximum &#8734) (Cannot select both \"No, I don&#x2032;t have any STDs\"/\"Decline to answer\" and other options)",
                         'questionEmail': "Do you have any STDs?",
-                        'options': ["Chlamydia", "Genital herpes (HSV-2)", "Genital warts (HPV)", "Gonorrhea", "Hepatitis B", "Hepatitis C", "HIV/AIDS", "Syphilis", "Trichomoniasis", "Other STD", "No, I don&#x2032;t have any STDs"],
+                        'options': ["Chlamydia", "Genital herpes (HSV-2)", "Genital warts (HPV)", "Gonorrhea", "Hepatitis B", "Hepatitis C", "HIV/AIDS", "Syphilis", "Trichomoniasis", "Other STD", "No, I don&#x2032;t have any STDs", "Decline to answer"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity',
-                        'exclusive': 'No, I don&#x2032;t have any STDs'
+                        'optionExclusives': [
+                            {
+                                'main': 'No, I don&#x2032;t have any STDs',
+                                'others': ["Chlamydia", "Genital herpes (HSV-2)", "Genital warts (HPV)", "Gonorrhea", "Hepatitis B", "Hepatitis C", "HIV/AIDS", "Syphilis", "Trichomoniasis", "Other STD", "Decline to answer"]
+                            },
+                            {
+                                'main': 'Decline to answer',
+                                'others': ["Chlamydia", "Genital herpes (HSV-2)", "Genital warts (HPV)", "Gonorrhea", "Hepatitis B", "Hepatitis C", "HIV/AIDS", "Syphilis", "Trichomoniasis", "Other STD", "No, I don&#x2032;t have any STDs"]
+                            }
+                        ]
                     },
                     {
                         'question': "Have you ever undergone surgery? If so, what type? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options) ",
@@ -680,14 +689,14 @@ const questionnareData = [
                     {
                         'question': "Have you ever attempted suicide? (Minimum 1; Maximum 1)",
                         'questionEmail': "Have you ever attempted suicide?",
-                        'options': ["Yes", "No"],
+                        'options': ["Yes", "No", "Decline to answer"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
                     {
                         'question': "Have you ever considered suicide? (Minimum 1; Maximum 1)",
                         'questionEmail': "Have you ever considered suicide?",
-                        'options': ["Yes", "No"],
+                        'options': ["Yes", "No", "Decline to answer"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -859,7 +868,7 @@ const questionnareData = [
                     {
                         'question': "What is your religious affiliation? (Minimum 1; Maximum 1) (Cannot select both \"None\" and other options)",
                         'questionEmail': "What is your religious affiliation?",
-                        'options': ["Agnosticism", "Atheism", "Baha&#x2032;i", "Buddhism", "Christianity - Anglican", "Christianity - Baptist", "Christianity - Catholic", "Christianity - Christian Science", "Christianity - Coptic", "Christianity - Evangelical", "Christianity - Lutheran", "Christianity - Methodist", "Christianity - Mormon", "Christianity - Orthodox", "Christianity - Pentecostal", "Christianity - Presbyterian", "Christianity - Protestant", "Christianity - Seventh-Day Adventist", "Christianity - other denomination", "Christianity - no denomination", "Hinduism", "Islam - Sunni", "Islam - Shia", "Islam - Sufism, Islam - Ahmadiyya, Islam - other denomination", "Islam - no denomination", "Jainism", "Judaism - Haredi or Ultra Orthodox", "Judaism - Hasidic", "Judaism - Modern Orthodox", "Judaism - Conservative", "Judaism - Reform", "Judaism - Reconstructionist", "Judaism - Renewal", "Judaism - Humanistic", "Judaism - other denomination", "Judaism - no denomination", "Paganism", "Rastafarianism", "Satanism", "Scientology", "Shintoism", "Sikhism", "Taoism", "Wiccan", "Zoroastrianism", "Native/Indigenous beliefs", "Other", "None"],
+                        'options': ["Agnosticism", "Atheism", "Baha&#x2032;i", "Buddhism", "Christianity - Anglican", "Christianity - Baptist", "Christianity - Catholic", "Christianity - Christian Science", "Christianity - Coptic", "Christianity - Evangelical", "Christianity - Lutheran", "Christianity - Methodist", "Christianity - Mormon", "Christianity - Orthodox", "Christianity - Pentecostal", "Christianity - Presbyterian", "Christianity - Protestant", "Christianity - Seventh-Day Adventist", "Christianity - other denomination", "Christianity - no denomination", "Hinduism", "Islam - Sunni", "Islam - Shia", "Islam - Sufism", "Islam - Ahmadiyya", "Islam - other denomination", "Islam - no denomination", "Jainism", "Judaism - Haredi or Ultra Orthodox", "Judaism - Hasidic", "Judaism - Modern Orthodox", "Judaism - Conservative", "Judaism - Reform", "Judaism - Reconstructionist", "Judaism - Renewal", "Judaism - Humanistic", "Judaism - other denomination", "Judaism - no denomination", "Paganism", "Rastafarianism", "Satanism", "Scientology", "Shintoism", "Sikhism", "Taoism", "Wiccan", "Zoroastrianism", "Native/Indigenous beliefs", "Other", "None"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -1487,6 +1496,20 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
+                        'question': "What are your views on Israel? (Minimum 1; Maximum 1)",
+                        'questionEmail': "What are your views on Israel?",
+                        'options': ["Strongly support", "Support", "Neutral", "Oppose", "Strongly oppose", "It depends on the context", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': 1,
+                    },
+                    {
+                        'question': "What are your views on Palestine or the Palestinian cause? (Minimum 1; Maximum 1)",
+                        'questionEmail': "What are your views on Palestine or the Palestinian cause?",
+                        'options': ["Strongly support", "Support", "Neutral", "Oppose", "Strongly oppose", "It depends on the context", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': 1,
+                    },
+                    {
                         'question': "What are your views on memes? (Minimum 1; Maximum 1)",
                         'questionEmail': "What are your views on memes?",
                         'options': ["Love them", "Enjoy them occasionally", "Neutral", "Not a fan", "Strongly dislike", "Not sure"],
@@ -1818,9 +1841,30 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "What sorority or fraternity do you belong to? (Minimum 1; Maximum 1)",
-                        'questionEmail': "What sorority or fraternity do you belong to?",
-                        'options': ["Alpha Phi", "Delta Gamma", "Kappa Alpha Theta", "Sigma Chi", "Phi Delta Theta", "Alpha Epsilon Pi", "Lambda Chi Alpha", "Omega Psi Phi", "Zeta Phi Beta", "Other", "None"],
+                        'question': "Which of these fraternities or sororities, if any, do you belong to? (Minimum 1; Maximum 1) (Cannot select both \"None\" and other options)",
+                        'questionEmail': "Which of these fraternities or sororities, if any, do you belong to?",
+                        'optionGroups': [
+                            {
+                                "title": 'Fraternities',
+                                'options': ["Acacia", "Alpha Chi Alpha", "Alpha Chi Rho", "Alpha Delta Gamma", "Alpha Delta Phi", "Alpha Epsilon Pi", "Alpha Gamma Omega", "Alpha Kappa Lambda", "Alpha Lambda Mu", "Alpha Phi Alpha", "Alpha Phi Delta", "Alpha Psi Rho", "Alpha Sigma Phi", "Alpha Tau Omega", "Beta Chi Theta", "Beta Sigma Psi", "Beta Theta Pi", "Beta Upsilon Chi", "Chi Gamma Epsilon", "Chi Heorot", "Chi Phi", "Chi Psi", "Delta Chi", "Delta Epsilon Psi", "Delta Kappa Epsilon", "Delta Lambda Phi", "Delta Phi", "Delta Rho Upsilon", "Delta Sigma Phi", "Delta Tau Delta", "Delta Upsilon", "FarmHouse", "Gamma Zeta Alpha", "Iota Nu Delta", "Iota Phi Theta", "Kappa Alpha Order", "Kappa Alpha Psi", "Kappa Alpha Society", "Kappa Delta Phi", "Kappa Delta Rho", "Kappa Pi Kappa", "Kappa Sigma", "Lambda Alpha Upsilon", "Lambda Chi Alpha", "Lambda Phi Epsilon", "Lambda Sigma Upsilon", "Lambda Theta Phi", "Lambda Upsilon Lambda", "Nu Alpha Kappa", "Nu Sigma Beta", "Omega Delta Phi", "Omega Phi Gamma", "Omega Psi Phi", "Omicron Kappa Epsilon", "Pan Sophic", "Phi Beta Sigma", "Phi Delta Gamma", "Phi Delta Psi", "Phi Delta Theta", "Phi Epsilon Chi", "Phi Eta Kappa", "Phi Eta Mu", "Phi Gamma Delta", "Phi Iota Alpha", "Phi Kappa Pi", "Phi Kappa Psi", "Phi Kappa Sigma", "Phi Kappa Tau", "Phi Kappa Theta", "Phi Lambda Chi", "Phi Mu Alpha Sinfonia", "Phi Mu Delta", "Phi Rho Eta", "Phi Sigma Alpha", "Phi Sigma Kappa", "Phi Sigma Nu", "Phi Sigma Phi", "Pi Alpha Phi", "Pi Delta Psi", "Pi Kappa Alpha", "Pi Kappa Phi", "Pi Lambda Phi", "Psi Sigma Phi", "Psi Upsilon", "Sigma Alpha Epsilon", "Sigma Alpha Mu", "Sigma Beta Rho", "Sigma Chi", "Sigma Delta Alpha", "Sigma Lambda Beta", "Sigma Nu", "Sigma Phi Epsilon", "Sigma Phi Society", "Sigma Pi", "Sigma Tau Gamma", "Sigma Theta Pi", "Tau Delta Phi", "Tau Epsilon Phi", "Tau Phi Sigma", "Theta Chi", "Theta Delta Chi", "Theta Xi", "Triangle", "Zeta Beta Tau", "Zeta Chi", "Zeta Phi Rho", "Zeta Psi"]
+                            },
+                            {
+                                "title": 'Sororities',
+                                'options': ["Alpha Chi Omega", "Alpha Delta Chi", "Alpha Delta Pi", "Alpha Epsilon Phi", "Alpha Gamma Delta", "Alpha Kappa Alpha", "alpha Kappa Delta Phi", "Alpha Omicron Pi", "Alpha Phi", "Alpha Phi Gamma", "Alpha Pi Omega", "Alpha Sigma Alpha", "Alpha Sigma Rho", "Alpha Sigma Tau", "Alpha Xi Delta", "Chi Delta Theta", "Chi Omega", "Chi Upsilon Sigma", "Delta Delta Delta", "Delta Gamma", "Delta Phi Epsilon", "Delta Phi Lambda", "Delta Phi Omega", "Delta Sigma Theta", "Delta Xi Nu", "Delta Xi Phi", "Delta Zeta", "Eta Gamma Delta", "Gamma Alpha Omega", "Gamma Eta", "Gamma Phi Beta", "Gamma Rho Lambda", "Kappa Alpha Theta", "Kappa Beta Gamma", "Kappa Delta", "Kappa Delta Chi", "Kappa Kappa Gamma", "Kappa Phi Lambda", "Lambda Pi Chi", "Lambda Pi Upsilon", "Lambda Sigma Gamma", "Lambda Tau Omega", "Lambda Theta Alpha", "Lambda Theta Nu", "Mu Alpha Phi", "Mu Sigma Upsilon", "Omega Phi Beta", "Omega Phi Chi", "Phi Beta Chi", "Phi Mu", "Phi Sigma Sigma", "Pi Beta Phi", "Sigma Alpha Epsilon Pi", "Sigma Alpha Omega", "Sigma Delta Tau", "Sigma Gamma Rho", "Sigma Iota Alpha", "Sigma Kappa", "Sigma Lambda Alpha", "Sigma Lambda Gamma", "Sigma Lambda Upsilon", "Sigma Omicron Epsilon", "Sigma Omicron Pi", "Sigma Phi Lambda", "Sigma Phi Omega", "Sigma Pi Alpha", "Sigma Psi", "Sigma Psi Zeta", "Sigma Sigma Sigma", "Theta Nu Xi", "Theta Phi Alpha", "Zeta Chi Phi", "Zeta Phi Beta", "Zeta Sigma Chi", "Zeta Tau Alpha"]
+                            },
+                            {
+                                "title": '',
+                                'options': ["Other", "None"]
+                            }
+                        ],
+                        'type': 'multi-select',
+                        'maxOptions': 1,
+                        'exclusive': 'None'
+                    },
+                    {
+                        'question': "Do you belong to any secret society, final club, or eating club? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Do you belong to any secret society, final club, or eating club?",
+                        'options': ["Yes", "No", "Decline to answer"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -2211,11 +2255,12 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "What are your long-term financial goals? (Minimum 1; Maximum 3)",
+                        'question': "What are your long-term financial goals? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'questionEmail': "What are your long-term financial goals?",
                         'options': ["Early retirement", "Homeownership", "Financial independence", "Saving for travel", "Starting a business", "Building an investment portfolio", "Saving for education", "Debt-free living", "No specific goals", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "What net worth are you targeting for the next few decades? (Minimum 1; Maximum 1)",
@@ -2276,6 +2321,14 @@ const questionnareData = [
             {
                 'title': 'Home Life & Living Environment',
                 'parts': [
+                    {
+                        'question': "Which branch or reserve component of the U.S. armed forces, if any, have you served in? (Minimum 1; Maximum &#8734) (Cannot select both \"None\" and other options)",
+                        'questionEmail': "Which branch or reserve component of the U.S. armed forces, if any, have you served in?",
+                        'options': ["Army", "Navy", "Marine Corps", "Air Force", "Coast Guard", "Space Force", "National Guard", "Army Reserve", "Navy Reserve", "Marine Corps Reserve", "Air Force Reserve", "Coast Guard Reserve", "None"],
+                        'type': 'multi-select',
+                        'maxOptions': 'infinity',
+                        'exclusive': 'None'
+                    },
                     {
                         'question': "Which home design style do you prefer? (Minimum 1; Maximum 1)",
                         'questionEmail': "Which home design style do you prefer?",
@@ -2673,11 +2726,12 @@ const questionnareData = [
                         'maxOptions': 3,
                     },
                     {
-                        'question': "When choosing a place to live, what factors are most important to you? (Minimum 1; Maximum 3)",
+                        'question': "When choosing a place to live, what factors are most important to you? (Minimum 1; Maximum 3) (Cannot select both \"None\" and other options)",
                         'questionEmail': "When choosing a place to live, what factors are most important to you?",
                         'options': ["Job opportunities", "Cost of living", "Quality of schools", "Outdoor Recreational activities", "Cultural attractions", "Proximity to family and friends", "Climate", "Safety and crime rates", "Diversity", "Other", "None"],
                         'type': 'multi-select',
-                        'maxOptions': 3
+                        'maxOptions': 3,
+                        'exclusive': 'None'
                     },
                     {
                         'question': "How important is it for you to live in a walkable area with shops, restaurants, and amenities nearby? (Minimum 1; Maximum 1)",
@@ -4055,7 +4109,7 @@ const questionnareData = [
                     {
                         'question': "How many children would you like to have? (Minimum 1; Maximum 1)",
                         'questionEmail': "How many children would you like to have?",
-                        'options': ["None", "1", "2", "3", "4", "5 or more", "undecided"],
+                        'options': ["None", "1", "2", "3", "4", "5 or more", "Undecided"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -4081,6 +4135,34 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
+                        'question': "Which of the following do you believe comes first in marriage? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following do you believe comes first in marriage?",
+                        'options': ["God", "Spouse", "Kids", "Parents", "Siblings", "Extended family", "Friends", "Coreligionists", "Community", "Other", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': 1
+                    },
+                    {
+                        'question': "Which of the following do you believe comes second in marriage? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following do you believe comes second in marriage?",
+                        'options': ["God", "Spouse", "Kids", "Parents", "Siblings", "Extended family", "Friends", "Coreligionists", "Community", "Other", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': 1
+                    },
+                    {
+                        'question': "Which of the following do you believe comes third in marriage? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following do you believe comes third in marriage?",
+                        'options': ["God", "Spouse", "Kids", "Parents", "Siblings", "Extended family", "Friends", "Coreligionists", "Community", "Other", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': 1
+                    },
+                    {
+                        'question': "Which of the following do you believe comes fourth in marriage? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following do you believe comes fourth in marriage?",
+                        'options': ["God", "Spouse", "Kids", "Parents", "Siblings", "Extended family", "Friends", "Coreligionists", "Community", "Other", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': 1
+                    },
+                    {
                         'question': "What do you believe should be a man&#x2032;s responsibilities in marriage? (Minimum 1; Maximum 5) (Question disappears if Sexual Orientation &#x2260; Straight)",
                         'questionEmail': "What do you believe should be a man&#x2032;s responsibilities in marriage?",
                         'options': ["Emotional support", "Household chores", "Cooking", "Childcare", "Financial planning", "Generating income", "Sex, intimacy and romance", "Making decisions", "Resolving conflicts", "Planning for the family", "Home maintenance and repairs", "Creating a safe and loving home environment", "Fostering a sense of humor and fun", "Celebrating successes and milestones", "Upholding family traditions", "Caring for extended family members", "Staying fit and healthy", "Advocating for spouse&#x2032;s needs and dreams"],
@@ -4089,7 +4171,7 @@ const questionnareData = [
                         'id': 'q_believe_man_responsibilities'
                     },
                     {
-                        'question': "What do you believe should be a woman&#x2032;s responsibilities in marriage? (Select up to 5) (Question disappears if Sexual Orientation &#x2260; Straight)",
+                        'question': "What do you believe should be a woman&#x2032;s responsibilities in marriage? (Minimum 1; Maximum 5) (Question disappears if Sexual Orientation &#x2260; Straight)",
                         'questionEmail': "What do you believe should be a woman&#x2032;s responsibilities in marriage?",
                         'options': ["Emotional support", "Household chores", "Cooking", "Childcare", "Financial planning", "Generating income", "Sex, intimacy and romance", "Making decisions", "Resolving conflicts", "Planning for the family", "Home maintenance and repairs", "Creating a safe and loving home environment", "Fostering a sense of humor and fun", "Celebrating successes and milestones", "Upholding family traditions", "Caring for extended family members", "Staying fit and healthy", "Advocating for spouse&#x2032;s needs and dreams"],
                         'type': 'multi-select',

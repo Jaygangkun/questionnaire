@@ -85,17 +85,17 @@ const questionnareData = [
                             {
                                 'type': '0', // Male,
                                 'valuePrefix': 'M',
-                                'options': ["img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png", "img/body1.png", "img/body2.png"]
+                                'options': ["img/m1anorexic.jpg", "img/m2androgynous.jpg", "img/m3skinny.jpg", "img/m4athletic.jpg", "img/m5average.jpg", "img/m6muscular.jpg", "img/m7ripped.jpg", "img/m8chubby.jpg", "img/m9beerbelly.jpg", "img/m10supersized.jpg"]
                             },
                             {
                                 'type': '1', // Female
                                 'valuePrefix': 'F',
-                                'options': ["img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png", "img/body3.png", "img/body4.png"]
+                                'options': ["img/f1anorexic.jpg", "img/f2boyish.jpg", "img/f3athletic.jpg", "img/f4fit.jpg", "img/f5muscular.jpg", "img/f6average.jpg", "img/f7curvy.jpg", "img/f8chubby.jpg", "img/f9fat.jpg", "img/f10supersized.jpg"]
                             },
                             {
                                 'type': '2', // Intersex
                                 'valuePrefix': 'I',
-                                'options': ["img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png", "img/body5.png"]
+                                'options': ["img/i1anorexic.jpg", "img/i2androgynous.jpg", "img/i3skinny.jpg", "img/i4athletic.jpg", "img/i5average.jpg", "img/i6muscular.jpg", "img/i7ripped.jpg", "img/i8chubby.jpg", "img/i9fat.jpg", "img/i10supersized.jpg"]
                             }
                         ],
                         'type': 'image-select',

@@ -6,15 +6,15 @@ require_once "PHPMailer/SMTP.php";
 use PHPMailer\PHPMailer\PHPMailer;
 
 $siteURL = 'http://localhost:9005';
-$siteURL = 'https://lovestory.ai/';
+$siteURL = 'https://questionnaire.lovestory.ai/';
 
 function sendEmail($to, $body) {
     $mail = new PHPMailer();
 
     $mail->IsSMTP();
-    $mail->Host = 'mail.lovestory.ai';
+    $mail->Host = 'smtp.protonmail.ch';
     $mail->Username = 'noreply@lovestory.ai';
-    $mail->Password = 'NoReply@43908349055980980345';
+    $mail->Password = 'W1ZEHPT1BBTPPW3X';
     $mail->Port = 587;
     
     $mail->SMTPAuth = true;
@@ -91,7 +91,7 @@ $qaCompanyHtml = '<table border style="border-collapse:collapse"><tr>'.$qaCompan
 
 // echo $qaUserHtml; die();
 
-$ret = sendEmail('info@lovestory.ai', $qaCompanyHtml);
+$ret = sendEmail('noreply@lovestory.ai', $qaCompanyHtml);
 
 if ($ret['success']) {
 

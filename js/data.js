@@ -481,7 +481,7 @@ const questionnareData = [
                     {
                         'question': "How COVID-19 vaccine doses have you received? (Minimum 1; Maximum 1)",
                         'questionEmail': "How COVID-19 vaccine doses have you received?",
-                        'options': ["None", "1", "2", "3", "4", "5 or more"],
+                        'options': ["None", "1", "2", "3", "4", "5 or more", "many"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -523,8 +523,8 @@ const questionnareData = [
                         'exclusive': 'None'
                     },
                     {
-                        'question': "Are you neurodiverse? (Minimum 1; Maximum &#8734) (Cannot select both \"No\" and other options)",
-                        'questionEmail': "Are you neurodiverse?",
+                        'question': "Are you neurodiverse? If so, in what way? (Minimum 1; Maximum &#8734) (Cannot select both \"No\" and other options)",
+                        'questionEmail': "Are you neurodiverse? If so, in what way?",
                         'options': ["Attention deficit hyperactivity disorder (ADHD)", "Autism spectrum disorder (ASD)", "Dyscalculia", "Dysgraphia", "Dyslexia", "Nonverbal learning disorder (NVLD)", "Sensory processing disorder (SPD)", "Social communication disorder", "Tourette syndrome", "Other neurodiverse condition", "No", "Unsure"],
                         'type': 'multi-select',
                         'maxOptions': 'infinity',
@@ -666,8 +666,8 @@ const questionnareData = [
                         'maxOptions': 1,
                     },
                     {
-                        'question': "Have you ever experienced a serious instance of sexual assault? (Minimum 1; Maximum 1)",
-                        'questionEmail': "Have you ever experienced a serious instance of sexual assault?",
+                        'question': "Have you ever experienced a significant or serious instance of sexual assault? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Have you ever experienced a significant or serious instance of sexual assault?",
                         'options': ["Yes", "No", "Unsure"],
                         'type': 'multi-select',
                         'maxOptions': 1,
@@ -1443,6 +1443,20 @@ const questionnareData = [
                         'question': "Who did you vote for president in the 2020 general election? (Minimum 1; Maximum 1)",
                         'questionEmail': "Who did you vote for president in the 2020 general election?",
                         'options': ["Joe Biden (Democratic)", "Donald Trump (Republican)", "Jo Jorgensen (Libertarian)", "Howie Hawkins (Green)", "Other candidate", "Did not vote / not eligible to vote"],
+                        'type': 'multi-select',
+                        'maxOptions': 1,
+                    },
+                    {
+                        'question': "Who did you vote for president in the 2024 primary election? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Who did you vote for president in the 2024 primary election?",
+                        'options': ["Joe Biden (Democratic)", "Uncommitted (Democratic)", "Donald Trump (Republican)", "Nikki Haley (Republican)", "Ron DeSantis (Republican)", "Chris Christie (Republican)", "Vivek Ramaswamy (Republican)", "Chase Oliver (Libertarian)", "Robert Kennedy Jr. (Independent)", "Other candidate", "Did not vote / not eligible to vote"],
+                        'type': 'multi-select',
+                        'maxOptions': 1,
+                    },
+                    {
+                        'question': "Who did you vote for president in the 2024 general election? (Minimum 1; Maximum 1)",
+                        'questionEmail': "Who did you vote for president in the 2024 general election?",
+                        'options': ["Joe Biden (Democratic)", "Donald Trump (Republican)", "Chase Oliver (Libertarian)", "Robert Kennedy Jr. (Independent)", "Other candidate", "Did not vote / not eligible to vote"],
                         'type': 'multi-select',
                         'maxOptions': 1,
                     },
@@ -4224,6 +4238,34 @@ const questionnareData = [
                         'type': 'multi-select',
                         'maxOptions': 'infinity',
                         'exclusive': 'None'
+                    },
+                    {
+                        'question': "Which of the following is your first preference for last names after marriage? (e.g., Husband: John Michael Smith & Wife: Jane Ann Doe) (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following is your first preference for last names after marriage?",
+                        'options': ["Wife takes husband's last name (e.g., Jane Ann Smith)", "Wife makes her maiden name the middle name and takes husband's last name (e.g., Jane Doe Smith)", "Wife adds her maiden name to the middle name, and takes husband's last name (e.g., Jane Ann Doe Smith)", "Wife and husband keep their given names (e.g., John Michael Smith & Jane Ann Doe)", "Wife and husband hyphenate their last names (e.g., John Michael Smith-Doe & Jane Ann Smith-Doe, or as Doe-Smith)", "Wife and husband pick a new last name (e.g., John Michael Brown & Jane Ann Brown)", "Husband takes wife's last name; wife keeps her given name (e.g., John Michael Doe & Jane Ann Doe)", "It depends on the last name(s)", "Other", "None"],
+                        'type': 'multi-select',
+                        'maxOptions': '1',
+                    },
+                    {
+                        'question': "Which of the following is your second preference for last names after marriage? (e.g., John Michael Smith & Jane Ann Doe) (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following is your second preference for last names after marriage?",
+                        'options': ["Wife takes husband's last name (e.g., Jane Ann Smith)", "Wife makes her maiden name the middle name and takes husband's last name (e.g., Jane Doe Smith)", "Wife adds her maiden name to the middle name, and takes husband's last name (e.g., Jane Ann Doe Smith)", "Wife and husband keep their given names (e.g., John Michael Smith & Jane Ann Doe)", "Wife and husband hyphenate their last names (e.g., John Michael Smith-Doe & Jane Ann Smith-Doe, or as Doe-Smith)", "Wife and husband pick a new last name (e.g., John Michael Brown & Jane Ann Brown)", "Husband takes wife's last name; wife keeps her given name (e.g., John Michael Doe & Jane Ann Doe)", "It depends on the last name(s)", "Other", "None"],
+                        'type': 'multi-select',
+                        'maxOptions': '1',
+                    },
+                    {
+                        'question': "Which of the following is your third preference for last names after marriage? (e.g., John Michael Smith & Jane Ann Doe) (Minimum 1; Maximum 1)",
+                        'questionEmail': "Which of the following is your third preference for last names after marriage?",
+                        'options': ["Wife takes husband's last name (e.g., Jane Ann Smith)", "Wife makes her maiden name the middle name and takes husband's last name (e.g., Jane Doe Smith)", "Wife adds her maiden name to the middle name, and takes husband's last name (e.g., Jane Ann Doe Smith)", "Wife and husband keep their given names (e.g., John Michael Smith & Jane Ann Doe)", "Wife and husband hyphenate their last names (e.g., John Michael Smith-Doe & Jane Ann Smith-Doe, or as Doe-Smith)", "Wife and husband pick a new last name (e.g., John Michael Brown & Jane Ann Brown)", "Husband takes wife's last name; wife keeps her given name (e.g., John Michael Doe & Jane Ann Doe)", "It depends on the last name(s)", "Other", "None"],
+                        'type': 'multi-select',
+                        'maxOptions': '1',
+                    },
+                    {
+                        'question': "What are your views on entering into a prenuptial agreement with your soon-to-be spouse? (Minimum 1; Maximum 1)",
+                        'questionEmail': "What are your views on entering into a prenuptial agreement with your soon-to-be spouse?",
+                        'options': ["Strongly support", "Support", "Neutral", "Oppose", "Strongly oppose", "It depends on the context", "Not sure"],
+                        'type': 'multi-select',
+                        'maxOptions': '1',
                     }
                 ]
             }

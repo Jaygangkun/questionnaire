@@ -67,17 +67,18 @@ body {
 }
 
 h2 {
-    font-family: Suisse Intl;
+    font-family: Rajdhani,sans-serif;
     font-size: 28px;
-    font-weight: 500;
-    color: #f4f5f6;
+    font-weight: bold;
+    color: #ed4a3b;
     margin: 0px;
     margin-bottom: 16px;
+    text-transform: uppercase;
 }
 
 .step-container {
-    max-width: 850px;
-    width: 90%;
+    /* max-width: 850px; */
+    width: 100%;
     margin: auto;
 }
 
@@ -118,9 +119,10 @@ h2 {
 }
 
 label {
-    font-family: Inter, sans-serif;
-    font-size: 14px;
-    color: #868f98;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
     display: block;
     margin-bottom: 5px;
     font-style: normal;
@@ -128,13 +130,13 @@ label {
 
 input,
 .fancy-dropdown-wrapper input.fancy-dropdown {
-    font-family: Inter, sans-serif;
-    font-size: 13px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
     line-height: 20px;
     color: #f4f5f6;
     font-style: normal;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 13px 12px;
+    border-radius: 10px;
     border: 1px solid #9ca3ab52;
     background: transparent;
     transition: all 0.2s ease 0s;
@@ -149,11 +151,15 @@ input:focus,
     background: #15181e;
     border: 1px solid #6487ceF5;
     caret-color: #6487ceF5;
+    background: #22272f;
+    border: 1px solid #164EA1;
 }
 
 input:hover,
 .fancy-dropdown-wrapper input.fancy-dropdown:hover {
     background: #22272f;
+    background: #22272f;
+    border: 1px solid #164EA1;
 }
 
 .error input,
@@ -249,25 +255,27 @@ input:hover,
 }
 
 .multiselect-option {
-    font-family: Inter, sans-serif;
-    font-size: 13px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
     line-height: 20px;
-    color: #f4f5f6;
+    color: #ffffff;
     font-style: normal;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid #9ca3ab52;
+    padding: 13px 12px;
+    border-radius: 10px;
+    border: 1px solid #474A4E;
     background: transparent;
     transition: all 0.2s ease 0s;
     letter-spacing: -0.02em;
     display: inline-block;
     cursor: pointer;
     margin: 5px 5px;
+    font-weight: normal;
 }
 
 .multiselect-option:hover {
     background: #22272f;
-    border: 1px solid #6487ceF5;
+    border: 1px solid #164EA1;
+    background: linear-gradient(90deg, rgba(22, 78, 161, 0.25) 0%, rgba(30, 106, 220, 0.25) 54.78%, rgba(22, 78, 161, 0.25) 96.37%);
 }
 
 .error .multiselect-option {
@@ -276,7 +284,8 @@ input:hover,
 
 .multiselect-option.selected {
     background: #6487ceF5;
-    border: 1px solid #6487ceF5;
+    border: 1px solid #164EA1;
+    background: linear-gradient(90deg, rgba(22, 78, 161, 0.25) 0%, rgba(30, 106, 220, 0.25) 54.78%, rgba(22, 78, 161, 0.25) 96.37%);
 }
 
 .image-select {
@@ -506,4 +515,16 @@ input[type=number] {
 
 .loader.hide {
     display: none;
+}
+
+.questionnaire-list {
+    margin-top: 50px;
+}
+
+.bg-gradient {
+    width: 100%;
+}
+
+.bg-lines {
+    width: 100%;
 }

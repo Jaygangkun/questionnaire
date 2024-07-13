@@ -64,6 +64,7 @@
 
 body {
     /* background: #15181E; */
+    overflow-x: hidden;
 }
 
 h2 {
@@ -74,6 +75,9 @@ h2 {
     margin: 0px;
     margin-bottom: 16px;
     text-transform: uppercase;
+    background-image: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
 }
 
 .step-container {
@@ -131,11 +135,11 @@ label {
 input,
 .fancy-dropdown-wrapper input.fancy-dropdown {
     font-family: Roboto, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     color: #f4f5f6;
     font-style: normal;
-    padding: 13px 12px;
+    padding: 8px 12px;
     border-radius: 10px;
     border: 1px solid #9ca3ab52;
     background: transparent;
@@ -260,7 +264,7 @@ input:hover,
     line-height: 20px;
     color: #ffffff;
     font-style: normal;
-    padding: 13px 12px;
+    padding: 8px 12px;
     border-radius: 10px;
     border: 1px solid #474A4E;
     background: transparent;
@@ -269,7 +273,7 @@ input:hover,
     display: inline-block;
     cursor: pointer;
     margin: 5px 5px;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .multiselect-option:hover {
@@ -537,4 +541,15 @@ input[type=number] {
 
 .form-group-container label span {
     font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.heading-style-h3 {
+    text-transform: initial;
+    margin-bottom: 0px;
+}
+
+.cta_image {
+    height: initial;
 }

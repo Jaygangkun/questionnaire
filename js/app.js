@@ -943,7 +943,7 @@ function renderPage() {
 
                         formGroupHtml += `
                             <div class="form-group form-group-btn-add">
-                                <span class="btn btn-add-multi-text-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}">+</span>
+                                <span class="button is-navbar2-button w-button button-inline btn-add-multi-text-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}">+</span>
                             </div>
                         `;
 
@@ -1045,7 +1045,7 @@ function renderPage() {
 
                     textListHtml += `
                         <div class="form-group form-group-btn-add" style="${btnDisplayStyle}">
-                            <span class="btn btn-add-text-option-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}" data-tabbing="${tabbing}">+</span>
+                            <span class="button is-navbar2-button w-button button-inline btn-add-text-option-input" data-qIndex="${questionIndex}" data-maxCount="${textMaxCount}" data-tabbing="${tabbing}">+</span>
                         </div>
                     `;
 
